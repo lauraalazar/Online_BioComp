@@ -1,8 +1,0 @@
-# Table of contents
-
-format: jb-book
-root: intro
-chapters:
-- file: intro_linux
-- file: exscripts
-- file: variables
