@@ -376,7 +376,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-los-contenidos-de-un-archivo-en-la-pantalla">Mostrar los contenidos de un archivo en la pantalla</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manejo-de-archivos">Manejo de archivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-archivos">Manipulación de archivos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-la-linea-de-comando">Conclusiones de la línea de comando</a></li>
 </ul>
 </li>
@@ -418,11 +418,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">_build</span>/                intro_linux.ipynb      notebooks.ipynb
-_config.yml            logo.png               references.bib
-_toc.yml               markdown-notebooks.md  requirements.txt
-exscripts.ipynb        markdown.md            unix-tree.png
-intro.md               mymarkdownfile.md      variables.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">_build</span>/                intro_linux.ipynb      references.bib
+_config.yml            logo.png               requirements.txt
+_toc.yml               markdown-notebooks.md  unix-tree.png
+<span class=" -Color -Color-Blue">biocomp_clase1</span>/        markdown.md            variables.ipynb
+exscripts.ipynb        mymarkdownfile.md
+intro.md               notebooks.ipynb
 </pre></div>
 </div>
 </div>
@@ -437,12 +438,13 @@ intro.md               mymarkdownfile.md      variables.ipynb
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">.</span>/                     exscripts.ipynb        mymarkdownfile.md
-<span class=" -Color -Color-Blue">..</span>/                    intro.md               notebooks.ipynb
-.DS_Store              intro_linux.ipynb      references.bib
-<span class=" -Color -Color-Blue">_build</span>/                logo.png               requirements.txt
-_config.yml            markdown-notebooks.md  unix-tree.png
-_toc.yml               markdown.md            variables.ipynb
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">.</span>/                     <span class=" -Color -Color-Blue">biocomp_clase1</span>/        mymarkdownfile.md
+<span class=" -Color -Color-Blue">..</span>/                    exscripts.ipynb        notebooks.ipynb
+.DS_Store              intro.md               references.bib
+<span class=" -Color -Color-Blue">.git</span>/                  intro_linux.ipynb      requirements.txt
+<span class=" -Color -Color-Blue">_build</span>/                logo.png               unix-tree.png
+_config.yml            markdown-notebooks.md  variables.ipynb
+_toc.yml               markdown.md
 </pre></div>
 </div>
 </div>
@@ -466,7 +468,7 @@ _toc.yml               markdown.md            variables.ipynb
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/laura/docencia/comp_bio/2024-1/compbio_lib&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/laura/docencia/comp_bio/Online_BioComp&#39;
 </pre></div>
 </div>
 </div>
@@ -480,6 +482,11 @@ _toc.yml               markdown.md            variables.ipynb
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">biocomp_clase1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: biocomp_clase1: File exists
 </pre></div>
 </div>
 </div>
@@ -517,7 +524,7 @@ intro.md               notebooks.ipynb
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/laura/docencia/comp_bio/2024-1/compbio_lib/biocomp_clase1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/laura/docencia/comp_bio/Online_BioComp/biocomp_clase1
 </pre></div>
 </div>
 </div>
@@ -531,7 +538,7 @@ Para volver al directorio parental escribimos</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/laura/docencia/comp_bio/2024-1/compbio_lib
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/laura/docencia/comp_bio/Online_BioComp
 </pre></div>
 </div>
 </div>
@@ -548,11 +555,13 @@ Para volver al directorio parental escribimos</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">Applications</span>/      <span class=" -Color -Color-Blue">Movies</span>/            bitmap.png         <span class=" -Color -Color-Blue">phylotags</span>/
-<span class=" -Color -Color-Blue">Desktop</span>/           <span class=" -Color -Color-Blue">Music</span>/             <span class=" -Color -Color-Blue">docencia</span>/          <span class=" -Color -Color-Blue">proyectos</span>/
-<span class=" -Color -Color-Blue">Documents</span>/         <span class=" -Color -Color-Blue">Pictures</span>/          <span class=" -Color -Color-Blue">docencia copy</span>/     sos.png
-<span class=" -Color -Color-Blue">Downloads</span>/         <span class=" -Color -Color-Blue">Public</span>/            docencia copy.zip
-<span class=" -Color -Color-Blue">Library</span>/           <span class=" -Color -Color-Blue">biocomp_clase2</span>/    <span class=" -Color -Color-Blue">miniconda3</span>/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">Applications</span>/             <span class=" -Color -Color-Blue">Pictures</span>/                 docencia copy.zip
+<span class=" -Color -Color-Blue">Desktop</span>/                  <span class=" -Color -Color-Blue">Public</span>/                   github_personaltoken.txt
+<span class=" -Color -Color-Blue">Documents</span>/                <span class=" -Color -Color-Blue">biocomp_clase1</span>/           <span class=" -Color -Color-Blue">miniconda3</span>/
+<span class=" -Color -Color-Blue">Downloads</span>/                <span class=" -Color -Color-Blue">biocomp_clase2</span>/           <span class=" -Color -Color-Blue">phylotags</span>/
+<span class=" -Color -Color-Blue">Library</span>/                  bitmap.png                <span class=" -Color -Color-Blue">proyectos</span>/
+<span class=" -Color -Color-Blue">Movies</span>/                   <span class=" -Color -Color-Blue">docencia</span>/                 science.txt
+<span class=" -Color -Color-Blue">Music</span>/                    <span class=" -Color -Color-Blue">docencia copy</span>/            sos.png
 </pre></div>
 </div>
 </div>
@@ -573,11 +582,11 @@ Primero, cd al directorio biocomp_clase1:</p>
 </pre></div>
 </div>
 <p>Para descargar un archivo se puede utilizar <code class="docutils literal notranslate"><span class="pre">wget</span></code> y el archivo queda guardado en el directorio donde se dió el comando, con el nombre original</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ee</span><span class="o">.</span><span class="n">surrey</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">Teaching</span><span class="o">/</span><span class="n">Unix</span><span class="o">/</span><span class="n">science</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">users</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">duke</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">alvy</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="n">unixtut</span><span class="o">/</span><span class="n">science</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>También  se puede utilizar <code class="docutils literal notranslate"><span class="pre">curl</span></code>, y en este caso se debe especificar el nombre con el que quedará guardado el archivo con la opción <code class="docutils literal notranslate"><span class="pre">-o</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ee</span><span class="o">.</span><span class="n">surrey</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">Teaching</span><span class="o">/</span><span class="n">Unix</span><span class="o">/</span><span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">science2</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">users</span><span class="o">.</span><span class="n">cs</span><span class="o">.</span><span class="n">duke</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">alvy</span><span class="o">/</span><span class="n">courses</span><span class="o">/</span><span class="n">unixtut</span><span class="o">/</span><span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">o</span> <span class="n">science2</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <div class="alert alert-block alert-info">
@@ -595,7 +604,7 @@ Primero, cd al directorio biocomp_clase1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">science</span><span class="o">.</span><span class="n">bak</span> <span class="n">ejercicios</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>escribe <code class="docutils literal notranslate"><span class="pre">ls</span></code> y <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">backup</span></code> para ver si funcionó.</p>
+<p>escribe <code class="docutils literal notranslate"><span class="pre">ls</span></code> y <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">ejercicios</span></code> para ver si funcionó.</p>
 </section>
 <section id="remover-archivos-y-directorios">
 <h3>Remover archivos y directorios<a class="headerlink" href="#remover-archivos-y-directorios" title="Permalink to this heading">#</a></h3>
@@ -621,8 +630,13 @@ Primero, cd al directorio biocomp_clase1:</p>
  </div></section>
 <section id="mostrar-los-contenidos-de-un-archivo-en-la-pantalla">
 <h3>Mostrar los contenidos de un archivo en la pantalla<a class="headerlink" href="#mostrar-los-contenidos-de-un-archivo-en-la-pantalla" title="Permalink to this heading">#</a></h3>
+<p><strong>cat</strong></p>
+<p>Este comando imprime el texto completo en la terminal, si este es muy largo solo se verán las últimas líneas</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">cat</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
 <p><strong>less</strong></p>
-<p>El comando <code class="docutils literal notranslate"><span class="pre">less</span></code> muestra los contenidos de un archivo en la pantalla. Escribe:</p>
+<p>El comando <code class="docutils literal notranslate"><span class="pre">less</span></code> va mostra los contenidos de un archivo en la terminal desde el comienzo del archivo. Escribe:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">less</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
@@ -685,8 +699,8 @@ Ahora intente escribir la palabra con mayúscula:</p>
 </div>
 </section>
 </section>
-<section id="manejo-de-archivos">
-<h2>Manejo de archivos<a class="headerlink" href="#manejo-de-archivos" title="Permalink to this heading">#</a></h2>
+<section id="manipulacion-de-archivos">
+<h2>Manipulación de archivos<a class="headerlink" href="#manipulacion-de-archivos" title="Permalink to this heading">#</a></h2>
 <p>Para guardar lo que se imprime en pantalla en un archivo se utiliza el comando <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> seguido por el nombre del archivo donde se guardará el resultado. Por ejemplo, para guardar todas las líneas que contienen la palabra “science” (sin importar si es mayúscula o minúscula) escribimos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">science</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">science_grep</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
@@ -706,7 +720,7 @@ Ahora intente escribir la palabra con mayúscula:</p>
 <p>La línea de comando de linux es muy poderoso. Tan poderoso que la gran mayoría de los servidores y super computadoras del mundo funcionan con los sistemas linux (sin interfase gráfica, i.e. usando solamente la línea de comando).</p>
 <p>Aquí navegamos por algunos ejemplos simples, pero esto es solo un “abre-bocas”. Por ejemplo, el comando <code class="docutils literal notranslate"><span class="pre">grep</span></code> es muy importante y útil para buscar patrones, y <code class="docutils literal notranslate"><span class="pre">wget</span></code> para bajar archivos. Ambos comandos mucho mas rápidos que si se usaran la interfase gráfica.</p>
 <p>Para cada comando hay un manual de uso que se puede acceder con <code class="docutils literal notranslate"><span class="pre">man</span></code> y el comando que se desea buscar, por ejemplo <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">grep</span></code> despliega todas las opciones para este comando con ejemplos de uso.</p>
-<p>Para profundizar sobre linux hay varios tutoriales, por ejemplo <a class="reference external" href="https://ryanstutorials.net/linuxtutorial/">https://ryanstutorials.net/linuxtutorial/</a> o <a class="reference external" href="https://swcarpentry.github.io/shell-novice/">https://swcarpentry.github.io/shell-novice/</a> recomendado por una compañera del curso</p>
+<p>Para profundizar sobre linux hay varios tutoriales, por ejemplo <a class="reference external" href="https://ryanstutorials.net/linuxtutorial/">https://ryanstutorials.net/linuxtutorial/</a> o <a class="reference external" href="https://swcarpentry.github.io/shell-novice/">https://swcarpentry.github.io/shell-novice/</a></p>
 </section>
 </section>
 </section>
@@ -801,7 +815,7 @@ Ahora intente escribir la palabra con mayúscula:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-los-contenidos-de-un-archivo-en-la-pantalla">Mostrar los contenidos de un archivo en la pantalla</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manejo-de-archivos">Manejo de archivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-archivos">Manipulación de archivos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-la-linea-de-comando">Conclusiones de la línea de comando</a></li>
 </ul>
 </li>
