@@ -17,9 +17,6 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 counter=1
 echo $counter 
-1
-echo counter
-counter
 ------------------
 
 
