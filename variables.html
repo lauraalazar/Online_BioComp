@@ -397,25 +397,13 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">fi</span></code></p>
 <p>Todo lo que esté entre <em>then</em> y <em>fi</em> se ejecutará solamente is el chequeo (entre corchetes) es verdadero.
 Un ejemplo simple</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num1=10
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>num1=10
 num2=5
 
 if [ $num1 -gt $num2 ]; then  
 echo &quot;num1 es $num1 y es mayor que $num2&quot;
 fi
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Cell In[2], line 4
-    if [ $num1 -gt $num2 ]; then
-         ^
-SyntaxError: invalid syntax
-</pre></div>
-</div>
-</div>
 </div>
 <div class="alert alert-block alert-warning">
 <b> Es importante dejar espacio entre los corchetes y su contenido </div>
@@ -452,6 +440,14 @@ do
 echo $counter
 ((counter++))
 done
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Cell In[2], line 1
+    $ nano while_loop.sh
+    ^
+SyntaxError: invalid syntax
 </pre></div>
 </div>
 </div>

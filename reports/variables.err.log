@@ -15,18 +15,22 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-num1=10
-num2=5
+$ nano while_loop.sh
 
-if [ $num1 -gt $num2 ]; then  
-echo "num1 es $num1 y es mayor que $num2"
-fi
+#!/bin/bash
+# Basic while loop
+counter=1
+while [ $counter -le 10 ]
+do
+echo $counter
+((counter++))
+done
 ------------------
 
 
-[0;36m  Cell [0;32mIn[2], line 4[0;36m[0m
-[0;31m    if [ $num1 -gt $num2 ]; then[0m
-[0m         ^[0m
+[0;36m  Cell [0;32mIn[2], line 1[0;36m[0m
+[0;31m    $ nano while_loop.sh[0m
+[0m    ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
 
