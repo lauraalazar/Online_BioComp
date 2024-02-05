@@ -428,10 +428,7 @@ El loop <strong>while</strong> define que, mientras una expresión es verdadera,
 <li><p>Linea 7: al final del loop, vuelve al inicio a hacer el chequeo. Si es verdad, ejecuta el comando, si es falso conitnua a la siguiente linnea.</p></li>
 </ul>
 <p>Este programa que ejecutamos en la terminal lo podemos escribir en un script para correrlo las veces que necesitemos y para registrar lo que hicimos</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>```
-$ nano while_loop.sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano while_loop.sh
 
 #!/bin/bash
 # Basic while loop
@@ -441,18 +438,7 @@ do
 echo $counter
 ((counter++))
 done
-```
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Cell In[2], line 1
-    ```
-    ^
-SyntaxError: invalid syntax
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">[ctrl-o]</span> <span class="pre">[enter]</span></code> y <code class="docutils literal notranslate"><span class="pre">[ctrl-x]</span></code></p>
 <div class="alert alert-block alert-info">
@@ -477,6 +463,14 @@ SyntaxError: invalid syntax
 <span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">pep</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">pep</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">sars_covid19</span><span class="o">/</span><span class="n">Sars_cov</span><span class="o">.</span><span class="n">prot</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">cds</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">cds</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">sars_covid19</span><span class="o">/</span><span class="n">Sars_cov</span><span class="o">.</span><span class="n">cds</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span>
  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">mkdir</span> <span class="n">sars_covid19</span>
+          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
