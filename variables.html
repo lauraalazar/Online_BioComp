@@ -471,22 +471,11 @@ done
 </pre></div>
 </div>
 <p>Cuando descargamos los archivos los nombramos con un <code class="docutils literal notranslate"><span class="pre">./sars_covid</span></code> que precede al nombre. Esto indica que lo guarde en el directorio llamado <code class="docutils literal notranslate"><span class="pre">sars_covid</span></code> que esta dentro del directorio donde nos encontramos <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for f in $(ls);
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for f in $(ls);
     do wc -l $f;
         done
+        
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Cell In[2], line 1
-    for f in $(ls);
-             ^
-SyntaxError: invalid syntax
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note como listamos el directorio usando <code class="docutils literal notranslate"><span class="pre">ls</span></code> y lo encerramos en el comanod  <code class="docutils literal notranslate"><span class="pre">$()</span></code>. Esto nos permite crear una variable que contiene el resultado del comando <code class="docutils literal notranslate"><span class="pre">ls</span></code>.
 Luego iteramos sobre cada item del directorio <strong>sars_covid19</strong> y contamos el número de líneas con <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code></p>
