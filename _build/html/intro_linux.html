@@ -421,16 +421,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taller1.md             exscripts.ipynb        notebooks.ipynb
-<span class=" -Color -Color-Blue">_build</span>/                intro.md               references.bib
-_config.yml            intro_linux.ipynb      requirements.txt
-_toc.yml               logo.png               unix-tree.png
-<span class=" -Color -Color-Blue">biocomp_clase1</span>/        markdown-notebooks.md  variables.ipynb
-biopython_apolo.ipynb  markdown.md
-</pre></div>
-</div>
-</div>
 </div>
 <p>El comando ls lista el contenido de directorio de trabajo (<em>current directory</em>).</p>
 <p>Pero ls no lista realmene todos los archivos, solo aquellos que son visibles. Los archivos que comienzan con un punto (.) y que se conocen como ocultos contienen informacion importante de configuracion que no debe ser alterada, a menos que sepamos bien que estamos haciendo.</p>
@@ -438,17 +428,6 @@ biopython_apolo.ipynb  markdown.md
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">.</span>/                     _toc.yml               markdown-notebooks.md
-<span class=" -Color -Color-Blue">..</span>/                    <span class=" -Color -Color-Blue">biocomp_clase1</span>/        markdown.md
-.DS_Store              biopython_apolo.ipynb  notebooks.ipynb
-<span class=" -Color -Color-Blue">.git</span>/                  exscripts.ipynb        references.bib
-Taller1.md             intro.md               requirements.txt
-<span class=" -Color -Color-Blue">_build</span>/                intro_linux.ipynb      unix-tree.png
-_config.yml            logo.png               variables.ipynb
 </pre></div>
 </div>
 </div>
@@ -471,11 +450,6 @@ _config.yml            logo.png               variables.ipynb
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/laura/docencia/comp_bio/Online_BioComp&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="crear-directorios">
@@ -489,26 +463,11 @@ _config.yml            logo.png               variables.ipynb
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: biocomp_clase1: File exists
-</pre></div>
-</div>
-</div>
 </div>
 <p>Para ver el directorio que acabamos de crear escribimos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taller1.md             exscripts.ipynb        notebooks.ipynb
-<span class=" -Color -Color-Blue">_build</span>/                intro.md               references.bib
-_config.yml            intro_linux.ipynb      requirements.txt
-_toc.yml               logo.png               unix-tree.png
-<span class=" -Color -Color-Blue">biocomp_clase1</span>/        markdown-notebooks.md  variables.ipynb
-biopython_apolo.ipynb  markdown.md
 </pre></div>
 </div>
 </div>
@@ -527,22 +486,12 @@ biopython_apolo.ipynb  markdown.md
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/laura/docencia/comp_bio/Online_BioComp/biocomp_clase1
-</pre></div>
-</div>
-</div>
 </div>
 <p>Escriba <code class="docutils literal notranslate"><span class="pre">ls</span></code> para ver qué hay en el directorio (debería estar vacío).
 Para volver al directorio parental escribimos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/laura/docencia/comp_bio/Online_BioComp
 </pre></div>
 </div>
 </div>
@@ -555,18 +504,6 @@ Para volver al directorio parental escribimos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">~/</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">Applications</span>/             <span class=" -Color -Color-Blue">Pictures</span>/                 github_personaltoken.txt
-<span class=" -Color -Color-Blue">Desktop</span>/                  <span class=" -Color -Color-Blue">Public</span>/                   <span class=" -Color -Color-Red">global-protec.sh</span>*
-<span class=" -Color -Color-Blue">Documents</span>/                <span class=" -Color -Color-Blue">biocomp_clase1</span>/           <span class=" -Color -Color-Blue">miniconda3</span>/
-<span class=" -Color -Color-Blue">Downloads</span>/                <span class=" -Color -Color-Blue">biocomp_clase2</span>/           <span class=" -Color -Color-Blue">phylotags</span>/
-GlobalProtectLogs.tgz     bitmap.png                <span class=" -Color -Color-Blue">proyectos</span>/
-<span class=" -Color -Color-Blue">Library</span>/                  <span class=" -Color -Color-Blue">docencia</span>/                 science.txt
-<span class=" -Color -Color-Blue">Movies</span>/                   <span class=" -Color -Color-Blue">docencia copy</span>/            sos.png
-<span class=" -Color -Color-Blue">Music</span>/                    docencia copy.zip
 </pre></div>
 </div>
 </div>

@@ -385,20 +385,8 @@ document.write(`
 <h1>Instalación de Biopython en Apolo<a class="headerlink" href="#instalacion-de-biopython-en-apolo" title="Permalink to this heading">#</a></h1>
 <p>Una introducción del servidor de EAFIT Apolo se encuentra <a class="reference external" href="https://apolo-docs.readthedocs.io/en/latest/">aquí</a>.
 Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), previo inicio del Global Protect</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-    <span class="n">ssh</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span>
-        <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
 </div>
 <p>Ahora vamos usar <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-python">conda</a>, un paquete que ayuda a gestionar las instalaciones con múltiples ambientes y versiones. Vamos a crear un ambiente (<a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment">environment</a>) llamado <em>biopython</em>, y allí vamos a instalar las librerías que necesitamos.</p>
 <div class="cell docutils container">
@@ -424,7 +412,9 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 <p>Debemos salir y volver a entrar a apolo para chequear la instalación. Una vez realizamos el login, activamos el ambiente de bioppython y comenzamos python</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">biopython_py3</span><span class="mf">.9</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>```
+source activate biopython_py3.9
+```
 </pre></div>
 </div>
 </div>
