@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'variables';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Taller Evaluable" href="Taller1.html" />
     <link rel="prev" title="Scripts Ejecutables" href="exscripts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -159,6 +160,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variables, declaraciones y loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Taller1.html">Taller Evaluable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Introducción a Biopython</a></li>
+
+
 </ul>
 
     </div>
@@ -373,25 +378,19 @@ document.write(`
 <h1>Variables, declaraciones y loops<a class="headerlink" href="#variables-declaraciones-y-loops" title="Permalink to this heading">#</a></h1>
 <section id="variables">
 <h2>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h2>
-<p>Una variable es un término que contiene almacenada un dato con información simple y que puede cambiar el dato.</p>
+<p>Una variable es un término que contiene almacenado un dato con información simple y que puede cambiar el dato.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>counter=1
-echo $counter 
-1
-echo counter
-counter
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span><span class="o">=</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Cell In[1], line 2
-    echo $counter
-         ^
-SyntaxError: invalid syntax
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $counter 
 </pre></div>
 </div>
-</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="n">counter</span> 
+</pre></div>
 </div>
 <p>Qué diferencia hay entre <code class="docutils literal notranslate"><span class="pre">counter</span></code> y <code class="docutils literal notranslate"><span class="pre">$counter</span></code>? Que la segunda es una <strong>variable</strong> y por lo tanto puede tomar cualquier valor según lo definamos.</p>
 <section id="if">
@@ -403,9 +402,7 @@ SyntaxError: invalid syntax
 <p><code class="docutils literal notranslate"><span class="pre">fi</span></code></p>
 <p>Todo lo que esté entre <em>then</em> y <em>fi</em> se ejecutará solamente is el chequeo (entre corchetes) es verdadero.
 Un ejemplo simple</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num1=10
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>num1=10
 num2=5
 
 if [ $num1 -gt $num2 ]; then  
@@ -413,10 +410,10 @@ echo &quot;num1 es $num1 y es mayor que $num2&quot;
 fi
 </pre></div>
 </div>
-</div>
-</div>
-<p>Haga el ejercicio de invertir el chequeo entre corchetes y observe que pasa</p>
-</section>
+<div class="alert alert-block alert-warning">
+<b> Es importante dejar espacio entre los corchetes y su contenido </div>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> Haga el ejercicio de invertir el chequeo entre corchetes y observe que pasa </div></section>
 <section id="while-loop">
 <h3>While loop<a class="headerlink" href="#while-loop" title="Permalink to this heading">#</a></h3>
 <p>Los loops son muy importantes porque permiten que un comando corra recurrentemente hasta que suceda una situación declarada (statement) o la expresión sea falsa. Este principio es fundamental para la automatización.
@@ -436,9 +433,7 @@ El loop <strong>while</strong> define que, mientras una expresión es verdadera,
 <li><p>Linea 7: al final del loop, vuelve al inicio a hacer el chequeo. Si es verdad, ejecuta el comando, si es falso conitnua a la siguiente linnea.</p></li>
 </ul>
 <p>Este programa que ejecutamos en la terminal lo podemos escribir en un script para correrlo las veces que necesitemos y para registrar lo que hicimos</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>$ nano while_loop.sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano while_loop.sh
 
 #!/bin/bash
 # Basic while loop
@@ -448,9 +443,8 @@ do
 echo $counter
 ((counter++))
 done
+
 </pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">[ctrl-o]</span> <span class="pre">[enter]</span></code> y <code class="docutils literal notranslate"><span class="pre">[ctrl-x]</span></code></p>
 <div class="alert alert-block alert-info">
@@ -468,35 +462,25 @@ done
 <li><p>proteinas</p></li>
 <li><p>cds (genes codificadores de proteínas)</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">sars_covid19</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">sars_covid19</span>
 <span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">dna</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">dna_rm</span><span class="o">.</span><span class="n">toplevel</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">sars_covid19</span><span class="o">/</span><span class="n">Sars_cov</span><span class="o">.</span><span class="n">dna</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">pep</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">pep</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">sars_covid19</span><span class="o">/</span><span class="n">Sars_cov</span><span class="o">.</span><span class="n">prot</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">cds</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">cds</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">sars_covid19</span><span class="o">/</span><span class="n">Sars_cov</span><span class="o">.</span><span class="n">cds</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span>
- 
+
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sars</span><span class="o">-</span><span class="n">covid19</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sars</span><span class="o">-</span><span class="n">covid19</span>
 <span class="n">ls</span>
 <span class="n">gunzip</span> <span class="o">*.</span><span class="n">gz</span>
+
 </pre></div>
-</div>
-</div>
 </div>
 <p>Cuando descargamos los archivos los nombramos con un <code class="docutils literal notranslate"><span class="pre">./sars_covid</span></code> que precede al nombre. Esto indica que lo guarde en el directorio llamado <code class="docutils literal notranslate"><span class="pre">sars_covid</span></code> que esta dentro del directorio donde nos encontramos <code class="docutils literal notranslate"><span class="pre">.</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for f in $(ls);
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for f in $(ls);
     do wc -l $f;
         done
+        
 </pre></div>
-</div>
-</div>
 </div>
 <p>Note como listamos el directorio usando <code class="docutils literal notranslate"><span class="pre">ls</span></code> y lo encerramos en el comanod  <code class="docutils literal notranslate"><span class="pre">$()</span></code>. Esto nos permite crear una variable que contiene el resultado del comando <code class="docutils literal notranslate"><span class="pre">ls</span></code>.
 Luego iteramos sobre cada item del directorio <strong>sars_covid19</strong> y contamos el número de líneas con <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code></p>
@@ -543,6 +527,15 @@ Luego iteramos sobre cada item del directorio <strong>sars_covid19</strong> y co
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Scripts Ejecutables</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Taller1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Taller Evaluable</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   

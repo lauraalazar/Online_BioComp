@@ -6,3 +6,5 @@ chapters:
 - file: intro_linux
 - file: exscripts
 - file: variables
+- file: Taller1
+- file: biopython_apolo.ipynb
