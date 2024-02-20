@@ -361,7 +361,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias">Secuencias</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#copiar-archivos-de-un-pc-al-servidor">Copiar archivos de un pc al servidor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-y-copiar-archivos-entre-pc-al-servidor">Descargar y copiar archivos entre pc al servidor</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-secuencias-un-archivo">Escribir secuencias un archivo</a></li>
 </ul>
 </li>
@@ -454,8 +454,8 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 <p>Un recordatorio de la síntesis de proteínas</p>
 <img src="protein_synth.png" width=400 height=400 /></section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="copiar-archivos-de-un-pc-al-servidor">
-<h1>Copiar archivos de un pc al servidor<a class="headerlink" href="#copiar-archivos-de-un-pc-al-servidor" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="descargar-y-copiar-archivos-entre-pc-al-servidor">
+<h1>Descargar y copiar archivos entre pc al servidor<a class="headerlink" href="#descargar-y-copiar-archivos-entre-pc-al-servidor" title="Permalink to this heading">#</a></h1>
 <p>Vamos a descargar la secuencias de DNA y la de proteínas de uno de los ensamblajes del virus del COVID-19</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -465,7 +465,16 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 </div>
 </div>
 </div>
-<p>descomprima los archivos</p>
+<p>Para guardar una copia de estos archivos en su PC, puede utilizar WinSCP o abrir una terminal en el PC donde quiera guardar el archivo y darle el comando:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">laura</span><span class="o">/</span><span class="n">clase_biopy</span><span class="o">/</span><span class="n">glycoproteins</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>esto significa “save copy (scp)” desde usuario&#64;servidor:/folder/archivo aquí (.)” Ahora usted tiene copia de estos archivos en su PC. Ahora volvamos a Apolo</p>
+<p>Descomprima los archivos para evaluar su contenido</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gunzip</span> <span class="o">*.</span><span class="n">gz</span>
@@ -685,7 +694,7 @@ Ejecute en Apolo el script de python via Slurm
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias">Secuencias</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#copiar-archivos-de-un-pc-al-servidor">Copiar archivos de un pc al servidor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-y-copiar-archivos-entre-pc-al-servidor">Descargar y copiar archivos entre pc al servidor</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-secuencias-un-archivo">Escribir secuencias un archivo</a></li>
 </ul>
 </li>
