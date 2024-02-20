@@ -416,9 +416,7 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 <p>Debemos salir y volver a entrar a apolo para chequear la instalación. Una vez realizamos el login, activamos el ambiente de bioppython y comenzamos python</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>```
-source activate biopython_py3.9
-```
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">biopython_py3</span><span class="mf">.9</span>
 </pre></div>
 </div>
 </div>
@@ -453,20 +451,12 @@ source activate biopython_py3.9
 </div>
 </div>
 </div>
-<p>Para entender por qué es importante el complemento y el complemento reverso, recordemos brevemente cómo es la síntesis de proteínas</p>
+<p>Un recordatorio de la síntesis de proteínas</p>
 <img src="protein_synth.png" width=400 height=400 /></section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="copiar-archivos-de-un-pc-al-servidor">
 <h1>Copiar archivos de un pc al servidor<a class="headerlink" href="#copiar-archivos-de-un-pc-al-servidor" title="Permalink to this heading">#</a></h1>
-<p>Vamos a utilizar el archivo descargado previamente “Sars_cov.dna.fa”. Para esto vamos a entrar al directorio donde está almacenado en el PC, y desde allí vamos a realizar <em>save copy</em> “scp” del archivo a nuestro directorio en el <em>home</em> de Apolo</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="n">Sars_cov</span><span class="o">.</span><span class="n">dna</span><span class="o">.</span><span class="n">fa</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">lsalazarj</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>El archivo también se puede descargar directamente de la web</p>
+<p>Vamos a descargar la secuencias de DNA y la de proteínas de uno de los ensamblajes del virus del COVID-19</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">dna</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">dna_rm</span><span class="o">.</span><span class="n">toplevel</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> 
