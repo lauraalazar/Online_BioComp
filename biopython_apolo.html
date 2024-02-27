@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'biopython_apolo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quiz1" href="Quiz1.html" />
     <link rel="prev" title="Taller Evaluable" href="Taller1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introducción a Biopython</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="Quiz1.html">Quiz1</a></li>
 </ul>
 
     </div>
@@ -395,7 +397,7 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 <p>Ahora vamos usar <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-python">conda</a>, un paquete que ayuda a gestionar las instalaciones con múltiples ambientes y versiones. Vamos a crear un ambiente (<a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment">environment</a>) llamado <em>biopython</em>, y allí vamos a instalar las librerías que necesitamos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6.0</span><span class="n">_miniconda</span><span class="o">-</span><span class="mf">4.3.11</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span><span class="n">_miniconda</span><span class="o">-</span><span class="mf">23.5.2</span>
 <span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">biopython</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="n">biopython</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">biopython</span>
@@ -414,16 +416,18 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 </div>
 </div>
 <p>Debemos salir y volver a entrar a apolo para chequear la instalación. Una vez realizamos el login, activamos el ambiente de bioppython y comenzamos python</p>
+<p>La siguiente vez que entran, ya instalado el ambiente: cargand el ambiente y lo activan</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">biopython_py3</span><span class="mf">.9</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span><span class="n">_miniconda</span><span class="o">-</span><span class="mf">23.5.2</span>
+<span class="n">source</span> <span class="n">activate</span> <span class="n">biopython</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="mf">.9</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
 </pre></div>
 </div>
 </div>
@@ -473,7 +477,7 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 </div>
 </div>
 </div>
-<p>esto significa “save copy (scp)” desde usuario&#64;servidor:/folder/archivo aquí (.)” Ahora usted tiene copia de estos archivos en su PC. Ahora volvamos a Apolo</p>
+<p>esto significa “save copy (scp)x desde usuario&#64;servidor:/folder/archivo aquí (.)” Ahora usted tiene copia de estos archivos en su PC. Ahora volvamos a Apolo</p>
 <p>Descomprima los archivos para evaluar su contenido</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,6 +674,15 @@ Ejecute en Apolo el script de python via Slurm
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Taller Evaluable</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Quiz1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
