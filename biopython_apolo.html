@@ -165,6 +165,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Quiz1.html">Quiz1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Similitud genética y árboles filogenéticos</a></li>
+
 </ul>
 
     </div>
@@ -361,6 +363,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introducción a Biopython</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-biopython-en-apolo">Instalación de Biopython en Apolo</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias">Secuencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-fasta-de-secuencias">Formato Fasta de Secuencias</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-y-copiar-archivos-entre-pc-al-servidor">Descargar y copiar archivos entre pc al servidor</a><ul class="visible nav section-nav flex-column">
@@ -457,10 +460,15 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 </div>
 <p>Un recordatorio de la síntesis de proteínas</p>
 <img src="protein_synth.png" width=400 height=400 /></section>
+<section id="formato-fasta-de-secuencias">
+<h2>Formato Fasta de Secuencias<a class="headerlink" href="#formato-fasta-de-secuencias" title="Permalink to this heading">#</a></h2>
+<p>Existen diferente tipos de formatos para almacenar datos biólogicos, según su naturaleza. Estos formatos son formas estandarizadas que permiten codificar la información de manera simplificada. Muchos de estos formatos son en texto plano, y por lo tanto se pueden visualizar en editores como Notepad++ (Windows) o Sublime Text (Mac). Para el almacenamiento de secuencias se utilizan principalmente dos tipos de formato: FASTA y FASTQ</p>
+<figure>
+<img src="fasta.png" width=150 height=150 /></section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="descargar-y-copiar-archivos-entre-pc-al-servidor">
 <h1>Descargar y copiar archivos entre pc al servidor<a class="headerlink" href="#descargar-y-copiar-archivos-entre-pc-al-servidor" title="Permalink to this heading">#</a></h1>
-<p>Vamos a descargar la secuencias de DNA y la de proteínas de uno de los ensamblajes del virus del COVID-19</p>
+<p>Vamos a descargar la secuencias de DNA y la de proteínas de uno de los ensamblajes del virus del COVID-19 en formatos fasta</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">dna</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">dna_rm</span><span class="o">.</span><span class="n">toplevel</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> 
@@ -477,7 +485,7 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 </div>
 </div>
 </div>
-<p>esto significa “save copy (scp)x desde usuario&#64;servidor:/folder/archivo aquí (.)” Ahora usted tiene copia de estos archivos en su PC. Ahora volvamos a Apolo</p>
+<p>esto significa “save copy (scp) desde usuario&#64;servidor:/folder/archivo aquí (.)” Ahora usted tiene copia de estos archivos en su PC. Ahora volvamos a Apolo</p>
 <p>Descomprima los archivos para evaluar su contenido</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -594,7 +602,7 @@ Ahora vamos a iterar sobre las secuencias del archivo “Sars_cov.pep.fa” y a 
 <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
 
 <span class="c1"># Archivos de entrada (inputs)</span>
-<span class="n">dna_file</span> <span class="o">=</span> <span class="s2">&quot;Sars_cov.dna.fa&quot;</span>
+<span class="n">dna_file</span> <span class="o">=</span> <span class="s2">&quot;/home/lsalazarj/bicomp2024/Sars_cov.dna.fa&quot;</span>
 <span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;Sars_cov.prot.fa&quot;</span>
 
 
@@ -705,6 +713,7 @@ Ejecute en Apolo el script de python via Slurm
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introducción a Biopython</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-biopython-en-apolo">Instalación de Biopython en Apolo</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias">Secuencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-fasta-de-secuencias">Formato Fasta de Secuencias</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-y-copiar-archivos-entre-pc-al-servidor">Descargar y copiar archivos entre pc al servidor</a><ul class="visible nav section-nav flex-column">
