@@ -407,7 +407,7 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/</span>
 
 <span class="c1"># Script por Laura Salazar Jaramillo</span>
-<span class="c1"># Busca la secuencia de proteinas del citocromo B de humanos</span>
+<span class="c1"># Busca la secuencia de proteinas del citocromo B de neanderthales</span>
 
 
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span>
@@ -430,9 +430,8 @@ document.write(`
 <section id="basic-local-alignment-search-tool-blast">
 <h2>Basic Local Alignment Search Tool (BLAST)<a class="headerlink" href="#basic-local-alignment-search-tool-blast" title="Permalink to this heading">#</a></h2>
 <p>La búsqueda de similitudes es un primer paso para encontrar  información útil sobre funcionalidad y/o ancestría.</p>
-<p>A la hora de buscar similitud en bases de datos extensas, los algoritmos de programación dinámica (como Needleman-Wunsch y Smith-Waterman) son ineficientes. Las herramientas mas eficientes son heurísticas: “atajos” algoritmicos que no producen una solición óptima global, pero que son mucho más rápidos y eficientes. Ahora vamos a realizar la búsqueda de las secuencias mas similares de todas las disponibles en la base de datos usando Basic Local Alignment Search Tool, BLAST  (Altschul et al. 1997; Altschul et al. 1990)</p>
-<p>The  BLAST is a set of algorithms that attempt to find a short fragment of a query sequence that aligns perfectly with a fragment of a subject sequence found in a database. That initial alignment must be greater than a neighborhood score threshold (T). For the original BLAST algorithm, the fragment is then used as a seed to extend the alignment in both directions.</p>
-<p>The alignment is extended in both directions until the T score for the aligned segment does not continue to increase. Said another way, BLAST looks for short sequences in the query that matches short sequences found in the database.</p>
+<p>A la hora de buscar similitud en bases de datos extensas, los algoritmos de programación dinámica (como Needleman-Wunsch y Smith-Waterman) son ineficientes. Las herramientas mas eficientes son heurísticas: “atajos” algoritmicos que no producen una solición óptima global, pero que son mucho más rápidos y eficientes, como BLAST (Altschul et al. 1997; Altschul et al. 1990).</p>
+<p>Por ejemplo, vamos a realizar la búsqueda de las secuencias mas similares de todas las disponibles en la base de datos usando BLAST.Estos algoritmos buscan alinear fragmentos cortos de una secuencia problema (<em>query</em>) a secuencias en una base de datos. El alineamiento inicial tiene un score T, y de allí se extiende a pequeños alineamientos vecinos. El alineamiento continúa mientras el T aumente.</p>
 <section id="repaso-de-conceptos-clave-de-similitud">
 <h3>Repaso de conceptos clave de similitud<a class="headerlink" href="#repaso-de-conceptos-clave-de-similitud" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -445,7 +444,7 @@ document.write(`
 </section>
 <section id="e-value-expectation-values">
 <h3>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h3>
-<p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. Es este caso la significancia se define por el score del alineamiento (S), cuando éste
+<p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. Para esto se utiliza un valor de significancia que se define por el score del alineamiento (S), cuando éste
 es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -457,16 +456,16 @@ es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de simi
 <h2>Tipos de BLAST<a class="headerlink" href="#tipos-de-blast" title="Permalink to this heading">#</a></h2>
 <section id="blast-por-explorador">
 <h3>BLAST Por explorador<a class="headerlink" href="#blast-por-explorador" title="Permalink to this heading">#</a></h3>
-<p>Para una guía compelta sobre BLAST, consulte el (manual)[<a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK1734/">https://www.ncbi.nlm.nih.gov/books/NBK1734/</a>].
+<p>Para una guía compelta sobre BLAST, consulte el <a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK1734/">manual</a>.
 Vamos a entrar a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>. Hay varios tipos de programas BLAST, pero en términos generales, para bases de datos de proteínas se utiliza blastp y blastx, mientras que para nucleótidos se utiliza blastn.</p>
 <p>Vamos a buscar las proteínas homólogas al citocromo B que descargamos.</p>
 <ol class="arabic simple">
 <li><p>Entre a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a> y escoja la opción “Protein Blast” (porque nuestra secuencia es una proteína)</p></li>
 <li><p>En la casilla en blanco pegue el fragmento de la secuencia descargada del Citocromo B de <em>H. sapiens neanderthalensis</em></p></li>
 <li><p>Deje los parámetros por defecto y de click en “BLAST”.</p></li>
-<li><p>El resultado tabular que aparece lista los mejores hits (de toda la base de datos, si no hubo filtros) en orden de su E-value</p></li>
+<li><p>El resultado tabular que aparece lista los mejores hits (de toda la base de datos, si no hubo filtros)</p></li>
 <li><p>En la pestaña “Graphic Summary” verá una representación gráfica del alineamiento, donde el color rojo  muestra los <em>matches</em></p></li>
-<li><p>En la pestaña “Alignment” encontrará el alineamiento de la secuencia <em>query</em> (la que nosotros escogimos) con los mejores hist y la información del alineamiento</p></li>
+<li><p>En la pestaña “Alignment” encontrará el alineamiento de la secuencia <em>query</em> (la que nosotros escogimos) con los mejores hits y la información del alineamiento</p></li>
 </ol>
 </section>
 <section id="blast-remoto-desde-la-linea-de-comando">
@@ -479,7 +478,7 @@ Vamos a entrar a <a class="reference external" href="https://blast.ncbi.nlm.nih.
 </div>
 </div>
 </div>
-<p>El comando para correr blast es</p>
+<p>El comando para correr blast es (recuerde que debe estar dentro de un script slurm)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">blastp</span> <span class="o">-</span><span class="n">query</span> <span class="n">homosapiens_cytb</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">db</span> <span class="n">nr</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb_neander_nr</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-20</span> <span class="o">-</span><span class="n">max_target_seqs</span> <span class="mi">10</span>
@@ -516,7 +515,7 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
 <li><p>out: Nombre de la base de datos</p></li>
 <li><p>parse_seqids: retiene los nombre completos de las secuencias</p></li>
 </ul>
-<p>Observe le directorio donde se corrió el comando. Si fue exitoso, se crearon varios archivos con prefijo “cytb”. Estos archivos son binarios (no son archivos de texto) y por lo tanto no se pueden inspeccionar. Ahora vamos a utilizar esta base de datos para alinear nuestra secuencia query:</p>
+<p>Observe el directorio donde se corrió el comando. Si fue exitoso, se crearon varios archivos con prefijo “cytb”. Estos archivos son binarios (no son archivos de texto) y por lo tanto no se pueden inspeccionar. Ahora vamos a utilizar esta base de datos para alinear nuestra secuencia query:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">blastp</span> <span class="o">-</span><span class="n">query</span> <span class="n">hsneanderthal_cytb_prot</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">db</span> <span class="n">cytb</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb_blastp_1e</span><span class="o">-</span><span class="mi">30</span><span class="n">_table</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-30</span> <span class="o">-</span><span class="n">outfmt</span> <span class="mi">6</span>
@@ -528,7 +527,7 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
 <a class="reference external" href="https://www.metagenomics.wiki/tools/blast/blastn-output-format-6">https://www.metagenomics.wiki/tools/blast/blastn-output-format-6</a> y revise el output que obtuvo del blast. Cual es el procentaje de similitud de esta secuencia con humanos? Si no es 100%, cómo averiguaría donde están las diferencias?</p>
 <div class="alert alert-block alert-info">
 <b>Ejercicio</b> 
-Supongamos que debemos diseñar unos primers para identificar *H. neanderthalensis*. Como somos humanos y nuestras secuencias son altamente similares, estos primers deben tener suficiente especificidad para discriminar entre las dos especies. Cómo identificaría una posición idóndea para diseñar los primers? Cómo verificaría que estos primers que diseño sí amplifiquen *H. neanderthalensis* (que tengan sensibilidad) pero no amplifiquen humans (especificidad). 
+Supongamos que debemos diseñar unos primers para identificar H. neanderthalensis. Como somos humanos y nuestras secuencias son altamente similares, estos primers deben tener suficiente especificidad para discriminar entre las dos especies. Cómo identificaría una posición idóndea para diseñar los primers? Cómo verificaría que estos primers que diseño sí amplifiquen *H. neanderthalensis* (que tengan sensibilidad) pero no amplifiquen humans (especificidad). 
 Puede diseñar los primers manualmente o ayudarse con la herramienta (primerBlast)[https://www.ncbi.nlm.nih.gov/tools/primer-blast/]
 </div></section>
 </section>
