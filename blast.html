@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Repaso de conceptos clave &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
+    <title>Basic Local Alignment Search Tool (BLAST) &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
   
   
   
@@ -168,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Distancia, Similitud y Alienamientos</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="NCBI.html">Herraminetas de NCBI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examen.html">Examen</a></li>
 </ul>
 
     </div>
@@ -351,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Repaso de conceptos clave</h1>
+    <h1>Basic Local Alignment Search Tool (BLAST)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -361,15 +362,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Repaso de conceptos clave</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#blast">BLAST</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-la-espicula-de-sars-cov-con-blast">Búsqueda de la espícula de SARS-CoV con BLAST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-de-conceptos-clave-de-similitud">Repaso de conceptos clave de similitud</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-la-espicula-de-sars-cov-con-blast">Búsqueda de la espícula de SARS-CoV con BLAST</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -380,8 +380,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="repaso-de-conceptos-clave">
-<h1>Repaso de conceptos clave<a class="headerlink" href="#repaso-de-conceptos-clave" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-local-alignment-search-tool-blast">
+<h1>Basic Local Alignment Search Tool (BLAST)<a class="headerlink" href="#basic-local-alignment-search-tool-blast" title="Permalink to this heading">#</a></h1>
+<p>La búsqueda de similitudes es un primer paso para encontrar  información útil sobre funcionalidad y/o ancestría.</p>
+<p>A la hora de buscar similitud en bases de datos extensas, los algoritmos de programación dinámica (como Needleman-Wunsch y Smith-Waterman) son ineficientes. Las herramientas mas eficientes son heurísticas: “atajos” algoritmicos que no producen una solición óptima global, pero que son mucho más rápidos y eficientes. Ahora vamos a realizar la búsqueda de las secuencias mas similares de todas las disponibles en la base de datos usando Basic Local Alignment Search Tool, BLAST  (Altschul et al. 1997; Altschul et al. 1990)</p>
+<section id="repaso-de-conceptos-clave-de-similitud">
+<h2>Repaso de conceptos clave de similitud<a class="headerlink" href="#repaso-de-conceptos-clave-de-similitud" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Secuencias homólogas</strong>: similitud por ancestría común</p></li>
 <li><p><strong>Alineamiento</strong> global vs local: ordenamiento de secuencias según similitud. <strong>Global</strong>: utiliza toda la secuencia. <strong>Local</strong>: utiliza los fragmentos más similares</p></li>
@@ -389,39 +393,10 @@ document.write(`
 <li><p><strong>Score</strong>: parámetro que indica la calidad del alineamiento</p></li>
 <li><p><strong>Dendograma</strong> (Cladograma): hipótesis sobre relación evolutiva de secuencias</p></li>
 </ul>
-<p>Para el taller entregable, realizamos un alineamientos de diferentes hospederos. Ahora vamos a visualizar la relación filogenética de estas secuencias. Para esto entramos a Apolo y cargamos el módulo de python y el ambiente de biopython. Vamos a utilizar la librería <a class="reference external" href="https://biopython-tutorial.readthedocs.io/en/latest/notebooks/13%20-%20Phylogenetics%20with%20Bio.Phylo.html">Phylo</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.6.0</span><span class="n">_miniconda</span><span class="o">-</span><span class="mf">4.3.11</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
-<span class="n">conda</span> <span class="n">activate</span> <span class="n">biopython</span>
-<span class="n">python3</span><span class="mf">.11</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Phylo</span>
-<span class="n">tree</span> <span class="o">=</span> <span class="n">Phylo</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;spikes_hosts.dnd&quot;</span><span class="p">,</span><span class="s2">&quot;newick&quot;</span><span class="p">)</span>
-<span class="n">Phylo</span><span class="o">.</span><span class="n">draw_ascii</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
-<span class="n">Phylo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="s2">&quot;spikes_hosts.nwk&quot;</span><span class="p">,</span> <span class="s2">&quot;newick&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><a class="reference external" href="https://evolution.genetics.washington.edu/phylip/newicktree.html">“Newick”</a> es un formato para escribir árboles filogenéticos de forma simplificada.</p>
-<img src="newicktree.png"/><p>Este árbol se repesentaría con el siguiente texto:
-(B,(A,C,E),D);</p>
-<p>Para este ejercicio, las accesiones de las secuencias fueron definidas. Ahora vamos a realizar la búsqueda de las secuencias mas similares de todas las disponibles en la base de datos usando Basic Local Alignment Search Tool, BLAST (Altschul et al. 1997; Altschul et al. 1990)</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="blast">
-<h1>BLAST<a class="headerlink" href="#blast" title="Permalink to this heading">#</a></h1>
-<p>La búsqueda de similitudes es un primer paso para encontrar  información útil sobre funcionalidad y/o ancestría.</p>
-<p>A la hora de buscar similitud en bases de datos extensas, los algoritmos de programación dinámica (como Needleman-Wunsch y Smith-Waterman) son ineficientes. Las herramientas mas eficientes son heurísticas: “atajos” algoritmicos que no producen una solición óptima global, pero que son mucho más rápidos y eficientes.</p>
+<img src="newicktree.png"/><p>Para este ejercicio, las accesiones de las secuencias fueron definidas. Ahora vamos a realizar la búsqueda de las secuencias mas similares de todas las disponibles en la base de datos usando Basic Local Alignment Search Tool, BLAST</p>
 <p>Antes de realizar una búsqueda en BLAST, se genera un índice que consiste de <em>palabras</em> de una longitud <em>k</em>, las cuales se denominan <strong>k-mers</strong>. Éste índice se almacena en la memoria RAM del computador, así que BLAST puede ser muy rápido buscando estas palabras. Para inciarl un búsqueda por similitud, el algoritmo de BLAST primero busca en la secuencia consulta (<em>query</em>). usando la base de datos indexada, las secuencias que contengan un score alto de k-mers son escogidas. De allí se realiza un alineamiento local alreadedor de estos k-mers.</p>
 <img src="blast_glossary-Image001.jpeg"/><section id="tipos-de-blast">
-<h2>Tipos de BLAST<a class="headerlink" href="#tipos-de-blast" title="Permalink to this heading">#</a></h2>
+<h3>Tipos de BLAST<a class="headerlink" href="#tipos-de-blast" title="Permalink to this heading">#</a></h3>
 <p>De acuerdo a la búsqueda que necesitemos hay diferentes tipos de <a class="reference external" href="https://desmid.github.io/mview/manual/blast/blast2.html">blast</a>:</p>
 <ul class="simple">
 <li><p>blastn: búsqueda de nucleótidos en base de datos de nucleótidos</p></li>
@@ -433,7 +408,7 @@ document.write(`
 </ul>
 </section>
 <section id="e-value-expectation-values">
-<h2>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h2>
+<h3>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h3>
 <p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. Es enste caso la significancia significa que el score del alineamiento (S)
 es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n:</p>
 <div class="math notranslate nohighlight">
@@ -449,6 +424,11 @@ es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de simi
 <li><p><span class="math notranslate nohighlight">\(E-value &gt; 1\)</span> Las proteínas probablemente no están relacionados</p></li>
 <li><p><span class="math notranslate nohighlight">\(E-value &gt; 10\)</span> Los hits son irrelevantes o la secuencia consulta muy pequeña</p></li>
 </ul>
+</section>
+</section>
+<section id="busqueda-de-blast-en-la-web">
+<h2>Búsqueda de BLAST en la web<a class="headerlink" href="#busqueda-de-blast-en-la-web" title="Permalink to this heading">#</a></h2>
+<p>Vamos a entrar a la página de BLAST del National Center for Biotechnology Information (NCBI),  una de las colecciones de bases de datos mas importantes. Contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones etc. Entre a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>. Allí verá</p>
 </section>
 <section id="busqueda-de-la-espicula-de-sars-cov-con-blast">
 <h2>Búsqueda de la espícula de SARS-CoV con BLAST<a class="headerlink" href="#busqueda-de-la-espicula-de-sars-cov-con-blast" title="Permalink to this heading">#</a></h2>
@@ -525,15 +505,14 @@ es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de simi
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Repaso de conceptos clave</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#blast">BLAST</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-la-espicula-de-sars-cov-con-blast">Búsqueda de la espícula de SARS-CoV con BLAST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-de-conceptos-clave-de-similitud">Repaso de conceptos clave de similitud</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-la-espicula-de-sars-cov-con-blast">Búsqueda de la espícula de SARS-CoV con BLAST</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
