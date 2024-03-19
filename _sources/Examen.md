@@ -23,6 +23,6 @@ La proteína p53 es un factor de transcripción que tiene un importante rol en e
 
 9) Comprima la carpeta *Examen* usando el comando: zip -r Examen_nombre Examen
 
-10) súbala al buzón de Interactiva (0.25 puntos)
+10) Suba la carpeta comprimida al buzón de Interactiva (0.25 puntos)
 
   </div>
