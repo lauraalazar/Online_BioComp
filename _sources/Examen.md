@@ -1,6 +1,6 @@
 # Examen
 <div class="alert alert-block alert-info">
-<b>Taller1</b> 
+<b>Examen</b> 
 
 La proteína p53 es un factor de transcripción que tiene un importante rol en el desarrollo, la estabiliad del genoma, el envejecimiento y el desarrollo de tumores en humanos. Este gen tiene homologos en todos los metazoa. 
 
