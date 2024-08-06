@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Taller1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introducción a Biopython" href="biopython_apolo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,13 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Introducción a Biopython</a></li>
 
 
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Taller Evaluable</a></li>
 </ul>
 
     </div>
@@ -361,15 +363,14 @@ document.write(`
 <div class="alert alert-block alert-info">
 <b>Taller1</b> 
 <ol class="arabic simple">
+<li><p>Entrar a Apolo</p></li>
 <li><p>Crear una carpeta nueva llamada “Taller1”</p></li>
-<li><p>Descargar en esta carpeta los archivos:
-<a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/Online_BioInf/main/talleres/CytBDNA.txt">https://raw.githubusercontent.com/lauraalazar/Online_BioInf/main/talleres/CytBDNA.txt</a>
-<a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/Online_BioInf/main/talleres/CytBProt.txt">https://raw.githubusercontent.com/lauraalazar/Online_BioInf/main/talleres/CytBProt.txt</a></p></li>
-<li><p>Crear un script en bash (con el encabezado sobre el interpretador y un comentario del propósito), que itere sobre los archivos del directorio y despliegue los nombres de los archivos. Nombre el script script_eval1_sunombre.sh</p></li>
-<li><p>Ejecute script_eval1_sunombre.sh (tenga en cuenta los permisos)</p></li>
-<li><p>Ejecute el comando: cat script_eval1_sunombre.sh &gt; reporte1_sunombre.txt</p></li>
-<li><p>Ejecute el comando: history &gt;&gt; reporte1_sunombre.txt</p></li>
-<li><p>Suba el archivo reporte_sunombre.txt en la sección Talleres de moodle</p></li>
+<li><p>Descargar en esta carpeta el archivo:
+<a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt">https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt</a></p></li>
+<li><p>Crear un script en python (con el encabezado sobre el interpretador y un comentario del propósito), que itere sobre las secuencias del archivo y despliegue las especies de las secuencias y la longitud de la secuencia</p></li>
+<li><p>Corra el script de python usando un script slurm</p></li>
+<li><p>Comprima el directorio taller con el comando <code class="docutils literal notranslate"><span class="pre">zip</span> <span class="pre">-r</span> <span class="pre">taller1_sunombre.zip</span> <span class="pre">taller1</span></code> (ejecute el comando por fuera del directorio taller, un directorio mas arriba)</p></li>
+<li><p>Suba el archivo comprimido taller1_sunombre.zip en Interactiva</p></li>
 </ol>
   </div></section>
 
@@ -404,6 +405,15 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="biopython_apolo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introducción a Biopython</p>
+      </div>
+    </a>
 </div></div>
   
 </div>

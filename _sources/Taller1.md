@@ -2,19 +2,18 @@
 <div class="alert alert-block alert-info">
 <b>Taller1</b> 
 
-1) Crear una carpeta nueva llamada "Taller1"
+1) Entrar a Apolo
 
-2) Descargar en esta carpeta los archivos:
-https://raw.githubusercontent.com/lauraalazar/Online_BioInf/main/talleres/CytBDNA.txt
-https://raw.githubusercontent.com/lauraalazar/Online_BioInf/main/talleres/CytBProt.txt
+2) Crear una carpeta nueva llamada "Taller1"
 
-3) Crear un script en bash (con el encabezado sobre el interpretador y un comentario del propósito), que itere sobre los archivos del directorio y despliegue los nombres de los archivos. Nombre el script script_eval1_sunombre.sh
+3) Descargar en esta carpeta el archivo:
+https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt
 
-4) Ejecute script_eval1_sunombre.sh (tenga en cuenta los permisos)
+4) Crear un script en python (con el encabezado sobre el interpretador y un comentario del propósito), que itere sobre las secuencias del archivo y despliegue las especies de las secuencias y la longitud de la secuencia 
 
-5) Ejecute el comando: cat script_eval1_sunombre.sh > reporte1_sunombre.txt
+5) Corra el script de python usando un script slurm
 
-6) Ejecute el comando: history >> reporte1_sunombre.txt
+6) Comprima el directorio taller con el comando ``zip -r taller1_sunombre.zip taller1`` (ejecute el comando por fuera del directorio taller, un directorio mas arriba) 
 
-7) Suba el archivo reporte_sunombre.txt en la sección Talleres de moodle 
+7) Suba el archivo comprimido taller1_sunombre.zip en Interactiva
   </div>
