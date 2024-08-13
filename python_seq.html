@@ -520,7 +520,7 @@ La <code class="docutils literal notranslate"><span class="pre">f</span></code> 
 </div>
 </div>
 <div class="alert alert-block alert-info">
-<b>Ejercicio</b> Escriba los comandos anteriores dentro de un script que busca el codón de inicio y ejecútelo vía otro script de *slurm*. Encontró el codón de inicio? </div><p>Si no lo encotró probablmente es porque faltó un paso intermedio: transcribir el codón de DNA a RNA. Esto lo podemos hacer utilizando la función de biopython <code class="docutils literal notranslate"><span class="pre">len()</span></code></p>
+<b>Ejercicio</b> Escriba los comandos anteriores dentro de un script que busca el codón de inicio y ejecútelo vía otro script de *slurm*. Encontró el codón de inicio? </div><p>Si no lo encotró probablmente es porque faltó un paso intermedio: transcribir el codón de DNA a RNA. Esto lo podemos hacer utilizando la función de biopython <code class="docutils literal notranslate"><span class="pre">transcribe()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">covid_mRNA</span> <span class="o">=</span> <span class="n">covid19_seq</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
