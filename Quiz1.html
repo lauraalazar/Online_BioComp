@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Quiz1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ejercicio con secuencias" href="python_seq_ejs.html" />
+    <link rel="prev" title="Manejo de Secuencias con python" href="python_seq.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,8 +156,17 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Introducción a Biopython</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Taller1.html">Taller Evaluable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_seq.html">Manejo de Secuencias con python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quiz1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_seq_ejs.html">Ejercicio con secuencias</a></li>
 </ul>
 
     </div>
@@ -357,13 +368,16 @@ document.write(`
 <b>Taller1</b> 
 <ol class="arabic simple">
 <li><p>En Apolo: cree una carpeta nueva llamada “quiz1”</p></li>
-<li><p>Copie el script de las glycoproteinas a la carpeta “quiz1”</p></li>
-<li><p>Modifique el script para seleccionar proteínas “phosphoprotein”</p></li>
+<li><p>Descargue la secuencia de <em>E. coli</em> de la página:
+<a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/Online_BioComp/master/Ecoli_phoA.fasta">https://raw.githubusercontent.com/lauraalazar/Online_BioComp/master/Ecoli_phoA.fasta</a></p></li>
+<li><p>Utilizando python y biopython, liste la longitud de la secuencia en nucleótidos</p></li>
+<li><p>La posición de inicio (“AUG”) de la secuencia codificante (“CDS”) comienza en la posición 75.
+Verifique que sea así</p></li>
+<li><p>El final del CDS coincide con el de la secuencia. Imprima la longitud en nucleótidos del CDS (“coding region”)</p></li>
 <li><p>Escriba un script slurm para correr el script de python</p></li>
 <li><p>Ejecute el script slurm</p></li>
-<li><p>Guarde el script de python y slurm usando “cat <a class="reference external" href="http://scrip.py">scrip.py</a> &gt;&gt; quiz1.txt”
-y “cat <a class="reference external" href="http://slurm.sh">slurm.sh</a> &gt;&gt; quiz1.txt”</p></li>
-<li><p>Suba al buzón el archivo quiz1.txt</p></li>
+<li><p>Comprima la carpeta usando <code class="docutils literal notranslate"><span class="pre">zip</span> <span class="pre">-r</span> <span class="pre">quiz1_sunombre.zip</span> <span class="pre">quiz1</span></code></p></li>
+<li><p>Suba al buzón el archivo quiz1.zip</p></li>
 </ol>
   </div></section>
 
@@ -398,6 +412,24 @@ y “cat <a class="reference external" href="http://slurm.sh">slurm.sh</a> &gt;&
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="python_seq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Manejo de Secuencias con python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python_seq_ejs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ejercicio con secuencias</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
