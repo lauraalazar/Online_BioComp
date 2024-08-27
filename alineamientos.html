@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Distancia, Similitud y Alienamientos &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
+    <title>Alienamientos &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
   
   
   
@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Taller1.html">Taller Evaluable</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_seq.html">Manejo de Secuencias con python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_seq_ejs.html">Ejercicio con secuencias</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distancia, Similitud y Alienamientos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Alienamientos</a></li>
 
 </ul>
 
@@ -352,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Distancia, Similitud y Alienamientos</h1>
+    <h1>Alienamientos</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -362,7 +362,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Distancia, Similitud y Alienamientos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Alienamientos</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#similitud-entre-secuencias">Similitud entre secuencias</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-por-pares">Alineamiento por pares</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-global">Alineamiento Global</a><ul class="nav section-nav flex-column">
@@ -388,8 +388,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="distancia-similitud-y-alienamientos">
-<h1>Distancia, Similitud y Alienamientos<a class="headerlink" href="#distancia-similitud-y-alienamientos" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="alienamientos">
+<h1>Alienamientos<a class="headerlink" href="#alienamientos" title="Permalink to this heading">#</a></h1>
 <p>En el centro de la biología esta la búsqueda de similitudes entre las diferentes formas de vida y la representación de estas variaciones. Los árboles filogenéticos son una representación muy útil de estas diferencias</p>
 <img src="darwin_tree.jpeg"/><p>La idea de una descendencia con modificiaciones de Darwin implica que las similitudes existen entre orgnaismos porque ellos comparten un ancestro común. Es decir que las similitudes se pueden utilizar para hacer inferencias filogenéticas sobre las relaciones evolutivas entre organismos. Por lo tanto, un árbol filogenético es una hipótesis sobre relaciones ancestrales. A los caracteres similares que comparten un ancestro común se les llama “caracteres homologos”. Pero no todas las similitudes son homólogas.</p>
 <img src="homol_anal.jpeg"/><p>Tradicionalmente los árboles filogenéticos se construyen con caracteres fenotípicos, y estos continúan siendo importantes para muchos rasgos morfológicos, ecológicos, de comportamiento y para datos fósiles. Actualmente muchos árboles filogenéticos se construyen utilizando secuencias de nucelótidos y aminoácidos. Aquí entonces tenemos similitud entre secuencias que pueden, <strong>pero no necesariamente</strong> reflejan la similitud entre las especies.</p>
@@ -685,7 +685,10 @@ Chequee este mismo alineamiento en bipython. Defina las dos secuencias, los gaps
 <section id="matrices-de-sustitucion">
 <h3>Matrices de sustitución<a class="headerlink" href="#matrices-de-sustitucion" title="Permalink to this heading">#</a></h3>
 <p>Desde un punto de vista fisico-químico, no todas las sustituciones son igualmente probables. En el caso de los nucleótidos, las transiciones (A-G, T-C) son mas frecuentes que las transversiones (A↔C, A↔T, C↔G, and G↔T).</p>
-<img src="All_transitions_and_transversions.png" width=500 height=500 /><p>En el caso de los amino ácidos, existen sesgos al nivel de mutacions o de selección natural que hacen algunas sustitutciones mas probable que otras. Primero, algunos amino ácidos tienen mas probabilidad de mutar a otros porque sus codone son mas similares en código genético. Segundo. algunas sutituciones se fijan mejor durante la evolución porque los amino ácidos comparten propiedades fisico-químicas similares. Estas diferencias tratan de reflejarse en las matrices de sustitutción</p>
+<p>Ejemplo de Modelo de sustitución K80 de Kimura
+<img src="All_transitions_and_transversions.png" width=500 height=500 /></p>
+<p>En el caso de los amino ácidos, existen sesgos al nivel de mutacions o de selección natural que hacen algunas sustitutciones mas probable que otras. Primero, algunos amino ácidos tienen mas probabilidad de mutar a otros porque sus codone son mas similares en código genético. Segundo. algunas sutituciones se fijan mejor durante la evolución porque los amino ácidos comparten propiedades fisico-químicas similares. Estas diferencias tratan de reflejarse en las matrices de sustitutción</p>
+<p>Ejemplo de Matriz <a class="reference external" href="https://es.wikipedia.org/wiki/BLOSUM">Blosum62</a></p>
 <img src="Blosum62-dayhoff-ordering.png" width=400 height=400 /></section>
 <section id="alineamientos-multiples">
 <h3>Alineamientos múltiples<a class="headerlink" href="#alineamientos-multiples" title="Permalink to this heading">#</a></h3>
@@ -813,7 +816,7 @@ Escriba este comando desde un script "slurm" y ejecútelo
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Distancia, Similitud y Alienamientos</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Alienamientos</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#similitud-entre-secuencias">Similitud entre secuencias</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-por-pares">Alineamiento por pares</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-global">Alineamiento Global</a><ul class="nav section-nav flex-column">
