@@ -63,9 +63,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'blast';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ncbi&blast';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Alienamientos" href="alineamientos.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
@@ -168,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_seq_ejs.html">Ejercicio con secuencias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alienamientos</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="ncbi%26blast.html">Herraminetas de NCBI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Herraminetas de NCBI</a></li>
 
 
 </ul>
@@ -242,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fblast.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fncbi&blast.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -272,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/blast.ipynb" target="_blank"
+      <li><a href="_sources/ncbi&blast.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -379,8 +380,11 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-local-alignment-search-tool-blast">Basic Local Alignment Search Tool (BLAST)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-homologas-con-blast">Búsqueda de secuencias homólogas con BLAST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-remoto-desde-la-linea-de-comando">BLAST remoto desde la línea de comando</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-local">BLAST local</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -397,7 +401,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="herraminetas-de-ncbi">
 <h1>Herraminetas de NCBI<a class="headerlink" href="#herraminetas-de-ncbi" title="Permalink to this heading">#</a></h1>
-<p>The National Center for Biotechnology Information (NCBI) es una de las colecciones de bases de datos mas importantes. Contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones etc.</p>
+<p>The National Center for Biotechnology Information (NCBI), <a class="reference external" href="https://ncbi.nlm.nih.gov/">https://ncbi.nlm.nih.gov/</a>, es una de las colecciones de bases de datos mas importantes. Contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones etc.</p>
 <section id="busqueda-de-secuencias">
 <h2>Búsqueda de secuencias<a class="headerlink" href="#busqueda-de-secuencias" title="Permalink to this heading">#</a></h2>
 <p>Escoja la base de datos “Protein” y escriba en la barra “Cytochrome B Homo sapiens neanderthalensis”. Escoja la proteína de referencia (RefSeq Proteins) y copie el ID de esta proteína</p>
@@ -407,7 +411,14 @@ document.write(`
 </section>
 <section id="desde-script-de-python">
 <h3>Desde script de python<a class="headerlink" href="#desde-script-de-python" title="Permalink to this heading">#</a></h3>
-<p>Ahora vamos a realizar la búsqueda por ID desde python</p>
+<p>Ahora vamos a realizar la búsqueda por ID desde python. Recuerde correr el script desde slurm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">biopython</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/</span>
@@ -419,14 +430,14 @@ document.write(`
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
 
-<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;laura.salazar38@eia.edu.co&quot;</span>
+<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;lsalazarj@eafit.edu.co&quot;</span>
 
 <span class="k">with</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">efetch</span><span class="p">(</span>
     <span class="n">db</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">,</span> <span class="n">rettype</span><span class="o">=</span><span class="s2">&quot;fasta&quot;</span><span class="p">,</span> <span class="n">retmode</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;YP_002124314.2&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
     <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2024/ncbi_blast/hsneanderthal_cytb_prot.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2024-2/blast/hsneanderthal_cytb_prot.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -466,17 +477,16 @@ document.write(`
 <img src="I.7_2_blast_types.png"/></section>
 <section id="e-value-expectation-values">
 <h2>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h2>
-<p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. Es enste caso la significancia significa que el score del alineamiento (S)
-es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n:</p>
+<p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. En este caso la significancia significa que el score del alineamiento (S) es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n (<span class="math notranslate nohighlight">\(\lamda\)</span> y K son parámetros para escalar y normalizar la base de datos y valores E):</p>
 <div class="math notranslate nohighlight">
 \[
- E = K * m *n * e^{lamda S}
+ E = K * m *n * e^{$\lamda$ S}
 \]</div>
 <p>Algunas reglas no formales (“rules of thumb”) que pueden servir como guía para considerar la significancia de los hit:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(E-value &lt; 10e^{-100}\)</span> Secuencias idénticas. Esperarías un alineamiento largo y completo entre la secuecnia de consulta y hit</p></li>
-<li><p><span class="math notranslate nohighlight">\(10e^{-50} &lt; E-value &lt; 10e^{-100}\)</span> Secuencias casi idénticas. Esperarías un fragmento largo de alineamiento entre la secuecnia de consulta y hit</p></li>
-<li><p><span class="math notranslate nohighlight">\(10e^{-10} &lt; E-value &lt; 10e^{-50}\)</span> Secuencias cercanas o un dominio</p></li>
+<li><p><span class="math notranslate nohighlight">\(E-value &lt; 10e^{-100}\)</span> Secuencias idénticas. Esperarías un alineamiento largo y completo entre la secuencia de consulta y hit</p></li>
+<li><p><span class="math notranslate nohighlight">\(10e^{-50} &lt; E-value &lt; 10e^{-100}\)</span> Secuencias casi idénticas. Esperarías un fragmento largo de alineamiento entre la secuencia de consulta y hit</p></li>
+<li><p><span class="math notranslate nohighlight">\(10e^{-10} &lt; E-value &lt; 10e^{-50}\)</span> Secuencias cercanas o un <em>dominio</em></p></li>
 <li><p><span class="math notranslate nohighlight">\(1 &lt; E-value &lt; 10e^{-6}\)</span> Podría ser un homólogo, pero es un área gris</p></li>
 <li><p><span class="math notranslate nohighlight">\(E-value &gt; 1\)</span> Las proteínas probablemente no están relacionados</p></li>
 <li><p><span class="math notranslate nohighlight">\(E-value &gt; 10\)</span> Los hits son irrelevantes o la secuencia consulta muy pequeña</p></li>
@@ -484,11 +494,7 @@ es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de simi
 </section>
 <section id="busqueda-de-blast-en-la-web">
 <h2>Búsqueda de BLAST en la web<a class="headerlink" href="#busqueda-de-blast-en-la-web" title="Permalink to this heading">#</a></h2>
-<p>Vamos a entrar a la página de BLAST del National Center for Biotechnology Information (NCBI),  una de las colecciones de bases de datos mas importantes. Contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones etc. Entre a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>. Allí verá</p>
-</section>
-<section id="busqueda-de-secuencias-homologas-con-blast">
-<h2>Búsqueda de secuencias homólogas con BLAST<a class="headerlink" href="#busqueda-de-secuencias-homologas-con-blast" title="Permalink to this heading">#</a></h2>
-<p>Vamos a buscar las proteínas homólogas al citocromo B que descargamos.</p>
+<p>Entre a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>. Allí verá las diferentes opciones de BLAST. Vamos a buscar las proteínas homólogas al citocromo B de <em>H. neanderthalensis</em> que descargamos.</p>
 <ol class="arabic simple">
 <li><p>Entre a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a> y escoja la opción “Protein Blast” (porque nuestra secuencia es una proteína)</p></li>
 <li><p>En la casilla en blanco pegue el fragmento de la secuencia descargada del Citocromo B de <em>H. sapiens neanderthalensis</em></p></li>
@@ -497,6 +503,64 @@ es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de simi
 <li><p>En la pestaña “Graphic Summary” verá una representación gráfica del alineamiento, donde el color rojo  muestra los <em>matches</em></p></li>
 <li><p>En la pestaña “Alignment” encontrará el alineamiento de la secuencia <em>query</em> (la que nosotros escogimos) con los mejores hits y la información del alineamiento</p></li>
 </ol>
+<section id="blast-remoto-desde-la-linea-de-comando">
+<h3>BLAST remoto desde la línea de comando<a class="headerlink" href="#blast-remoto-desde-la-linea-de-comando" title="Permalink to this heading">#</a></h3>
+<p>Ahora vamos a realizar la búsqueda desde Apolo por medio de la línea de comando. Entre a Apolo y cargue el módulo de blast:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">blast</span><span class="o">/</span><span class="mf">2.13.0</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El comando para correr blast es (recuerde que debe estar dentro de un script slurm)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blastp</span> <span class="o">-</span><span class="n">query</span> <span class="n">homosapiens_cytb</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">db</span> <span class="n">nr</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb_neander_nr</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-20</span> <span class="o">-</span><span class="n">max_target_seqs</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p>blastp: tipo de blast (proteínas en este caso)</p></li>
+<li><p>query: la secuencia problema</p></li>
+<li><p>remote: remota (de la web)</p></li>
+<li><p>nr: no-redundante (las secuencias idénticas están presentes usa sola vez)</p></li>
+<li><p>out: nombre del archivo de output</p></li>
+<li><p>evalue: el máximo evalue</p></li>
+<li><p>max_target_seqs: un máximo de secuencias para el putput</p></li>
+</ul>
+</section>
+<section id="blast-local">
+<h3>BLAST local<a class="headerlink" href="#blast-local" title="Permalink to this heading">#</a></h3>
+<p>Con frecuencia estamos interesados en comparar nuestra(s) secuencia(s) problema(s) contra una base de datos específica y mas pequeña. NCBI tiene una gran colección de bases de datos descargables, las cuales se pueden descargar desde <a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/blast/db/">ftp://ftp.ncbi.nlm.nih.gov/blast/db/</a>.
+Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neanderthalensis contra la base de datos de secuencias de vertebrados que habíamos trabajado antes. Para eso vamos a copiar el archivo con dichas secuencias al directorio donde estamos trabajando (o le damos la ruta absoluta en el script). Para generar la base de datos, utilizamos el siguiente comando (recuerde que debe estar dentro de un script slurm)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">makeblastdb</span> <span class="o">-</span><span class="ow">in</span> <span class="n">CytBProt</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">title</span> <span class="n">cytb_vert</span> <span class="o">-</span><span class="n">dbtype</span> <span class="n">prot</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb</span> <span class="o">-</span><span class="n">parse_seqids</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>in:  archivo de input utilizado para generar la base de datos</p></li>
+<li><p>título: le da un título a la base de datos</p></li>
+<li><p>dbtype: si es proteína (prot) o nucleótido (nucl)</p></li>
+<li><p>out: Nombre de la base de datos</p></li>
+<li><p>parse_seqids: retiene los nombre completos de las secuencias</p></li>
+</ul>
+<p>Observe el directorio donde se corrió el comando. Si fue exitoso, se crearon varios archivos con prefijo “cytb”. Estos archivos son binarios (no son archivos de texto) y por lo tanto no se pueden inspeccionar. Ahora vamos a utilizar esta base de datos para alinear nuestra secuencia query:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blastp</span> <span class="o">-</span><span class="n">query</span> <span class="n">hsneanderthal_cytb_prot</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">db</span> <span class="n">cytb</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb_blastp_1e</span><span class="o">-</span><span class="mi">30</span><span class="n">_table</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-30</span> <span class="o">-</span><span class="n">outfmt</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>aquí la opción “-outfmt 6” indica el formato de output que queremos. Consulte la tabulación de este formato:
+<a class="reference external" href="https://www.metagenomics.wiki/tools/blast/blastn-output-format-6">https://www.metagenomics.wiki/tools/blast/blastn-output-format-6</a> y revise el output que obtuvo del blast. Cual es el procentaje de similitud de esta secuencia con humanos? Si no es 100%, cómo averiguaría donde están las diferencias?</p>
+</section>
 </section>
 </section>
 
@@ -531,6 +595,15 @@ es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de simi
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="alineamientos.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Alienamientos</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -564,8 +637,11 @@ es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de simi
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-local-alignment-search-tool-blast">Basic Local Alignment Search Tool (BLAST)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-homologas-con-blast">Búsqueda de secuencias homólogas con BLAST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-remoto-desde-la-linea-de-comando">BLAST remoto desde la línea de comando</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-local">BLAST local</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

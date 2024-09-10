@@ -66,6 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'alineamientos';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Herraminetas de NCBI" href="ncbi%26blast.html" />
     <link rel="prev" title="Ejercicio con secuencias" href="python_seq_ejs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,6 +169,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_seq.html">Manejo de Secuencias con python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_seq_ejs.html">Ejercicio con secuencias</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Alienamientos</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ncbi%26blast.html">Herraminetas de NCBI</a></li>
+
 
 </ul>
 
@@ -557,8 +561,8 @@ Escriba a "papel y lápiz" cómo sería la hipótesis de relación ancestral ent
 <h3>Alineamiento Global<a class="headerlink" href="#alineamiento-global" title="Permalink to this heading">#</a></h3>
 <p>Supongamos que tenemos dos secuencias con diferente longitud (que es lo mas frecuente):</p>
 <ul class="simple">
-<li><p>seq1=AGCC</p></li>
-<li><p>seq2=AAACC</p></li>
+<li><p>seq1=GCATGCG</p></li>
+<li><p>seq2=GATTACA</p></li>
 </ul>
 <p>Cómo alinearía estas dos secuencias y donde pondría los gaps?</p>
 <div class="alert alert-block alert-info">
@@ -615,8 +619,8 @@ Vamos a asumir el caso más simple en el cual la penalidad por sustitución ($S_
 <li><p>ii. Horizontal de X : (+1)+(−1) = (0)</p></li>
 <li><p>iii. Diagonal de X : (−1)+(−1) = (−2)</p></li>
 <li><p>iv. Vertical de Y : (1)+(−1) = (0)</p></li>
-<li><p>v. Horizontal de X : (−2)+(−1) = (−3)</p></li>
-<li><p>vi. Diagonal de X : (−1)+(−1) = (−2)</p></li>
+<li><p>v. Horizontal de Y : (−2)+(−1) = (−3)</p></li>
+<li><p>vi. Diagonal de Y : (−1)+(−1) = (−2)</p></li>
 </ul>
 <p><img src="NW5.png"/> <img src="NW6.png"/></p>
 <ul class="simple">
@@ -788,6 +792,15 @@ Repita el mismo proceso de alineamiento y generación de árbol con el archivo d
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Ejercicio con secuencias</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="ncbi%26blast.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Herraminetas de NCBI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
