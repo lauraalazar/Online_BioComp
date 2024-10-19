@@ -1,0 +1,7 @@
+muestra  tratamiento cuentas
+sample23 par 1
+sample31  par 0
+sample60  par 5 
+sample21 ctl 2
+sample30  ctl 5
+sample57  ctl 0
