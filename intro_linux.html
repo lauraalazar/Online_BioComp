@@ -387,6 +387,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cambiar-directorios">Cambiar directorios</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cd-change-directory">cd (change directory)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home">~ (home)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ruta-absolutas-y-relativas">Ruta absolutas y relativas</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copiar-y-descargar-archivos">Copiar y descargar archivos</a><ul class="nav section-nav flex-column">
@@ -422,7 +423,7 @@ document.write(`
 <h2>Instalación<a class="headerlink" href="#instalacion" title="Permalink to this heading">#</a></h2>
 <p>En sistemas operativos Linux y Mac, la terminal ya está incorporada y los comandos que se describen aquí funcionan para ambos. Para los usuarios de Windows hay varias formas de acceder:</p>
 <ul class="simple">
-<li><p>Windows subsytem for Linux <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a></p></li>
+<li><p>Windows subsytem for Linux <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a> y un <a class="reference external" href="https://www.youtube.com/watch?v=bT-aCtjd-qs">video</a> con errores potenciales</p></li>
 <li><p>Una doble partición con algunas de las distribuciones de <a class="reference external" href="https://www.linux.com/what-is-linux/">Linux</a> (por ejemplo, Ubuntu)</p></li>
 <li><p><a class="reference external" href="https://www.cygwin.com/">Cygwin</a> una aplicación que permite correr linux dentro de windows</p></li>
 </ul>
@@ -489,8 +490,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-info">
-<b>Ejercicio</b> crea una carpeta dentro de biocomp_clase1 que se llame "ejercicios"</div></section>
+</section>
 </section>
 <section id="cambiar-directorios">
 <h2>Cambiar directorios<a class="headerlink" href="#cambiar-directorios" title="Permalink to this heading">#</a></h2>
@@ -513,7 +513,7 @@ Para volver al directorio parental escribimos</p>
 </div>
 </div>
 </div>
-<p>Si seguimos escribiendo <code class="docutils literal notranslate"><span class="pre">cd</span></code> recurrentemente vamos subiendo en la jerarquía de directorios</p>
+<p>Si seguimos escribiendo <code class="docutils literal notranslate"><span class="pre">cd</span></code> recurrentemente vamos subiendo en la jerarquía de directorios.</p>
 </section>
 <section id="home">
 <h3>~ (home)<a class="headerlink" href="#home" title="Permalink to this heading">#</a></h3>
@@ -526,6 +526,18 @@ Para volver al directorio parental escribimos</p>
 </div>
 </div>
 </section>
+<section id="ruta-absolutas-y-relativas">
+<h3>Ruta absolutas y relativas<a class="headerlink" href="#ruta-absolutas-y-relativas" title="Permalink to this heading">#</a></h3>
+<p>Un directorio se puede acceder dando recurrentemente cd a la subcarpeta donde se encuentra. Alterativamente se puede directamente al directorio usando la ruta <em>absoluta</em> que define todas las carpetas por las que se debe entrar para llegar allí. Por ejemplo la ruta absoluta al directorio biocomp_clase1 es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">realpath</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> Entre a la carpeta biocomp_clase1 y cree una carpeta dentro de esta una nueva que se llame "ejercicios"</div></section>
 </section>
 <section id="copiar-y-descargar-archivos">
 <h2>Copiar y descargar archivos<a class="headerlink" href="#copiar-y-descargar-archivos" title="Permalink to this heading">#</a></h2>
@@ -761,6 +773,7 @@ Ahora intente escribir la palabra con mayúscula:</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cambiar-directorios">Cambiar directorios</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cd-change-directory">cd (change directory)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home">~ (home)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ruta-absolutas-y-relativas">Ruta absolutas y relativas</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copiar-y-descargar-archivos">Copiar y descargar archivos</a><ul class="nav section-nav flex-column">
