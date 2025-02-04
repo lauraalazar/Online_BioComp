@@ -395,10 +395,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usando-tab">Usando [TAB]</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moviendo-archivos">Moviendo archivos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remover-archivos-y-directorios">Remover archivos y directorios</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis-de-un-comando">Sintaxis de un comando</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-los-contenidos-de-un-archivo-en-la-pantalla">Mostrar los contenidos de un archivo en la pantalla</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-archivos">Manipulación de archivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros-y-manipulacion-de-archivos">Filtros y manipulación de archivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipes-tubos">Pipes (tubos)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-la-linea-de-comando">Conclusiones de la línea de comando</a></li>
 </ul>
 </li>
@@ -588,12 +590,16 @@ Primero, cd al directorio biocomp_clase1:</p>
 </pre></div>
 </div>
 <p>Si el directorio no está vacío, el sistema te pedirá confirmación para eliminar los archivosal interior. Si estás absolutamente seguro de este paso, puedes añadir el comando <code class="docutils literal notranslate"><span class="pre">-f</span></code> (f de forzar):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">delete</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">dir_a_remover</span>
 </pre></div>
 </div>
 <div class="alert alert-block alert-danger">
 <b>Atención</b> Los directorios que se borran con ``rm`` se pierden *para siempre*. No van a ni siquiera a la papelera, se borran directamente.
  </div></section>
+<section id="sintaxis-de-un-comando">
+<h3>Sintaxis de un comando<a class="headerlink" href="#sintaxis-de-un-comando" title="Permalink to this heading">#</a></h3>
+<figure>
+<img src="shell_command_syntax.svg" /></section>
 <section id="mostrar-los-contenidos-de-un-archivo-en-la-pantalla">
 <h3>Mostrar los contenidos de un archivo en la pantalla<a class="headerlink" href="#mostrar-los-contenidos-de-un-archivo-en-la-pantalla" title="Permalink to this heading">#</a></h3>
 <p><strong>cat</strong></p>
@@ -666,28 +672,55 @@ Ahora intente escribir la palabra con mayúscula:</p>
 </div>
 </section>
 </section>
-<section id="manipulacion-de-archivos">
-<h2>Manipulación de archivos<a class="headerlink" href="#manipulacion-de-archivos" title="Permalink to this heading">#</a></h2>
-<p>Para guardar lo que se imprime en pantalla en un archivo se utiliza el comando <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> seguido por el nombre del archivo donde se guardará el resultado. Por ejemplo, para guardar todas las líneas que contienen la palabra “science” (sin importar si es mayúscula o minúscula) escribimos:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">science</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">science_grep</span><span class="o">.</span><span class="n">txt</span>
+<section id="filtros-y-manipulacion-de-archivos">
+<h2>Filtros y manipulación de archivos<a class="headerlink" href="#filtros-y-manipulacion-de-archivos" title="Permalink to this heading">#</a></h2>
+<p>Para guardar lo que se imprime en pantalla en un archivo se utiliza el comando <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> seguido por el nombre del archivo donde se guardará el resultado. Por ejemplo, para guardar todas las líneas que contienen la palabra “science”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">science</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">science_grep</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>Abra (por ejemplo usando <code class="docutils literal notranslate"><span class="pre">less</span></code>) el archivo “science_grep.txt” y cuente el número de líneas. Ahora escriba:</p>
+<p>Otro comando para guardar que <strong>añade</strong> en vez de sobreescribir texto es <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>. Para añadir al subconjunto de líneas anteriores, aquellas que contienen la palabra <em>Science</em> (con mayúscula), escribimos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">Science</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;&gt;</span> <span class="n">science_grep</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>El output science_grep.txt debe tener el mismo número de líneas que el resultado del comando (entiendes por qué?)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">science</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">science_ignorecase</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Para verificar lo anterior abra (por ejemplo usando <code class="docutils literal notranslate"><span class="pre">less</span></code>) el archivo “science_grep.txt” y “science_grep_ignorecase.txt” y cuente el número de líneas. Ahora escriba:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span>  <span class="n">science_grep</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">wc</span> <span class="o">-</span><span class="n">l</span>  <span class="n">science_ignorecase</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>El número debe ser igual al que contó ya que <code class="docutils literal notranslate"><span class="pre">wc</span></code> (word count) con la opción <code class="docutils literal notranslate"><span class="pre">-l</span></code> cuenta el número de líneas. La opción <code class="docutils literal notranslate"><span class="pre">-m</span></code> cuenta el número de caracteres.</p>
-<p>Este mismo resultado lo obtendríamos en el archivo original con el siguiente comando:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="s2">&quot;science&quot;</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+<p>También puede contar simultáneamente todas las líneas de los archivos con la opción asterisco (“todo lo que termine en .txt”) <code class="docutils literal notranslate"><span class="pre">*.txt</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">*.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>Aquí combinamos los dos comandos anteriores usando <code class="docutils literal notranslate"><span class="pre">|</span></code> (“pipe”) que utiliza el resultado del primer comando como input del segundo</p>
+<section id="pipes-tubos">
+<h3>Pipes (tubos)<a class="headerlink" href="#pipes-tubos" title="Permalink to this heading">#</a></h3>
+<p>Varios comandos se pueden combinar para realizar filtros subsecuentes sobre los outputs</p>
+<figure>
+<img src="Shell-pipes.webp" />
+<p>Por ejemplo, para ordenar todos los archivos de acuerdo a su número de líneas podemos escribir:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">*.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">n</span>
+</pre></div>
+</div>
+<p>O para contar el número de veces que aparece la palabra “science” en el texto podemos, primero hacer un subset de la palabra “science” y luego contar, combinando los dos comandos usando <code class="docutils literal notranslate"><span class="pre">|</span></code> (“pipe”) que utiliza el resultado del primer comando como input del segundo</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="s2">&quot;science&quot;</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">wc</span> 
+</pre></div>
+</div>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> Guarde en un archivo el resultado del número de veces que aparece science (con minúscula) del ejemplo. Ahora añada a ese archivo por medio de un comando el número de veces que aparece Science (con mayúscula)   </div></section>
 <section id="conclusiones-de-la-linea-de-comando">
 <h3>Conclusiones de la línea de comando<a class="headerlink" href="#conclusiones-de-la-linea-de-comando" title="Permalink to this heading">#</a></h3>
 <p>La línea de comando de linux es muy poderoso. Tan poderoso que la gran mayoría de los servidores y super computadoras del mundo funcionan con los sistemas linux (sin interfase gráfica, i.e. usando solamente la línea de comando).</p>
 <p>Aquí navegamos por algunos ejemplos simples, pero esto es solo un “abre-bocas”. Por ejemplo, el comando <code class="docutils literal notranslate"><span class="pre">grep</span></code> es muy importante y útil para buscar patrones, y <code class="docutils literal notranslate"><span class="pre">wget</span></code> para bajar archivos. Ambos comandos mucho mas rápidos que si se usaran la interfase gráfica.</p>
 <p>Para cada comando hay un manual de uso que se puede acceder con <code class="docutils literal notranslate"><span class="pre">man</span></code> y el comando que se desea buscar, por ejemplo <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">grep</span></code> despliega todas las opciones para este comando con ejemplos de uso.</p>
-<p>Para profundizar sobre linux hay varios tutoriales, por ejemplo <a class="reference external" href="https://ryanstutorials.net/linuxtutorial/">https://ryanstutorials.net/linuxtutorial/</a> o <a class="reference external" href="https://swcarpentry.github.io/shell-novice/">https://swcarpentry.github.io/shell-novice/</a></p>
+<p>Para profundizar sobre linux hay varios tutoriales, por ejemplo:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ryanstutorials.net/linuxtutorial/">https://ryanstutorials.net/linuxtutorial/</a></p></li>
+<li><p><a class="reference external" href="https://swcarpentry.github.io/shell-novice/">https://swcarpentry.github.io/shell-novice/</a></p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -780,10 +813,12 @@ Ahora intente escribir la palabra con mayúscula:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usando-tab">Usando [TAB]</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moviendo-archivos">Moviendo archivos</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remover-archivos-y-directorios">Remover archivos y directorios</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaxis-de-un-comando">Sintaxis de un comando</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-los-contenidos-de-un-archivo-en-la-pantalla">Mostrar los contenidos de un archivo en la pantalla</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-archivos">Manipulación de archivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtros-y-manipulacion-de-archivos">Filtros y manipulación de archivos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipes-tubos">Pipes (tubos)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-la-linea-de-comando">Conclusiones de la línea de comando</a></li>
 </ul>
 </li>
