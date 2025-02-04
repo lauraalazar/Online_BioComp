@@ -566,9 +566,9 @@ Primero, cd al directorio biocomp_clase1:</p>
 <section id="moviendo-archivos">
 <h3>Moviendo archivos<a class="headerlink" href="#moviendo-archivos" title="Permalink to this heading">#</a></h3>
 <p><strong>mv (move)</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">arch1</span> <span class="pre">arch2</span></code> mueve o cambia el nombre de <code class="docutils literal notranslate"><span class="pre">arch1</span></code> a <code class="docutils literal notranslate"><span class="pre">arch2</span></code> y por lo tanto solo queda un</p>
-<p>Vamos a mover el archivo <code class="docutils literal notranslate"><span class="pre">science.bak</span></code> a al folder <code class="docutils literal notranslate"><span class="pre">ejercicios</span></code> creado previamente.</p>
-<p>Primero, cambia de directorio a <code class="docutils literal notranslate"><span class="pre">biocomp_clase1</span></code>. Despué escribe:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">arch1</span> <span class="pre">arch2</span></code> mueve o cambia el nombre de <code class="docutils literal notranslate"><span class="pre">arch1</span></code> a <code class="docutils literal notranslate"><span class="pre">arch2</span></code> (por lo tanto solo queda uno).</p>
+<p>Vamos a mover el archivo <code class="docutils literal notranslate"><span class="pre">science.bak</span></code> al folder <code class="docutils literal notranslate"><span class="pre">ejercicios</span></code> creado previamente.</p>
+<p>Primero, cambia de directorio a <code class="docutils literal notranslate"><span class="pre">biocomp_clase1</span></code>, que es donde se creó el archivo backup. Despué escribe:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">science</span><span class="o">.</span><span class="n">bak</span> <span class="n">ejercicios</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -577,16 +577,14 @@ Primero, cd al directorio biocomp_clase1:</p>
 <section id="remover-archivos-y-directorios">
 <h3>Remover archivos y directorios<a class="headerlink" href="#remover-archivos-y-directorios" title="Permalink to this heading">#</a></h3>
 <p><strong>rm (remove), rmdir (remove directory)</strong></p>
-<p>Para borrar (remover) un archivos, usamos el comando <code class="docutils literal notranslate"><span class="pre">rm</span></code> command. Como ejemplo, vamos a crear una copia del archivo <code class="docutils literal notranslate"><span class="pre">science.txt</span></code> y borrarlo.</p>
-<p>dentro del directorio <code class="docutils literal notranslate"><span class="pre">biocomp_clase1</span></code>, escribe:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">cp</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">txt</span> 
- <span class="n">ls</span>
- <span class="n">rm</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">txt</span>
+<p>Para borrar (remover) un archivos, usamos el comando <code class="docutils literal notranslate"><span class="pre">rm</span></code>. Como ejemplo, vamos a borrar la copia backup <code class="docutils literal notranslate"><span class="pre">science.bak</span></code>.</p>
+<p>dentro del directorio <code class="docutils literal notranslate"><span class="pre">biocomp_clase1/ejercicios</span></code>, escribe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">rm</span> <span class="n">science</span><span class="o">.</span><span class="n">bak</span>
  <span class="n">ls</span>
 </pre></div>
 </div>
 <p>Puedes utilizar el comando <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> para remover el directorio (aségurate primero que esté vacío). Intenta remover el directorio <code class="docutils literal notranslate"><span class="pre">backup</span></code>. No podrás porque linux no te permitirá remover un directorio que no está vacío. Para borrar un directorio (que no esté vacío) con sus subdirectorios puedes usar <code class="docutils literal notranslate"><span class="pre">-r</span></code> (recursivo):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">directory</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">ejercicios</span>
 </pre></div>
 </div>
 <p>Este comando pedirá confirmación para algunos archivos que sean importantes. Si estás absolutamente seguro de este paso, puedes añadir el comando <code class="docutils literal notranslate"><span class="pre">-f</span></code> (f de forzar):</p>
@@ -594,13 +592,14 @@ Primero, cd al directorio biocomp_clase1:</p>
 </pre></div>
 </div>
 <div class="alert alert-block alert-danger">
-<b>Atención</b> Los directorios que se borran con ``rm`` se pierden *para siempre*. No van a ni siquiera a la papelera, si borran directamente.
+<b>Atención</b> Los directorios que se borran con ``rm`` se pierden *para siempre*. No van a ni siquiera a la papelera, se borran directamente.
  </div></section>
 <section id="mostrar-los-contenidos-de-un-archivo-en-la-pantalla">
 <h3>Mostrar los contenidos de un archivo en la pantalla<a class="headerlink" href="#mostrar-los-contenidos-de-un-archivo-en-la-pantalla" title="Permalink to this heading">#</a></h3>
 <p><strong>cat</strong></p>
-<p>Este comando imprime el texto completo en la terminal, si este es muy largo solo se verán las últimas líneas</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">cat</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span>
+<p>Este comando imprime el texto completo en la terminal, si este es muy largo solo se verán las últimas líneas.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">biocomp_clase1</span><span class="o">/</span>
+<span class="n">cat</span> <span class="n">science</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p><strong>less</strong></p>
