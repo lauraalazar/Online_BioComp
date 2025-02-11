@@ -390,14 +390,19 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="scripts-ejecutables">
 <h1>Scripts Ejecutables<a class="headerlink" href="#scripts-ejecutables" title="Permalink to this heading">#</a></h1>
 <p>Ahora que ya estamos un poco familiarizados con la línea de comando, vamos a utilizar algunas herramientas básicas de programación: al digitar un comando, este da una instrucción para recibir una inofrmación. Este proceso se puede <strong>automatizar</strong> (por ejemplo mover, renombrar y copiar archivos), escribiendo el comando en un <strong>script</strong>.</p>
-<p>Los scripts son la forma mas simple de escribir un programa. Vamos a escribir un <strong>script bash</strong> y a ejecutarlo.</p>
+<p>Los scripts son la forma mas simple de almacenar comandos que. Por ejemplo el comando <code class="docutils literal notranslate"><span class="pre">echo</span></code> repite lo que se le encarga que repita. Escriba en la terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo Hello world!
+</pre></div>
+</div>
+<p>Que aparece en la pantalla?</p>
+<p>Ahora vamos a escribir un <strong>script bash</strong> con este comando y a ejecutarlo. Pero antes debemos introducir los editores de texto.</p>
 <section id="editores-de-texto">
 <h2>Editores de Texto<a class="headerlink" href="#editores-de-texto" title="Permalink to this heading">#</a></h2>
-<p>Dentro del directorio <code class="docutils literal notranslate"><span class="pre">biocomp_clase1</span></code> vamos a crear un nuevo archivo llamado <code class="docutils literal notranslate"><span class="pre">miscript.sh</span></code>. Puedes hacer esto utilizando un editor de texto de terminal llamado <code class="docutils literal notranslate"><span class="pre">nano</span></code> o <code class="docutils literal notranslate"><span class="pre">vi</span></code> (vi está usualmente disponible en cualquier distribución de linux mientras que nano en algunas ocasiones se debe instalar)</p>
+<p>Cree una carpeta llamada <code class="docutils literal notranslate"><span class="pre">biocomp_clase2</span></code> y allí vamos a crear un nuevo archivo llamado <code class="docutils literal notranslate"><span class="pre">miscript.sh</span></code>. Puedes hacer esto utilizando un editor de texto de terminal llamado <code class="docutils literal notranslate"><span class="pre">nano</span></code> o <code class="docutils literal notranslate"><span class="pre">vi</span></code> (vi está usualmente disponible en cualquier distribución de linux mientras que nano en algunas ocasiones se debe instalar)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">miscript</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>Este comando inicia el editor de texto. A continuación escriba <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">Hello</span> <span class="pre">World!</span></code>. “Hello World!” es una frase icónica en programación y “echo” es una instrucción que reproduce el texto que sigue. Guarde el archivo usando <code class="docutils literal notranslate"><span class="pre">[ctrl-o]</span> <span class="pre">[enter]</span></code>  y cierre el programa con <code class="docutils literal notranslate"><span class="pre">[ctrl-x]</span> <span class="pre">[enter]</span></code>. En la terminal, ejecute el script con el siguiente comando:</p>
+<p>Este comando inicia el editor de texto. A continuación escriba <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">Hello</span> <span class="pre">World!</span></code>. Guarde el archivo usando <code class="docutils literal notranslate"><span class="pre">[ctrl-o]</span> <span class="pre">[enter]</span></code>  y cierre el programa con <code class="docutils literal notranslate"><span class="pre">[ctrl-x]</span> <span class="pre">[enter]</span></code>. En la terminal, ejecute el script con el siguiente comando:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">miscript</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
@@ -426,10 +431,10 @@ Para guardar y salir de Vim haga lo siguiente:</p>
 </div>
 <p>La primera lista de caracteres indica los <strong>permisos</strong> del archivo. Aquí vemos que el usuario tiene permiso de lectura (<code class="docutils literal notranslate"><span class="pre">r</span></code>) y escritura (<code class="docutils literal notranslate"><span class="pre">w</span></code>), pero no de ejecución(<code class="docutils literal notranslate"><span class="pre">x</span></code>).
 Para entender mejor este tema puede consultar este <a class="reference external" href="https://ryanstutorials.net/linuxtutorial/permissions.php">tutorial sobre permisos</a>. Vamos a cambiar el permiso de ejecución</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span> <span class="n">miscript</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">miscript</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>Ahora todos los usuarios tienen permiso para ejecutar el archivo. Como es un script muy simple y sin consecuencias, no nos preocupa que todos tengan permisos. En otros casos es muy importante tener cuidado. Ahora lo podemos ejecutar:</p>
+<p>Ahora el usuario tiene permiso para ejecutar el archivo (verifica esto con el comando <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code>). Ahora lo podemos ejecutar:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">miscript</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
