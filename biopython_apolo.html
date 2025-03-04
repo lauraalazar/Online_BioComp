@@ -462,7 +462,7 @@ document.write(`
 </div>
 <p>esto significa “save copy (scp) desde mi PC a usuario&#64;servidor:/folder/” Ahora usted tiene copia de estos archivos en Apolo.</p>
 <div class="alert alert-block alert-info">
-<b>Ejercicio</b> Copie los otros dos archivos correspondientes a las secuencias de dna y cds del covid   </div></section>
+<b>Ejercicio</b> Copie los otros dos archivos correspondientes a las secuencias de dna y cds del covid desde su PC a su cuenta en Apolo  </div></section>
 <section id="escribir-un-script-de-python-y-ejecutarlo-en-apolo">
 <h2>Escribir un script de python y ejecutarlo en Apolo<a class="headerlink" href="#escribir-un-script-de-python-y-ejecutarlo-en-apolo" title="Permalink to this heading">#</a></h2>
 <p>Para mantener los archivos organizados, vamos a crear dentro del home de apolo un directorio que contenga las secuencias de covid que copió desde su PC.</p>
@@ -514,6 +514,13 @@ document.write(`
 <section id="script-slurm">
 <h3>script SLURM<a class="headerlink" href="#script-slurm" title="Permalink to this heading">#</a></h3>
 <p>Como se explicó durante la introducción de Apolo, el servidor está diseñado para correr los trabajos por vía de script. Es decir que todo lo que hicimos dentro de python lo debemos guardar en un script  y correrlo con el comando <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">script.py</span></code>. Este último comando no se escribe directamente en la terminal, sino que se guarda dentro de un script <em>slurm</em> (con extensión .sh)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">slurm_covid19seq</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
