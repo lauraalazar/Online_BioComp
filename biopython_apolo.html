@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Biopython en Apolo &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
+    <title>Instalación de Biopython en Apolo &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
   
   
   
@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'biopython_apolo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Manejo de Secuencias con python" href="python_seq.html" />
+    <link rel="next" title="Alienamientos" href="alineamientos.html" />
     <link rel="prev" title="Introducción a Python y Biopython" href="python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -162,11 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Introducción a Python y Biopython</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Biopython en Apolo</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="python_seq.html">Manejo de Secuencias con python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_seq_ejs.html">Ejercicio con secuencias</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Instalación de Biopython en Apolo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alienamientos</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="ncbi%26blast.html">Herraminetas de NCBI</a></li>
@@ -366,7 +362,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Biopython en Apolo</h1>
+    <h1>Instalación de Biopython en Apolo</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -376,18 +372,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Biopython en Apolo</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-biopython-en-apolo">Instalación de Biopython en Apolo</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias">Secuencias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-fasta-de-secuencias">Formato Fasta de Secuencias</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-y-copiar-archivos-entre-pc-al-servidor">Descargar y copiar archivos entre pc al servidor</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-un-script-de-python-y-ejecutar-en-apolo">Escribir un script de python y ejecutar en Apolo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compartir-archivos-entre-apolo-y-computador-personal">Compartir archivos entre Apolo y computador personal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-un-script-de-python-y-ejecutar-en-apolo">Escribir un script de python y ejecutar en Apolo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-slurm">script SLURM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-bucles-y-condicionales">Ejemplo de bucles y condicionales</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -398,14 +389,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="biopython-en-apolo">
-<h1>Biopython en Apolo<a class="headerlink" href="#biopython-en-apolo" title="Permalink to this heading">#</a></h1>
-<p>El proyecto de <a class="reference external" href="http://www.biopython.org">Biopython</a> es una asociación internacional de desarrolladores del lenguaje <a class="reference external" href="https://www.python.org">Python</a> con aplicación a biología molecular computacional. Es de libre acceso y está muy bien documentado, para mayor profundidad consulte el <a class="reference external" href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">Recetario de Biopython</a>. Para la instalación y requisitos consultar <a class="github reference external" href="https://github.com/biopython/biopython/blob/master/README.rst">biopython/biopython</a></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="instalacion-de-biopython-en-apolo">
+  <section class="tex2jax_ignore mathjax_ignore" id="instalacion-de-biopython-en-apolo">
 <h1>Instalación de Biopython en Apolo<a class="headerlink" href="#instalacion-de-biopython-en-apolo" title="Permalink to this heading">#</a></h1>
-<p>Una introducción del servidor de EAFIT Apolo se encuentra <a class="reference external" href="https://apolo-docs.readthedocs.io/en/latest/">aquí</a>.
-Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), previo inicio del Global Protect</p>
+<p>Una introducción del servidor de EAFIT Apolo se encuentra <a class="reference external" href="https://apolo-docs.readthedocs.io/en/latest/">aquí</a>.</p>
+<p>Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), previo inicio del Global Protect</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span>
@@ -413,12 +400,15 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 </div>
 </div>
 </div>
-<p>Ahora vamos usar <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-python">conda</a>, un paquete que ayuda a gestionar las instalaciones con múltiples ambientes y versiones. Vamos a crear un ambiente (<a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment">environment</a>) llamado <em>biopython</em>, y allí vamos a instalar las librerías que necesitamos.</p>
+<p>Si es la primera vez, le pedirá cambiar el password. Tenga en cuenta que cuando escribe su password <strong>no verá esta escritura</strong> por lo que es fácil cometer errores o repetir caracteres.</p>
+<p>Una vez está en su cuenta puede observar los archivos que se encuentran en su <em>home</em></p>
+<p>pantallazoapolo</p>
+<p>Ahora vamos usar [conda] para crear un ambiente ([environment] donde instalaremos <em>biopython</em>, y las librerías que necesitamos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">/</span><span class="mf">3.10</span><span class="n">_miniconda</span><span class="o">-</span><span class="mf">23.5.2</span>
-<span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">biopython</span>
-<span class="n">conda</span> <span class="n">activate</span> <span class="n">biopython</span>
+<span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">biopython_env</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">biopython_env</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">biopython</span>
 </pre></div>
 </div>
@@ -435,7 +425,7 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 </div>
 </div>
 <p>Debemos salir y volver a entrar a apolo para chequear la instalación. Una vez realizamos el login, activamos el ambiente de biopython y comenzamos python</p>
-<p>La siguiente vez que entran, ya instalado el ambiente hay que cargar el ambiente y activarlo</p>
+<p>La siguiente vez que entran, ya instalado el ambiente, hay que cargar el ambiente y activarlo</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">biopython</span>
@@ -454,100 +444,36 @@ Entre a Apolo por vía de putty o una terminal de linux (ya sea wsl o cygwin), p
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Bio</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Bio</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+
+<span class="n">quit</span><span class="p">()</span> <span class="c1">#para salir</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Si sale un error después de llamar la instalación fue defectuosa. De lo contrario, está bien por el momento y empezamos a trabajar con secuencias.</p>
-<section id="secuencias">
-<h2>Secuencias<a class="headerlink" href="#secuencias" title="Permalink to this heading">#</a></h2>
-<p>Aunque una secuencia es un conjunto de letras, biopython tiene un formato especial para definir una secuencia</p>
+<section id="compartir-archivos-entre-apolo-y-computador-personal">
+<h2>Compartir archivos entre Apolo y computador personal<a class="headerlink" href="#compartir-archivos-entre-apolo-y-computador-personal" title="Permalink to this heading">#</a></h2>
+<p>Para intercambiar archivos entre su PC, puede utilizar WinSCP o abrir una terminal en su PC desde donde tenga almacenados los archivos a compartir. Abra una terminal <strong>en su PC</strong> y entre al directorio de los archivos que desea enviar a Apolo. Por ejemplo las secuencias de COVID descargadas previamente. Una vez en dicho directorio, el comando general funciona <code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">[archivo</span> <span class="pre">que</span> <span class="pre">quiero</span> <span class="pre">enviar]</span> <span class="pre">[directorio</span> <span class="pre">a</span> <span class="pre">donde</span> <span class="pre">lo</span> <span class="pre">voy</span> <span class="pre">a</span> <span class="pre">enviar]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
-<span class="n">my_seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;AGTACACTGGT&quot;</span><span class="p">)</span>
-<span class="n">my_seq</span>
-<span class="n">my_seq</span><span class="o">.</span><span class="n">complement</span><span class="p">()</span>
-<span class="n">my_seq</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">pep</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">laura</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Un recordatorio de la síntesis de proteínas</p>
-<img src="protein_synth.png" /></section>
-<section id="formato-fasta-de-secuencias">
-<h2>Formato Fasta de Secuencias<a class="headerlink" href="#formato-fasta-de-secuencias" title="Permalink to this heading">#</a></h2>
-<p>Existen diferente tipos de formatos para almacenar datos biólogicos, según su naturaleza. Estos formatos son formas estandarizadas que permiten codificar la información de manera simplificada. Muchos de estos formatos son en texto plano, y por lo tanto se pueden visualizar en editores como Notepad++ (Windows) o Sublime Text (Mac). Para el almacenamiento de secuencias se utilizan principalmente dos tipos de formato: FASTA y FASTQ</p>
-<figure>
-<img src="fasta.png" /></section>
+<p>esto significa “save copy (scp) desde mi PC a usuario&#64;servidor:/folder/” Ahora usted tiene copia de estos archivos en apolo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">covid19</span>
+<span class="n">mv</span> <span class="n">Sars_cov_2</span><span class="o">.*.</span><span class="n">gz</span> <span class="n">covid19</span> 
+<span class="n">cd</span> <span class="n">covid19</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dentro del directorio donde vamos a trabajar, vamos escribir los comandos que utilizamos anteriormente para iterar sobre las secuencias</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="descargar-y-copiar-archivos-entre-pc-al-servidor">
-<h1>Descargar y copiar archivos entre pc al servidor<a class="headerlink" href="#descargar-y-copiar-archivos-entre-pc-al-servidor" title="Permalink to this heading">#</a></h1>
-<p>Vamos a descargar la secuencias de DNA y la de proteínas de uno de los ensamblajes del virus del COVID-19 en formatos fasta</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">dna</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">dna_rm</span><span class="o">.</span><span class="n">toplevel</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> 
-<span class="n">wget</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">ensemblgenomes</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">viruses</span><span class="o">/</span><span class="n">fasta</span><span class="o">/</span><span class="n">sars_cov_2</span><span class="o">/</span><span class="n">pep</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">pep</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Descomprima los archivos para evaluar su contenido</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gunzip</span> <span class="o">*.</span><span class="n">gz</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>el “*” indica que lo haga para todos los archivos que estan comprimidos (.gz)</p>
-<p>Para guardar una copia de estos archivos en su PC, puede utilizar WinSCP o abrir una terminal en el PC donde quiera guardar el archivo y darle el comando:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scp</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">laura</span><span class="o">/</span><span class="n">clase_biopy</span><span class="o">/</span><span class="n">Sars_cov_2</span><span class="o">.</span><span class="n">ASM985889v3</span><span class="o">.</span><span class="n">pep</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="n">gz</span> <span class="o">.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>esto significa “save copy (scp) desde usuario&#64;servidor:/folder/archivo aquí (.)” Ahora usted tiene copia de estos archivos en su PC. Ahora volvamos a Apolo</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
-
-<span class="n">dna_file</span> <span class="o">=</span> <span class="s2">&quot;Sars_cov_2.ASM985889v3.dna_rm.toplevel.fa&quot;</span>
-
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">dna_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>La función SeqIO.parse abre el archivo <strong>input_file</strong> y lo intepreta como un archivo fasta. Como solo hay una secuencia, el for loop solo itera una vez y muestra (“print”) los atributos de la secuencia. Compárelo con el archivo fasta para entender que significa cada línea.</p>
-<p>Ahora vamos a extraer la secuencia y calcular su tamaño</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">dna_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-warning">
-<b>Nota:</b> La indentación (la sangría jerárquica luego de una declaración) es muy importante en Python. Si no se respeta, el programa arroja un error  </div><p>De manera similar se hace con un archivo de múltiples secuencias, por ejemplo el archivo de proteínas.
-Repita la copia de archivo como se hizo anteriormente, con el de las proteínas.
-Ahora vamos a iterar sobre las secuencias del archivo “Sars_cov.pep.fa” y a desplegar los identificadores</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;Sars_cov_2.ASM985889v3.pep.all.fa&quot;</span>
-
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>En este archivo hay 12 proteínas de diferentes tamaños y con funciones distintas. Vamos a imprimir su id, su tamaño y su descripción. Estos comando se pueden guardar dentro de un script de python utilizando uno de los editores (vi, nano, etc)</p>
+<section id="escribir-un-script-de-python-y-ejecutar-en-apolo">
+<h2>Escribir un script de python y ejecutar en Apolo<a class="headerlink" href="#escribir-un-script-de-python-y-ejecutar-en-apolo" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vi</span> <span class="n">covid19_seqs</span><span class="o">.</span><span class="n">py</span>
@@ -567,9 +493,9 @@ Ahora vamos a iterar sobre las secuencias del archivo “Sars_cov.pep.fa” y a 
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
 <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
 
-<span class="c1"># Archivos de entrada (inputs)</span>
-<span class="n">dna_file</span> <span class="o">=</span> <span class="s2">&quot;/home/lsalazarj/bicomp2024-2/Sars_cov_2.ASM985889v3.dna_rm.toplevel.fa&quot;</span>
-<span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;/home/lsalazarj/bicomp2024-2/Sars_cov_2.ASM985889v3.pep.all.fa&quot;</span>
+<span class="c1"># Archivos de entrada (inputs) con rutas ABSOLUTAS</span>
+<span class="n">dna_file</span> <span class="o">=</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-21/covid19/Sars_cov_2.ASM985889v3.dna_rm.toplevel.fa&quot;</span>
+<span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-21/Sars_cov_2.ASM985889v3.pep.all.fa&quot;</span>
 
 
 <span class="c1"># Listamos el tamano del genoma</span>
@@ -583,8 +509,8 @@ Ahora vamos a iterar sobre las secuencias del archivo “Sars_cov.pep.fa” y a 
 </div>
 </div>
 </div>
-<section id="escribir-un-script-de-python-y-ejecutar-en-apolo">
-<h2>Escribir un script de python y ejecutar en Apolo<a class="headerlink" href="#escribir-un-script-de-python-y-ejecutar-en-apolo" title="Permalink to this heading">#</a></h2>
+<section id="script-slurm">
+<h3>script SLURM<a class="headerlink" href="#script-slurm" title="Permalink to this heading">#</a></h3>
 <p>Como se explicó durante la introducción de Apolo, el servidor está diseñado para correr los trabajos por vía de script. Es decir que todo lo que hicimos dentro de python lo debemos guardar en un script  y correrlo con el comando <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">script.py</span></code>. Este último comando no se escribe directamente en la terminal, sino que se guarda dentro de un script <em>slurm</em> (con extensión .sh)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -605,7 +531,7 @@ Ahora vamos a iterar sobre las secuencias del archivo “Sars_cov.pep.fa” y a 
 <span class="n">source</span> <span class="n">activate</span> <span class="n">biopython</span>
 
 <span class="c1">##### JOB COMMANDS #### </span>
-<span class="n">python</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">lsalazarj</span><span class="o">/</span><span class="n">bicomp2024</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="n">covid19_seqs</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">lsalazarj</span><span class="o">/</span><span class="n">bicomp2025</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">covid19_seqs</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>
@@ -635,10 +561,38 @@ Ahora vamos a iterar sobre las secuencias del archivo “Sars_cov.pep.fa” y a 
 </div>
 </div>
 </div>
+</section>
+<section id="ejemplo-de-bucles-y-condicionales">
+<h3>Ejemplo de bucles y condicionales<a class="headerlink" href="#ejemplo-de-bucles-y-condicionales" title="Permalink to this heading">#</a></h3>
+<p>Vamos a utilizar los bucles y condicionales para buscar el codón de inicio de transcripción para el genoma de covid19</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define el codón de inicio</span>
+<span class="n">start_codon</span> <span class="o">=</span> <span class="s1">&#39;AUG&#39;</span>
+
+<span class="c1"># Escanea la secuencia hasta encontrar el patrón</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">covid19_seq</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">covid19_seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">start_codon</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The start codon starts at index&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Codon not found in sequence.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="alert alert-block alert-info">
-<b>Ejercicio</b> 
-Ejecute en Apolo el script de python via Slurm 
-</div></section>
+<b>Ejercicio</b> Escriba los comandos anteriores dentro de un script que busca el codón de inicio y ejecútelo vía otro script de *slurm*. Encontró el codón de inicio? </div><p>Si no lo encotró probablmente es porque faltó un paso intermedio: transcribir el codón de DNA a RNA. Esto lo podemos hacer utilizando la función de biopython <code class="docutils literal notranslate"><span class="pre">transcribe()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid_mRNA</span> <span class="o">=</span> <span class="n">covid19_seq</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> Vuelva a correr el script anterior para el RNA mensajero y verifique si la posición indicada si contiene el códon de inicio </div></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -682,11 +636,11 @@ Ejecute en Apolo el script de python via Slurm
       </div>
     </a>
     <a class="right-next"
-       href="python_seq.html"
+       href="alineamientos.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Manejo de Secuencias con python</p>
+        <p class="prev-next-title">Alienamientos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -708,18 +662,13 @@ Ejecute en Apolo el script de python via Slurm
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Biopython en Apolo</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-biopython-en-apolo">Instalación de Biopython en Apolo</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias">Secuencias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formato-fasta-de-secuencias">Formato Fasta de Secuencias</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descargar-y-copiar-archivos-entre-pc-al-servidor">Descargar y copiar archivos entre pc al servidor</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-un-script-de-python-y-ejecutar-en-apolo">Escribir un script de python y ejecutar en Apolo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compartir-archivos-entre-apolo-y-computador-personal">Compartir archivos entre Apolo y computador personal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-un-script-de-python-y-ejecutar-en-apolo">Escribir un script de python y ejecutar en Apolo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-slurm">script SLURM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-bucles-y-condicionales">Ejemplo de bucles y condicionales</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
