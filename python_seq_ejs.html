@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Ejercicio con secuencias &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
+    <title>Ejercicio con secuencias en python &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
   
   
   
@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_seq_ejs';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Alienamientos" href="alineamientos.html" />
+    <link rel="prev" title="Biopython en Apolo" href="biopython_apolo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,13 +156,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Introducción a Python y Biopython</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Biopython en Apolo</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio con secuencias en python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alienamientos</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="ncbi%26blast.html">Herraminetas de NCBI</a></li>
@@ -358,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Ejercicio con secuencias</h1>
+    <h1>Ejercicio con secuencias en python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,19 +375,45 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-con-secuencias">
-<h1>Ejercicio con secuencias<a class="headerlink" href="#ejercicio-con-secuencias" title="Permalink to this heading">#</a></h1>
-<p>Vamos a utilizar las secuencias de Citocromo B descargadas previamente para repasar el manejo de secuencias utilizando python.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-con-secuencias-en-python">
+<h1>Ejercicio con secuencias en python<a class="headerlink" href="#ejercicio-con-secuencias-en-python" title="Permalink to this heading">#</a></h1>
+<p>Vamos a utilizar los bucles y condicionales para buscar el codón de inicio de transcripción para el genoma de covid19</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define el codón de inicio</span>
+<span class="n">start_codon</span> <span class="o">=</span> <span class="s1">&#39;AUG&#39;</span>
+
+<span class="c1"># Escanea la secuencia hasta encontrar el patrón</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">covid19_seq</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">covid19_seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">start_codon</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The start codon starts at index&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Codon not found in sequence.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si no lo encotró probablmente es porque faltó un paso intermedio: transcribir el codón de DNA a RNA. Esto lo podemos hacer utilizando la función de biopython <code class="docutils literal notranslate"><span class="pre">transcribe()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">covid_mRNA</span> <span class="o">=</span> <span class="n">covid19_seq</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> Vuelva a correr el script anterior para el RNA mensajero y verifique si la posición indicada si contiene el códon de inicio </div><p>Ahora vamos a trabajar con secuencias de Citocromo B desde: <a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt">https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt</a></p>
 <ol class="arabic simple">
 <li><p>Cree una carpeta que se llame citB_seqs</p></li>
 <li><p>Entre a la carpeta</p></li>
-<li><p>Copie desde allí las secuencias de Citocromo (o descárguelas nuevamente)</p></li>
+<li><p>Copie o descargue desde allí las secuencias de Citocromo</p></li>
 <li><p>Active los entornos de conda</p></li>
 <li><p>Comience Python</p></li>
 <li><p>Llame las librerías</p></li>
 <li><p>Defina los archivos input</p></li>
 <li><p>Realice un loop sobre las secuencias de DNA para imprimir los nombres de los ID y los tamaños del gen: qué tanto difieren?</p></li>
-<li><p>Ahora viene el reto de la clase: Utilice las secuencias de DNA para hallar la secuencia de amino ácids.</p></li>
+<li><p>Ahora viene el reto de la clase: Utilice las secuencias de DNA para hallar la secuencia de amino ácidos.</p></li>
 <li><p>Compare las secuencias obtenidas con las de proteínas: <a class="github reference external" href="https://github.com/lauraalazar/BiologiaComputacional/blob/main/CytBProt.txt">lauraalazar/BiologiaComputacional</a></p></li>
 <li><p>Utilice la sección 3.8 del tutorial de <a class="reference external" href="https://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython</a> y repita el punto 9</p></li>
 </ol>
@@ -421,6 +450,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="biopython_apolo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Biopython en Apolo</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="alineamientos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Alienamientos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
