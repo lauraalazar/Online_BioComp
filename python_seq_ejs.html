@@ -390,7 +390,16 @@ document.write(`
 <p>Vamos a utilizar los bucles y condicionales para buscar el codón de inicio de transcripción para el genoma de covid19</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define el codón de inicio</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
+<span class="c1"># define una variable para abrir el archivo fasta como input</span>
+<span class="c1"># recuerde que si abre python en otro directorio, debe dar la ruta completa donde está el archivo</span>
+<span class="n">dna_file</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;Sars_cov.dna.fa&#39;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+
+<span class="c1"># define una variable para la secuencia completa del covid</span>
+<span class="n">covid19_seq</span> <span class="o">=</span> <span class="n">dna_file</span><span class="o">.</span><span class="n">seq</span>
+
+<span class="c1"># Define el codón de inicio</span>
 <span class="n">start_codon</span> <span class="o">=</span> <span class="s1">&#39;AUG&#39;</span>
 
 <span class="c1"># Escanea la secuencia hasta encontrar el patrón</span>
