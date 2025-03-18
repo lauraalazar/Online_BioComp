@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_seq_ejs';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Alienamientos" href="alineamientos.html" />
-    <link rel="prev" title="Biopython en Apolo" href="biopython_apolo.html" />
+    <link rel="next" title="Biopython en Apolo" href="biopython_apolo.html" />
+    <link rel="prev" title="Introducción a Python y Biopython" href="python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,9 +162,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Introducción a Python y Biopython</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Biopython en Apolo</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio con secuencias en python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alienamientos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Biopython en Apolo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alineamientos</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="ncbi%26blast.html">Herraminetas de NCBI</a></li>
 
@@ -431,7 +431,7 @@ document.write(`
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
 <span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
 
-<span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;/Users/laura/docencia/eia/bioinfo/clase_python/Sars_cov.prot.fa&quot;</span>
+<span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;/Users/laura/clase_python/Sars_cov.prot.fa&quot;</span>
 
 <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">9</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;glycoprotein&quot;</span><span class="p">):</span>
@@ -530,7 +530,8 @@ document.write(`
 <p>Este script se puede ejecutar en la terminal escribiendo los comandos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">glycoproteins</span><span class="o">.</span><span class="n">py</span> <span class="o">&gt;</span> <span class="n">glycoproteins</span><span class="o">.</span><span class="n">out</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">biopython_env</span> <span class="c1">#o como se llame el ambiente donde está instalado biopython</span>
+<span class="n">python</span> <span class="n">glycoproteins</span><span class="o">.</span><span class="n">py</span> <span class="o">&gt;</span> <span class="n">glycoproteins</span><span class="o">.</span><span class="n">out</span>
 </pre></div>
 </div>
 </div>
@@ -584,20 +585,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="biopython_apolo.html"
+       href="python.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Biopython en Apolo</p>
+        <p class="prev-next-title">Introducción a Python y Biopython</p>
       </div>
     </a>
     <a class="right-next"
-       href="alineamientos.html"
+       href="biopython_apolo.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Alienamientos</p>
+        <p class="prev-next-title">Biopython en Apolo</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
