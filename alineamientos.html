@@ -431,8 +431,8 @@ Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas se
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span>
-<span class="n">source</span> <span class="n">activate</span> <span class="n">biopython_py3</span><span class="mf">.9</span> <span class="c1"># recuerde que su ambiente de conda puede tener un nombre diferente</span>
-<span class="n">python3</span><span class="mf">.9</span>                       <span class="c1"># recuerde utilizar la versión de python donde instaló biopython</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">biopython</span> <span class="c1"># recuerde que su ambiente de conda puede tener un nombre diferente</span>
+<span class="n">python</span>                   <span class="c1"># recuerde utilizar la versión de python donde instaló biopython</span>
 </pre></div>
 </div>
 </div>
@@ -706,7 +706,7 @@ Chequee este mismo alineamiento en bipython. Defina las dos secuencias, los gaps
 <section id="alineamientos-multiples">
 <h3>Alineamientos múltiples<a class="headerlink" href="#alineamientos-multiples" title="Permalink to this heading">#</a></h3>
 <p>Con frecuencia estamos interesados en comparar mas de dos secuencias. Los alineamiento múltiples contienen mas información sobre sitios conservados que pueden ser mas fácil de identificar. Al mismo tiempo son computacionalmente mucho mas complejos y el tiempo computación incrementa exponencialmente. La aproximación mas usada es alinear fragmentos por similitud, y progresivamente construir alineamientos locales por pares, tomando primero las mas similares, formando “clusters jerárquicos”.</p>
-<p>Vamos a descargar (o copiar de una descarga previa) las proteínas de citrocomo descargadas previamente de NCBI y a alinearlas utilizando uno de los programas, entre (muchos)[<a class="reference external" href="https://www.ebi.ac.uk/Tools/msa/">https://www.ebi.ac.uk/Tools/msa/</a>] de alineamiento: (ClustalW)[<a class="reference external" href="https://www.ebi.ac.uk/Tools/msa/clustalo/">https://www.ebi.ac.uk/Tools/msa/clustalo/</a>].</p>
+<p>Vamos a descargar (o copiar de una descarga previa) las proteínas de citrocomo <a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBProt.txt">https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBProt.txt</a> y a alinearlas utilizando uno de los programas, entre (muchos)[<a class="reference external" href="https://www.ebi.ac.uk/Tools/msa/">https://www.ebi.ac.uk/Tools/msa/</a>] de alineamiento: (ClustalW)[<a class="reference external" href="https://www.ebi.ac.uk/Tools/msa/clustalo/">https://www.ebi.ac.uk/Tools/msa/clustalo/</a>].</p>
 <p>Para realizar el procedimiento entramos a nuestra cuenta en Apolo y creamos un ambiente para instalar clustal</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -723,7 +723,7 @@ Chequee este mismo alineamiento en bipython. Defina las dos secuencias, los gaps
 <p>Este paso de instalación solo se realiza una vez por programa. Una vez instalado, se activa</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">filogenia</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">filogenia</span>
 </pre></div>
 </div>
 </div>
@@ -757,7 +757,7 @@ Escriba este comando desde un script "slurm" y ejecútelo
 Escriba este comando desde un script "slurm" y ejecútelo
 </div><div class="alert alert-block alert-info">
 <b>Ejercicio</b> 
-Repita el mismo proceso de alineamiento y generación de árbol con el archivo de nucleótidos de Citocromo B. Ve alguna diferencia con respecto a las proteínas, por ejemplo en la topología del árbol? A qué cree que se deben las diferencias?
+Repita el mismo proceso de alineamiento y generación de árbol con el archivo de nucleótidos de Citocromo B (https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt). Ve alguna diferencia con respecto a las proteínas, por ejemplo en la topología del árbol? A qué cree que se deben las diferencias?
 </div></section>
 </section>
 </section>
