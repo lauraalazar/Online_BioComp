@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introducción a R" href="intro_R.html" />
-    <link rel="prev" title="Examen Parcial 1 Biología Computacional" href="CytB_ejercicio.html" />
+    <link rel="prev" title="Solución Examen Parcial 1" href="CytB_ejercicio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Biopython en Apolo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alineamientos</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="CytB_ejercicio.html">Examen Parcial 1 Biología Computacional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CytB_ejercicio.html">Solución Examen Parcial 1</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Herraminetas de NCBI</a></li>
 
 
@@ -486,8 +486,8 @@ document.write(`
 <img src="I.7_2_blast_types.png"/></section>
 <section id="e-value-expectation-values">
 <h2>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h2>
-<p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. En este caso la significancia significa que el score del alineamiento (S) es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n (<span class="math notranslate nohighlight">\(\lamda\)</span> y K son parámetros para escalar y normalizar la base de datos y valores E):</p>
-<p><span class="math notranslate nohighlight">\(E = K * m *n * e^{\)</span>\lamda<span class="math notranslate nohighlight">\( S}\)</span></p>
+<p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. En este caso la significancia significa que el score del alineamiento (S) es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n (<span class="math notranslate nohighlight">\(\Lambda\)</span> y K son parámetros para escalar y normalizar la base de datos y valores E):</p>
+<p><span class="math notranslate nohighlight">\(E = K * m *n * e^{\lambda S}\)</span></p>
 <p>Algunas reglas no formales (“rules of thumb”) que pueden servir como guía para considerar la significancia de los hit:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E-value &lt; 10e^{-100}\)</span> Secuencias idénticas. Esperarías un alineamiento largo y completo entre la secuencia de consulta y hit</p></li>
@@ -607,7 +607,7 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Examen Parcial 1 Biología Computacional</p>
+        <p class="prev-next-title">Solución Examen Parcial 1</p>
       </div>
     </a>
     <a class="right-next"
