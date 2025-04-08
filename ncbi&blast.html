@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introducción a R" href="intro_R.html" />
-    <link rel="prev" title="Alineamientos" href="alineamientos.html" />
+    <link rel="prev" title="Examen Parcial 1 Biología Computacional" href="CytB_ejercicio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Biopython en Apolo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alineamientos</a></li>
 
+<li class="toctree-l1"><a class="reference internal" href="CytB_ejercicio.html">Examen Parcial 1 Biología Computacional</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Herraminetas de NCBI</a></li>
 
 
@@ -376,8 +377,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Herraminetas de NCBI</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias">Búsqueda de secuencias</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-explorador">Por explorador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">Búsqueda de secuencias por explorador</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desde-script-de-python">Desde script de python</a></li>
 </ul>
 </li>
@@ -411,14 +411,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="herraminetas-de-ncbi">
 <h1>Herraminetas de NCBI<a class="headerlink" href="#herraminetas-de-ncbi" title="Permalink to this heading">#</a></h1>
-<p>The National Center for Biotechnology Information (NCBI), <a class="reference external" href="https://ncbi.nlm.nih.gov/">https://ncbi.nlm.nih.gov/</a>, es una de las colecciones de bases de datos mas importantes. Contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones etc.</p>
-<section id="busqueda-de-secuencias">
-<h2>Búsqueda de secuencias<a class="headerlink" href="#busqueda-de-secuencias" title="Permalink to this heading">#</a></h2>
-<p>Escoja la base de datos “Protein” y escriba en la barra “Cytochrome B Homo sapiens neanderthalensis”. Escoja la proteína de referencia (RefSeq Proteins) y copie el ID de esta proteína</p>
-<section id="por-explorador">
-<h3>Por explorador<a class="headerlink" href="#por-explorador" title="Permalink to this heading">#</a></h3>
-<p>Primero vamos a explorar la base de datos de NCBI con “clicks” y después los haremos desde un script de python. Entre a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/">https://www.ncbi.nlm.nih.gov/</a> y despliegue la pestaña “All Databases” para ver las opciones.</p>
-</section>
+<p>The National Center for Biotechnology Information (NCBI), <a class="reference external" href="https://ncbi.nlm.nih.gov/">https://ncbi.nlm.nih.gov/</a>, es una de las colecciones de bases de datos mas importantes. Contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones etc. Esta base de datos se puede acceder tanto de forma gráfica y directamente como vía script. Vamos a explorarla primero en modo “click” y luego con un script</p>
+<section id="busqueda-de-secuencias-por-explorador">
+<h2>Búsqueda de secuencias por explorador<a class="headerlink" href="#busqueda-de-secuencias-por-explorador" title="Permalink to this heading">#</a></h2>
+<p>Entre a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/">https://www.ncbi.nlm.nih.gov/</a> y despliegue la pestaña “All Databases” para ver las opciones. Escoja la base de datos “Protein” y escriba en la barra “Cytochrome B Homo sapiens neanderthalensis”. Escoja la proteína de referencia (RefSeq Proteins) y de click en el ID de esta proteína “YP_002124314.2” para revisar la información que aparece.</p>
 <section id="desde-script-de-python">
 <h3>Desde script de python<a class="headerlink" href="#desde-script-de-python" title="Permalink to this heading">#</a></h3>
 <p>Ahora vamos a realizar la búsqueda por ID desde python. Recuerde correr el script desde slurm</p>
@@ -447,11 +443,12 @@ document.write(`
     <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2024-2/blast/hsneanderthal_cytb_prot.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-1/ncbi/hsneanderthal_cytb_prot.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Para descargar esta secuencia debíamos saber <em>qué estabamos buscando</em>. Otra forma de realizar búsquedas es por similitud: dada una secuencia que tengo, <em>a qué otras secuencias se parece?</em></p>
 </section>
 </section>
 </section>
@@ -473,7 +470,9 @@ document.write(`
 <h1>Basic Local Alignment Search Tool (BLAST)<a class="headerlink" href="#basic-local-alignment-search-tool-blast" title="Permalink to this heading">#</a></h1>
 <p>Dada una o mas secuencias problema <em>query</em> (usualmente en formato FASTA), BLAST busca regionse de apareamiento de secuencias (<em>match</em>) en un grupo de secuencias (una <em>base de datos</em>).</p>
 <p>Antes de realizar una búsqueda en BLAST, se genera un índice que consiste de <em>palabras</em> de una longitud <em>k</em>, las cuales se denominan <strong>k-mers</strong>. Éste índice se almacena en la memoria RAM del computador, así que BLAST puede ser muy rápido buscando estas palabras. Para inciar una búsqueda por similitud, el algoritmo de BLAST primero busca en la secuencia consulta (<em>query</em>). usando la base de datos indexada, las secuencias que contengan un score alto de k-mers son escogidas. De allí se realiza un alineamiento local alreadedor de estos k-mers.</p>
-<img src="I.7_1_blast_illustration.png"/><img src="blast_glossary-Image001.jpg"/><section id="tipos-de-blast">
+<img src="I.7_1_blast_illustration.png"/><img src="blast_glossary-Image001.jpg"/>
+<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK62051/">https://www.ncbi.nlm.nih.gov/books/NBK62051/</a></p>
+<img src="alignment_score.jpg"/><section id="tipos-de-blast">
 <h2>Tipos de BLAST<a class="headerlink" href="#tipos-de-blast" title="Permalink to this heading">#</a></h2>
 <p>De acuerdo a la búsqueda que necesitemos hay diferentes tipos de <a class="reference external" href="https://desmid.github.io/mview/manual/blast/blast2.html">blast</a>:</p>
 <ul class="simple">
@@ -488,10 +487,7 @@ document.write(`
 <section id="e-value-expectation-values">
 <h2>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h2>
 <p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. En este caso la significancia significa que el score del alineamiento (S) es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n (<span class="math notranslate nohighlight">\(\lamda\)</span> y K son parámetros para escalar y normalizar la base de datos y valores E):</p>
-<div class="math notranslate nohighlight">
-\[
- E = K * m *n * e^{$\lamda$ S}
-\]</div>
+<p><span class="math notranslate nohighlight">\(E = K * m *n * e^{\)</span>\lamda<span class="math notranslate nohighlight">\( S}\)</span></p>
 <p>Algunas reglas no formales (“rules of thumb”) que pueden servir como guía para considerar la significancia de los hit:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E-value &lt; 10e^{-100}\)</span> Secuencias idénticas. Esperarías un alineamiento largo y completo entre la secuencia de consulta y hit</p></li>
@@ -606,12 +602,12 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="alineamientos.html"
+       href="CytB_ejercicio.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Alineamientos</p>
+        <p class="prev-next-title">Examen Parcial 1 Biología Computacional</p>
       </div>
     </a>
     <a class="right-next"
@@ -642,8 +638,7 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Herraminetas de NCBI</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias">Búsqueda de secuencias</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-explorador">Por explorador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">Búsqueda de secuencias por explorador</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desde-script-de-python">Desde script de python</a></li>
 </ul>
 </li>
