@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -405,7 +405,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-secundarias">5. Estructuras secundarias</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primerblast-estudio-de-caso-gen-trasnportador-de-cadmio-en-cacao-por-felipe-arango">PrimerBlast: estudio de caso gen trasnportador de Cadmio en Cacao (por Felipe Arango)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#especificidad-de-los-primers">Especificidad de los primers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-de-un-gen">Variante de un gen</a></li>
 </ul>
 </li>
 </ul>
@@ -523,7 +523,7 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
     <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-1/primers/NRAMP5.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-1/primers/NRAMP5_ref.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -545,12 +545,12 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
 <ol class="arabic simple" start="4">
 <li><p>Escoja un par de primers y anote los parámetros que proporciona el programa</p></li>
 </ol>
-<section id="especificidad-de-los-primers">
-<h3>Especificidad de los primers<a class="headerlink" href="#especificidad-de-los-primers" title="Link to this heading">#</a></h3>
-<p>Ahora vamos a chequear la especificidad del par de primers para saber si tiene el potencial de amplificar otras secuencias <em>target</em> del mismo genoma (y por lo tanto no ser suficientemente específico).</p>
-<ol class="arabic simple" start="5">
-<li><p>Para esto vamos a crear una base de datos local contra la cual vamos a realizar el blast con los cromosomas de Theobroma cacao.
-5.1 Para comenzar descargamos los cromosomas dada la lista de ID de los cromosomas</p></li>
+<section id="variante-de-un-gen">
+<h3>Variante de un gen<a class="headerlink" href="#variante-de-un-gen" title="Link to this heading">#</a></h3>
+<p>Vamos a estudiar una secuencias de genes codificantes para transportadores NRAMP5 de una variedad colombiana (CCN51) con el genoma de referencia disponible en NCBI (NCBI RefSeq assembly: GCF_000208745.1), para identificar similitudes o diferencias, localizar los genes en los cromosomas, y diseñar primers para PCR convencional.</p>
+<ol class="arabic simple">
+<li><p>Vamos a descargar la secuencia <a class="reference external" href="https://raw.githubusercontent.com/Pipe-95/TallerBiologiaComputacional/refs/heads/main/NRAMP5.fa">https://raw.githubusercontent.com/Pipe-95/TallerBiologiaComputacional/refs/heads/main/NRAMP5.fa</a></p></li>
+<li><p>Ahora descargamos los cromosomas dada la lista de ID de los cromosomas</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -603,15 +603,15 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
 </div>
 </div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>5.3 Realizar Blast de la secuencia query (NRAMP5) contra la base de datos cacao_database
-</pre></div>
-</div>
+<ol class="arabic simple" start="3">
+<li><p>Ahora realizamos Blast de la secuencia query (NRAMP5) contra la base de datos cacao_database</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### ENVIRONMENT CREATION #####</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">blast</span><span class="o">/</span><span class="mf">2.13.0</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
 
-<span class="n">blastn</span> <span class="o">-</span><span class="n">query</span> <span class="n">NRAMP5</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">db</span> <span class="n">cacao_database</span> <span class="o">-</span><span class="n">out</span> <span class="n">NRAMP5_blastn_table</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-30</span> <span class="o">-</span><span class="n">outfmt</span> <span class="mi">6</span>
+<span class="n">blastn</span> <span class="o">-</span><span class="n">query</span> <span class="n">NRAMP5_ref</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">db</span> <span class="n">cacao_database</span> <span class="o">-</span><span class="n">out</span> <span class="n">NRAMP5_blastn_table</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-30</span> <span class="o">-</span><span class="n">outfmt</span> <span class="mi">6</span>
 </pre></div>
 </div>
 </div>
@@ -622,7 +622,6 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
 <li><p>¿Cuántos alineamientos (matches) encontró para cada una de las secuencias?</p></li>
 <li><p>En caso de haber más de uno: ¿Se encuentran todos en el mismo cromosoma?</p></li>
 <li><p>Si están en el mismo cromosoma, ¿pertenecen al mismo locus o están en regiones distintas?</p></li>
-<li><p>¿Coincide la secuencia de NRAMP5 con la de la variedad Criollo (genoma de referencia de NCBI)?</p></li>
 <li><p>¿Qué tan específico es el primer?</p></li>
 </ul>
 </div></section>
@@ -704,7 +703,7 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-secundarias">5. Estructuras secundarias</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primerblast-estudio-de-caso-gen-trasnportador-de-cadmio-en-cacao-por-felipe-arango">PrimerBlast: estudio de caso gen trasnportador de Cadmio en Cacao (por Felipe Arango)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#especificidad-de-los-primers">Especificidad de los primers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-de-un-gen">Variante de un gen</a></li>
 </ul>
 </li>
 </ul>
