@@ -514,40 +514,6 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 <div class="alert alert-block alert-info">
 <b>Compare las dos distancias y piense cómo agruparía las secuencias?</b> 
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construir un árbol neighbour-joining</span>
-<span class="n">aa_nj</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">aa_nj</span><span class="p">)</span>
-
-<span class="c1"># 4. Bootstrap the tree</span>
-<span class="n">bs_NJ</span> <span class="o">&lt;-</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">phylo</span><span class="p">(</span><span class="n">tree_nj</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">FUN</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">nj</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">stringDist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;hamming&quot;</span><span class="p">))),</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># 5. Plot NJ tree with bootstrap values</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">tree_nj</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;Neighbor Joining Tree&quot;</span><span class="p">)</span>
-<span class="n">nodelabels</span><span class="p">(</span><span class="n">bs_NJ</span><span class="p">,</span> <span class="n">adj</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">frame</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="n">sub</span> <span class="o">=</span> <span class="s2">&quot;Bootstrap values (100 replicates)&quot;</span><span class="p">)</span>
-
-<span class="c1"># 6. Color branches based on bootstrap support</span>
-<span class="n">support_threshold</span> <span class="o">&lt;-</span> <span class="mi">70</span>
-<span class="n">col_branches</span> <span class="o">&lt;-</span> <span class="n">ifelse</span><span class="p">(</span><span class="n">bs_NJ</span> <span class="o">&gt;=</span> <span class="n">support_threshold</span><span class="p">,</span> <span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">tree_nj</span><span class="p">,</span> <span class="n">edge</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">col_branches</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;NJ Tree with Branch Colors&quot;</span><span class="p">)</span>
-<span class="n">nodelabels</span><span class="p">(</span><span class="n">bs_NJ</span><span class="p">,</span> <span class="n">adj</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">frame</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
-
-<span class="c1"># 7. Build UPGMA tree</span>
-<span class="n">tree_upgma</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">dist_matrix</span><span class="p">))</span>
-
-<span class="c1"># 8. Bootstrap UPGMA tree</span>
-<span class="n">bs_UPGMA</span> <span class="o">&lt;-</span> <span class="n">bootstrap</span><span class="o">.</span><span class="n">phylo</span><span class="p">(</span><span class="n">tree_upgma</span><span class="p">,</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">FUN</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">upgma</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">stringDist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;hamming&quot;</span><span class="p">))),</span> <span class="n">B</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
-
-<span class="c1"># 9. Plot UPGMA tree with bootstrap values</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">tree_upgma</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;UPGMA Tree&quot;</span><span class="p">)</span>
-<span class="n">nodelabels</span><span class="p">(</span><span class="n">bs_UPGMA</span><span class="p">,</span> <span class="n">adj</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">frame</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
-<span class="n">title</span><span class="p">(</span><span class="n">sub</span> <span class="o">=</span> <span class="s2">&quot;Bootstrap values (100 replicates)&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="upgma-unweighted-pair-group-method-with-arithmetic-mean">
 <h3>UPGMA: Unweighted Pair Group Method with Arithmetic mean<a class="headerlink" href="#upgma-unweighted-pair-group-method-with-arithmetic-mean" title="Link to this heading">#</a></h3>
