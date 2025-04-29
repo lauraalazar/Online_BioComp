@@ -568,7 +568,9 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 <h3>NJ: Neighbour Joining<a class="headerlink" href="#nj-neighbour-joining" title="Link to this heading">#</a></h3>
 <p>Mientras que en un árbol realizado con UPGMA todos los puntos están alineados y las ramas tienen la misma distancia (porque las distancias se calculan por la media), en NJ se calcula la “distancia acumulada” para cada secuencia i (A-E),  <span class="math notranslate nohighlight">\(U_i = Σ d_{ij}\)</span>. Usando esta distancia acumulada Ui, se calcula una matriz de distancia <span class="math notranslate nohighlight">\(e_{ij}\)</span> (para cada par de de secuencias i ay j), de acuerdo a la fórmula</p>
 <p><span class="math notranslate nohighlight">\(e_{ij}\)</span> = <span class="math notranslate nohighlight">\(d_{ij}\)</span>– <span class="math notranslate nohighlight">\(\frac{U_i + U_j}{N – 2}\)</span></p>
-<img src="NJfig.png"/><div class="cell docutils container">
+<img src="NJfig.png"/>
+<p>Para una explicación manual: <a class="reference external" href="https://www.tenderisthebyte.com/blog/2022/08/31/neighbor-joining-trees/">https://www.tenderisthebyte.com/blog/2022/08/31/neighbor-joining-trees/</a></p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculamos el agrupamiento con NJ</span>
 <span class="n">NJ</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">aa_sample</span><span class="o">.</span><span class="n">dist</span><span class="p">))</span>
