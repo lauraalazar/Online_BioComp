@@ -585,13 +585,16 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 <p>Ahora agrupamos las secuencias con los dos métodos que hemos descrito aquí, UPGMA y NJ, y graficamos el árbol</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agrupamiento de secuencias con UPGMA</span>
-<span class="n">aa_nj</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">aa_nj</span><span class="p">)</span>
-
-<span class="c1">#Agrupamiento con NJ</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Agrupamiento con NJ</span>
 <span class="n">aa_upgma</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">aa_upgma</span><span class="p">)</span>
+
+<span class="c1"># Agrupamiento de secuencias con UPGMA</span>
+<span class="n">aa_nj</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
+
+<span class="c1"># graficamos los dos árboles</span>
+<span class="n">par</span><span class="p">(</span><span class="n">mfrow</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">aa_upgma</span><span class="p">,</span> <span class="n">no</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">aa_nj</span><span class="p">,</span> <span class="n">no</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
