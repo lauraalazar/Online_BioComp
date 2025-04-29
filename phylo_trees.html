@@ -404,6 +404,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nj-neighbour-joining">NJ: Neighbour Joining</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-con-las-secuencias-de-citocromo-b">Ejercicio con las secuencias de Citocromo B</a></li>
 </ul>
             </nav>
         </div>
@@ -420,7 +421,7 @@ document.write(`
 <p>Un árbol filogenético es la representación de una hipótesis de <strong>relaciones ancestrales</strong>, basada en <strong>similitud</strong>. En esta representación, las especies o secuencias de interés estan en las puntas (<em>tips</em>) de las ramas. El nodo donde se unen las ramas representa el ancestro común. El tiempo por lo tanto va desde el ancestro común hacia las puntas, en la siguiente figura el tiempo sería el eje horizontal x</p>
 <img src="Anatomy_tree.png"/><section id="inferencia-filogenetica">
 <h2>Inferencia Filogenética<a class="headerlink" href="#inferencia-filogenetica" title="Link to this heading">#</a></h2>
-<p>Para cuantificar la <strong>similitud</strong> calculamos las distancias (diferencias) entre grupos y, basado en esta <strong>matriz de distancia</strong>, se decide el orden de agrupamiento (<em>cluster</em>). Esta matriz es calculada a partir de una medida de similitud (por ejemplo entre morfologías o un alineamiento). Este primer agrupamiento no garantiza una solución óptima, así que en segundo lugar se busca el mejor árbol. Vamos a ver aquí dos métodos: el de parsimonia y el d maximum likelihood.
+<p>Para cuantificar la <strong>similitud</strong> calculamos las distancias (diferencias) entre grupos y, basado en esta <strong>matriz de distancia</strong>, se decide el orden de agrupamiento (<em>cluster</em>). Esta matriz es calculada a partir de una medida de similitud (por ejemplo entre morfologías o un alineamiento). Este primer agrupamiento no garantiza una solución óptima, así que en segundo lugar se busca el mejor árbol (pero esta parte la omitiremos).
 Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineamiento, y a partir de estas distancias, generar el árbol.</p>
 <section id="generacion-de-un-alineamiento-entre-secuencias">
 <h3>Generación de un alineamiento entre secuencias<a class="headerlink" href="#generacion-de-un-alineamiento-entre-secuencias" title="Link to this heading">#</a></h3>
@@ -595,10 +596,15 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 </div>
 </div>
 </div>
-<p>También es posible importar un árbol realizado para graficarlo desde R. Esto se hace con frecuencia, ya que si bien R tiene la fortaleza de graficar, es mas lento y menos eficiente para realizar los alinieamientos y cálculos de distancias. A continuación vamos a importar el alineamiento de las secuencias de proteína de Citocromo B que habíamos generado con clustal (archivo .phy). A partir de este archivo vamos a:</p>
+</section>
+</section>
+<section id="ejercicio-con-las-secuencias-de-citocromo-b">
+<h2>Ejercicio con las secuencias de Citocromo B<a class="headerlink" href="#ejercicio-con-las-secuencias-de-citocromo-b" title="Link to this heading">#</a></h2>
+<p>También es posible importar un árbol realizado para graficarlo desde R. Esto se hace con frecuencia, ya que si bien R tiene la fortaleza de graficar, es mas lento y menos eficiente para realizar los alineamientos y cálculos de distancias.</p>
+<p>A continuación vamos a importar el alineamiento de las secuencias de proteína de Citocromo B que habíamos generado con clustal (archivo .phy). A partir de este archivo vamos a:</p>
 <ul class="simple">
 <li><ol class="arabic simple">
-<li><p>Calcular las distancias por pares usando un modelo evolutivo (p.ej JC69)</p></li>
+<li><p>Calcular las distancias por pares</p></li>
 </ol>
 </li>
 <li><ol class="arabic simple" start="2">
@@ -623,8 +629,10 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 </div>
 </div>
 </div>
-</section>
-</section>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> 
+Repita el mismo proceso de alineamiento y generación de árbol con el archivo de nucleótidos de Citocromo B (https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt). Ve alguna diferencia con respecto a las proteínas, por ejemplo en la topología del árbol?
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -699,6 +707,7 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nj-neighbour-joining">NJ: Neighbour Joining</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-con-las-secuencias-de-citocromo-b">Ejercicio con las secuencias de Citocromo B</a></li>
 </ul>
   </nav></div>
 
