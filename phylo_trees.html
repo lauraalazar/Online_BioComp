@@ -435,7 +435,7 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 <span class="n">library</span><span class="p">(</span><span class="n">phangorn</span><span class="p">)</span>
 <span class="c1"># Load the ape library: Essential for reading, writing, and manipulating phylogenetic trees</span>
 <span class="n">library</span><span class="p">(</span><span class="n">ape</span><span class="p">)</span>
-
+<span class="n">library</span><span class="p">(</span><span class="n">seqinr</span><span class="p">)</span>
 <span class="c1"># Define un vector que contiene 4 secuencias de nucleótidos</span>
 <span class="n">sequences</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;ACTGGCTG&quot;</span><span class="p">,</span> <span class="s2">&quot;ACTGCTG&quot;</span><span class="p">,</span> <span class="s2">&quot;AGTGACT&quot;</span><span class="p">,</span> <span class="s2">&quot;TGTGACTGA&quot;</span><span class="p">)</span>
 
@@ -529,10 +529,10 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 <p>Ahora agrupamos las secuencias con los dos métodos que hemos descrito aquí, UPGMA y NJ, y graficamos el árbol</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Agrupamiento con NJ</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Agrupamiento con UPGMA</span>
 <span class="n">aa_upgma</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
 
-<span class="c1"># Agrupamiento de secuencias con UPGMA</span>
+<span class="c1"># Agrupamiento de secuencias con NJ</span>
 <span class="n">aa_nj</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
 
 <span class="c1"># graficamos los dos árboles</span>
@@ -565,7 +565,7 @@ Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineam
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cytB</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">aa</span><span class="p">(</span><span class="s2">&quot;CytBProt.phy&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cytB</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">alignment</span><span class="p">(</span><span class="s2">&quot;CytBProt.phy&quot;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;phylip&quot;</span><span class="p">)</span>
 <span class="n">cytB_phy_dat</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">phyDat</span><span class="p">(</span><span class="n">cytB</span><span class="p">)</span>
 <span class="n">cytB_dist</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="o">.</span><span class="n">ml</span><span class="p">(</span><span class="n">cytB_phy_dat</span><span class="p">)</span>
 <span class="n">cytB_UPGMA</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="n">cytB_dist</span><span class="p">)</span>
