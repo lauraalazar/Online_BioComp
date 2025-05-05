@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Hidden Markov Models" href="hmm.html" />
-    <link rel="prev" title="Inferencia filogenética y árboles" href="phylo_trees.html" />
+    <link rel="prev" title="Distancia entre secuencias y árboles filogenéticos" href="phylo_trees.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,7 +189,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="primers.html">Primers (cebadores)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introducción a R</a></li>
-<li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Inferencia filogenética y árboles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">De Genes a Genomas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hmm.html">Hidden Markov Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="highthroughput.html">Secuenciación Masiva</a></li>
@@ -416,7 +416,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="de-genes-a-genomas">
 <h1>De Genes a Genomas<a class="headerlink" href="#de-genes-a-genomas" title="Link to this heading">#</a></h1>
-<p>Haste el momento hemos partido de genes que conocemos y hemos buscado su secuencia y sus homólogos utilizando bases de datos y alineamientos. Sin embargo, cuando secuenciamos un genoma completo no sabemos de antemano cual es su <em>arquitectura</em> (el orden y ubicación de los elementos del genoma).</p>
+<p>Hasta el momento hemos partido de genes que conocemos y hemos buscado su secuencia y sus homólogos utilizando bases de datos y alineamientos. Sin embargo, cuando secuenciamos un genoma completo no sabemos de antemano cual es su <em>arquitectura</em> (el orden y ubicación de los elementos del genoma).</p>
 <section id="cracking-the-code">
 <h2>“Cracking the code”<a class="headerlink" href="#cracking-the-code" title="Link to this heading">#</a></h2>
 <p>Para extraer la información que contiene un genoma desconocido nos basamos en <em>patrones</em> de secuencias conocidas</p>
@@ -444,7 +444,7 @@ https://doi.org/10.1007/s00239-024-10160-5
 <span class="n">library</span><span class="p">(</span><span class="n">seqinr</span><span class="p">)</span> <span class="c1"># si no lo tiene instalado, instale via install.packages(&quot;Seqinr&quot;)</span>
 
 <span class="c1"># Definir el directorio de trabajo</span>
-<span class="n">setwd</span><span class="p">(</span><span class="s2">&quot;/Users/laura/docencia/eafit/comp_bio/2024-2/biocomp_genomica/&quot;</span><span class="p">)</span> 
+<span class="n">setwd</span><span class="p">(</span><span class="s2">&quot;/Users/laura/docencia/eafit/comp_bio/2025-1/&quot;</span><span class="p">)</span>
 
 <span class="c1"># Leer el genoma de covid con función de </span>
 <span class="n">covid</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">fasta</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;Sars_cov.dna.fa&quot;</span><span class="p">)</span> <span class="c1">#archivo descargado previamente y copiado en dir de trabajo</span>
@@ -527,7 +527,7 @@ https://doi.org/10.1007/s00239-024-10160-5
 <span class="c1"># La función se nombra: &quot;mifuncion&quot;)</span>
 <span class="c1"># Se define en terminos de algun(os) parámetro(s) de entrada: x</span>
 <span class="c1"># Se escribe la salida &quot;return&quot;: 20 + x*x</span>
-<span class="n">mifuncion</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">(</span><span class="mi">20</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">))</span> <span class="p">}</span> <span class="c1">#la definición de la función está entre los corchetes</span>
+<span class="n">mifuncion</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span><span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">))</span> <span class="p">}</span> <span class="c1">#la definición de la función está entre los corchetes</span>
 <span class="n">mifuncion</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">mifuncion</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">mifuncion</span> <span class="c1">#al escribir una función se muestra su definición</span>
@@ -606,7 +606,7 @@ https://doi.org/10.1007/s00239-024-10160-5
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Inferencia filogenética y árboles</p>
+        <p class="prev-next-title">Distancia entre secuencias y árboles filogenéticos</p>
       </div>
     </a>
     <a class="right-next"
