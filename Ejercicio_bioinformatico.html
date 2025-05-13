@@ -416,18 +416,18 @@ document.write(`
 </section>
 <section id="contexto-biologico">
 <h2>Contexto biológico<a class="headerlink" href="#contexto-biologico" title="Link to this heading">#</a></h2>
-<p>El gen EPSPS (5-enolpiruvilshikimato-3-fosfato sintasa) es clave en la ruta del shikimato, necesaria para la biosíntesis de aminoácidos aromáticos en plantas, bacterias y hongos. El glifosato, un herbicida ampliamente usado, inhibe esta enzima.</p>
-<p>Ciertas variantes del gen EPSPS, como las presentes en la bacteria <em>Agrobacterium sp.</em> CP4, confieren resistencia al glifosato y han sido patentadas y utilizadas en cultivos genéticamente modificados (GM).</p>
-<p>En este ejercicio, partimos del EPSPS de una especie modelo (<em>Agrobacterium sp.</em>) y queremos identificar genes homólogos en una especie bacteriana no modelo del suelo, potencialmente con funciones similares.</p>
+<p>El gen aroA (3-phosphoshikimate 1-carboxyvinyltransferase) es clave en la ruta del shikimato, necesaria para la biosíntesis de aminoácidos aromáticos en plantas, bacterias y hongos. El glifosato, un herbicida ampliamente usado, inhibe esta enzima.</p>
+<p>Ciertas variantes del gen aroA, como las presentes en la bacteria <em>Agrobacterium sp.</em>, confieren resistencia al glifosato y han sido patentadas y utilizadas en cultivos genéticamente modificados (GM).</p>
+<p>En este ejercicio, partimos del aroA de una especie modelo (<em>Agrobacterium sp.</em>) y queremos identificar genes homólogos en una especie bacteriana no modelo del suelo, potencialmente con funciones similares.</p>
 </section>
 <section id="objetivo">
 <h2>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">#</a></h2>
-<p>Investigar si una especie bacteriana del suelo (no modelo) contiene una variante del gen EPSPS que podría conferir resistencia al glifosato, y por lo tanto generar mecanismos independiente de residtencia a los del proveedor con patente, Bayer INc.</p>
+<p>Investigar si una especie bacteriana del suelo (no modelo) contiene una variante del gen aroA que podría conferir resistencia al glifosato, y por lo tanto generar mecanismos independiente de residtencia a los del proveedor con patente, Bayer INc.</p>
 </section>
 <section id="flujo-de-trabajo-y-herramientas">
 <h2>Flujo de trabajo y herramientas<a class="headerlink" href="#flujo-de-trabajo-y-herramientas" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>🔎 Obtener la secuencia del gen EPSPS: Buscar en NCBI la secuencia del gen aroA (EPSPS) de <em>Agrobacterium sp.</em> CP4.</p></li>
+<li><p>🔎 Obtener la secuencia del gen EPSPS: Buscar en NCBI la secuencia del gen aroA (aroA) de <em>Agrobacterium sp.</em> CP4.</p></li>
 </ol>
 <p>Descargar la secuencia nucleotídica y proteica en formato FASTA.</p>
 <ol class="arabic simple" start="2">
@@ -449,7 +449,7 @@ Usar Pfam o HMMER para determinar si las secuencias contienen el dominio típico
 <li><p>🧪 Diseño de primers
 Para las secuencias candidatas, diseñar primers específicos usando herramientas como PrimerBlast. Verificar especificidad con BLAST.</p></li>
 <li><p>🌳 Análisis filogenético
-Alinear las secuencias de EPSPS (referencia + candidatos + ortólogos conocidos) usando Clustal o R.</p></li>
+Alinear las secuencias de aroA (referencia + candidatos + ortólogos conocidos) usando Clustal o R.</p></li>
 </ol>
 <p>Convertir el alineamiento a phyDat (R/phangorn) y construir árboles con:</p>
 <p>Neighbor Joining</p>
@@ -469,7 +469,7 @@ Alinear las secuencias de EPSPS (referencia + candidatos + ortólogos conocidos)
 <section id="preguntas-para-reflexionar">
 <h2>Preguntas para reflexionar<a class="headerlink" href="#preguntas-para-reflexionar" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>¿Qué tan similares son los genes candidatos al EPSPS de referencia?</p></li>
+<li><p>¿Qué tan similares son los genes candidatos al aroA de referencia?</p></li>
 <li><p>¿Qué implicaciones tendría encontrar este gen en bacterias no modificadas?</p></li>
 <li><p>¿Cómo se relaciona la conservación de dominios con la función biológica?</p></li>
 <li><p>¿Qué tipo de validaciones experimentales seguirían?</p></li>
