@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'hmm';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Secuenciación Masiva" href="highthroughput.html" />
+    <link rel="next" title="Ejercicio Bioinformático:" href="Ejercicio_bioinformatico.html" />
     <link rel="prev" title="De Genes a Genomas" href="genomica.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -192,14 +192,11 @@
 <li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genomica.html">De Genes a Genomas</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="highthroughput.html">Secuenciación Masiva</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AlineamientosCuentas.html">Alineamientos y cuentas</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="Ejercicio_bioinformatico.html">Ejercicio Bioinformático:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="github_markdown.html">Introducción a Github</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Ejercicio_bioinformatico.html">Ejercicio Bioinformático: Búsqueda y análisis de un gen de resistencia al glifosato en una especie no modelo</a></li>
 </ul>
 
     </div>
@@ -441,10 +438,12 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
 </ol>
 <img src="markovchain.webp"/><section id="hmm-para-anotaciones-de-genoma">
 <h3>HMM para Anotaciones de Genoma<a class="headerlink" href="#hmm-para-anotaciones-de-genoma" title="Link to this heading">#</a></h3>
-<p>Hidden Markov models (HMMs) son una forma de realizar modelos probabilísticos para <em>marcar</em> (anotar) fragmentos de secuencias. Estos modelos permiten tener en cuenta la heterogeneidad de diferentes fuentes y así nos evitan tener que imponer parámetros y patrones <em>ad hoc</em>.</p>
+<p>Hidden Markov Models (HMMs) son una forma de realizar modelos probabilísticos para <em>marcar</em> (anotar) fragmentos de secuencias. Estos modelos permiten tener en cuenta la heterogeneidad de diferentes fuentes y así nos evitan tener que imponer parámetros y patrones <em>ad hoc</em>.</p>
 <img src="hmm_exon_intron.webp"/>
-<p>Por ejemplo, cómo reconocer sitios de splicing? De acuerdo a un modelo de probabilidades podemos inferir donde es el cambio de exón a intrón.</p>
-<p><a class="reference external" href="https://www.nature.com/articles/nbt1004-1315">https://www.nature.com/articles/nbt1004-1315</a></p>
+<p>Por ejemplo, cómo reconocer sitios de splicing? De acuerdo a un modelo de probabilidades podemos inferir donde es el cambio de exón a intrón. <a class="reference external" href="https://www.nature.com/articles/nbt1004-1315">https://www.nature.com/articles/nbt1004-1315</a></p>
+<p>El diagrama muestra el modelo oculto de Markov (HMM) usado para representar una secuencia de ADN compuesta por exones (partes codificantes) e intrones (partes no codificantes).</p>
+<p>Cada círculo es un estado oculto (por ejemplo: “estás en un exón” o “estás en un intrón”), y las flechas indican las probabilidades de pasar de un estado a otro.</p>
+<p>La transición de exón a intrón no se basa directamente en la letra observada (como una G), sino en las probabilidades internas del modelo, aprendidas a partir de muchos genes reales. En el ejemplo, la transición ocurre justo después de la quinta G, pero esto no implica que la letra G cause el cambio; simplemente, el modelo considera que en ese punto es más probable estar comenzando un intrón. Las probabilidades de transición (como exón → intrón) y de emisión (por ejemplo, emitir una G desde el estado exón) se derivan de conteos estadísticos durante el entrenamiento del modelo.</p>
 </section>
 </section>
 <section id="herramientas-hmm-para-secuencias">
@@ -504,11 +503,11 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="highthroughput.html"
+       href="Ejercicio_bioinformatico.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Secuenciación Masiva</p>
+        <p class="prev-next-title">Ejercicio Bioinformático:</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
