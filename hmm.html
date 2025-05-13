@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -189,7 +189,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="primers.html">Primers (cebadores)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introducción a R</a></li>
-<li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Inferencia filogenética y árboles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genomica.html">De Genes a Genomas</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hidden Markov Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="highthroughput.html">Secuenciación Masiva</a></li>
@@ -416,7 +416,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hidden-markov-models">
 <h1>Hidden Markov Models<a class="headerlink" href="#hidden-markov-models" title="Link to this heading">#</a></h1>
-<p>A pesar de que los alineamientos son muy útiles para comparar diferentes secuencias, no son suficientes para el nivel de <em>ruido</em> que poseen los genomas. Para esto es útil tener niveles de confianza de los patrones que se observan. Los Modelos de Markov sirven para cuantificar estados siguientes apartir de la información que se tiene. Un ejemplo clásico de un modelo de Markov es una predicción climática (ejemplo tomado de <a class="reference external" href="https://towardsdatascience.com/predicting-the-weather-with-markov-chains-a34735f0c4df">https://towardsdatascience.com/predicting-the-weather-with-markov-chains-a34735f0c4df</a>)</p>
+<p>Si bien los alineamientos son muy útiles para comparar diferentes secuencias, no son suficientes para el nivel de <em>ruido</em> que poseen los genomas. Para esto es útil tener niveles de confianza de los patrones que se observan. Los Modelos de Markov sirven para cuantificar estados siguientes apartir de la información que se tiene. Un ejemplo clásico de un modelo de Markov es una predicción climática (ejemplo tomado de <a class="reference external" href="https://towardsdatascience.com/predicting-the-weather-with-markov-chains-a34735f0c4df">https://towardsdatascience.com/predicting-the-weather-with-markov-chains-a34735f0c4df</a>)</p>
 <section id="prediccion-climatica-usando-markov-chain">
 <h2>Predicción climática usando Markov Chain<a class="headerlink" href="#prediccion-climatica-usando-markov-chain" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -458,7 +458,15 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
 <h3>HMMER<a class="headerlink" href="#hmmer" title="Link to this heading">#</a></h3>
 <p>Contrariamente, podríamos estar interesados en buscar las proteínas pertencientes a cierta familia en un genoma o en otra especies. Esto decir, dado un perfil de HMM, que proteínas entran en este perfil (con cierta probabilidad)? Esto se puede realizar utilizando la herramienta HMMER: <a class="reference external" href="https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch">https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch</a></p>
 <div class="alert alert-block alert-info">
-<b>Ejercicio</b> Entre a https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch y cargue el alineamiento de Citocromos realizado previamente (CytBProt.phy) y escoja una base de datos para buscar el perfil </div></section>
+<b>Ejercicio</b> Usaremos la proteína BRCA1 (de Homo sapiens):*breast cancer type 1 susceptibility protein isoform 1 [Homo sapiens]*
+<ul class="simple">
+<li><p>Opción A: descarga desde NCBI en FASTA</p></li>
+<li><p>Opción B: usa UniProt (ej. P38398)</p></li>
+</ul>
+<p>Entre a Pfam HMMER <a class="reference external" href="https://www.ebi.ac.uk/Tools/hmmer/search/phmmer">https://www.ebi.ac.uk/Tools/hmmer/search/phmmer</a>  y cargue el archivo brca1.fastaSeleccionar base de datos: Pfam-A</p>
+<p>y ejecute la búsqueda</p>
+<p>📌 ¿Qué dominios Pfam se detectaron en la proteína BRCA1? ¿Cuáles están asociados a funciones de reparación de ADN?</p>
+ </div></section>
 </section>
 </section>
 
