@@ -1,66 +1,71 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Introducción a Github &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
+    <title>Introducción a Github y Markdown: cómo hacer análisis reproducible &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'github_markdown';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Ejercicio Bioinformático:" href="Ejercicio_bioinformatico.html" />
+    <link rel="next" title="Introducción a la Terminal" href="intro_linux.html" />
+    <link rel="prev" title="Cómo leer este documento" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -70,23 +75,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -108,20 +109,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -136,9 +129,6 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -147,22 +137,10 @@
   
   
   
-  
     <p class="title logo__title">Material para el curso de Fundamentos en Biologia Computacional</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -173,6 +151,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introducción a Github y Markdown: cómo hacer análisis reproducible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
@@ -182,7 +161,6 @@
 <li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Biopython en Apolo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alineamientos</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="CytB_ejercicio.html">Solución Ejercicio citocromo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ncbi%26blast.html">Herraminetas de NCBI</a></li>
 
 
@@ -191,11 +169,6 @@
 <li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genomica.html">De Genes a Genomas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hmm.html">Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Ejercicio_bioinformatico.html">Ejercicio Bioinformático:</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introducción a Github</a></li>
-
-
-
 </ul>
 
     </div>
@@ -211,7 +184,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -220,14 +193,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -349,28 +322,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -381,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introducción a Github</h1>
+    <h1>Introducción a Github y Markdown: cómo hacer análisis reproducible</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -391,20 +362,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introducción a Github</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-un-repositorio">Crear un repositorio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-1-instalar-librerias">Celda 1: instalar librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-2-cargar-datos-y-calcular-porcentajes">Celda 2: cargar datos y calcular porcentajes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-3-grafico">Celda 3: gráfico</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r">R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Celda 1: instalar librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-2-datos-y-porcentajes">Celda 2: datos y porcentajes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Celda 3: gráfico</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compartir-notebook-de-forma-virtual">Compartir Notebook de forma virtual</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos">Pasos:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-local">GitHub local</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clone">Clone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clone">Clone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#r-markdown-local">R Markdown Local</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push">Push</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-local">Python Local</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#r-markdown">R Markdown</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#push">Push</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-notebook-markdown">Python Notebook Markdown</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos-mas-usadas">Bases de Datos mas usadas</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -413,11 +396,11 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-github">
-<h1>Introducción a Github<a class="headerlink" href="#introduccion-a-github" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://github.com">GitHub</a> es una plataforma muy útil donde se puede almacenar coódigo, compartirlo, revisarlo, actualizarlo y en general colaborar con programas y códigos. Para hacer uso de esta plataforma hay que registrarse con un email:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-github-y-markdown-como-hacer-analisis-reproducible">
+<h1>Introducción a Github y Markdown: cómo hacer análisis reproducible<a class="headerlink" href="#introduccion-a-github-y-markdown-como-hacer-analisis-reproducible" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com">GitHub</a> es una plataforma muy útil donde se puede almacenar coódigo, compartirlo, revisarlo, actualizarlo y, en general, colaborar con programas y códigos. Para hacer uso de esta plataforma hay que registrarse con un email:</p>
 <ul class="simple">
 <li><p>Entre a la página web</p></li>
 <li><p>Haga Click en “Sign Up”</p></li>
@@ -425,23 +408,133 @@ document.write(`
 </ul>
 <p>Nota: Si ya tiene cuenta en GitHub, tan solo click en Sign in y acceda con su correo y contraseña</p>
 <section id="crear-un-repositorio">
-<h2>Crear un repositorio<a class="headerlink" href="#crear-un-repositorio" title="Link to this heading">#</a></h2>
-<p>Un repositorio es un conjunto de archivos que hacen parte de un proyecto. Por ejemplo, el conjunto de datos que acompaña el estudio sobre RNAseq que hemos utilizado como ejemplo está alojado en <a class="github reference external" href="https://github.com/lauraalazar/RNAseq-Drosophila-parasitoids">lauraalazar/RNAseq-Drosophila-parasitoids</a>.
-Un repositorio permite compartir los archivos del proyecto, actualizarlos y guardar versiones pasadas. También permite que otros colaboren de forma sistemática y organizada. Una vez hagas el registro, recibirá un email para entrar a su cuenta de GitHub</p>
+<h2>Crear un repositorio<a class="headerlink" href="#crear-un-repositorio" title="Permalink to this heading">#</a></h2>
+<p>Un repositorio es un conjunto de archivos que hacen parte de un proyecto.
+Un repositorio permite compartir los archivos del proyecto, actualizarlos y guardar versiones pasadas. También permite que otros colaboren de forma sistemática y organizada. Una vez hagas el registro, recibirás un email para entrar a su cuenta de GitHub.</p>
 <img src="github_newrepo.png" /><ul class="simple">
 <li><p>Entrar a la cuenta con el email y clave registradas</p></li>
 <li><p>Hacer click en <strong>+</strong> y <strong>New repository</strong></p></li>
-<li><p>Darle un nombre al repositorio. Ej, proyecto_biocomp</p></li>
-<li><p>Hacer una breve descripción de lo que se trata. Ej: proyecto para el curso de biología computacional</p></li>
+<li><p>Darle un nombre al repositorio. Ej, “BioComp”</p></li>
+<li><p>Hacer una breve descripción de lo que se trata. Ej: entregables y proyecto para el curso de biología computacional</p></li>
 <li><p>Dar click en <strong>Create repository</strong></p></li>
-<li><p>Darle click en <strong>Add file</strong></p></li>
-<li><p>Arrastrar o subir el archivo que desea compartir</p></li>
-<li><p>Escribir un mensaje describiendo el contenido de la carga en el campo de comentarios</p></li>
-<li><p>Dar click en <strong>Commit changes</strong> para completar la carga</p></li>
 </ul>
 </section>
+<section id="notebooks">
+<h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this heading">#</a></h2>
+<p>Un notebook computacional es un documento interactivo que combina texto, código ejecutable, gráficos y resultados en un solo lugar. Es una herramienta ideal para científicos porque permite:</p>
+<ul class="simple">
+<li><p>Describir el contexto o hipótesis del análisis (usando texto en Markdown).</p></li>
+<li><p>Escribir y ejecutar código (en lenguajes como Python o R).</p></li>
+<li><p>Visualizar resultados inmediatamente (tablas, gráficos, modelos).</p></li>
+</ul>
+<p>Para familiarizarnos primero, vamos a utilizar el entorno interactivo  <a class="reference external" href="https://jupyter.org/try-jupyter/lab/index.html">https://jupyter.org/try-jupyter/lab/index.html</a></p>
+</section>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Ve a https://colab.research.google.com
+
+2. Crea un nuevo notebook (Archivo &gt; Nuevo cuaderno)
+
+3. Copia y pega las siguientes celdas una por una:
+</pre></div>
+</div>
+<section id="celda-1-instalar-librerias">
+<h3>Celda 1: instalar librerías<a class="headerlink" href="#celda-1-instalar-librerias" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>matplotlib<span class="w"> </span>--quiet<span class="w"> </span>#instalar<span class="w"> </span>la<span class="w"> </span>librería<span class="w"> </span>pandas
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="celda-2-cargar-datos-y-calcular-porcentajes">
+<h3>Celda 2: cargar datos y calcular porcentajes<a class="headerlink" href="#celda-2-cargar-datos-y-calcular-porcentajes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importamos las librerías que vamos a utilizar</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># En Python, una lista se define con corchetes [], y un diccionario con llaves {}</span>
+<span class="c1"># Aquí usamos un diccionario para guardar los datos del conteo de polen por familia</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Familia&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Urticaceae cecropia&#39;</span><span class="p">,</span> <span class="s1">&#39;Rhamnaceae&#39;</span><span class="p">,</span> <span class="s1">&#39;Dilleniaceae&#39;</span><span class="p">,</span> <span class="s1">&#39;Metastomataceae&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Cannabaceae Trema&#39;</span><span class="p">,</span> <span class="s1">&#39;Myrtaceae&#39;</span><span class="p">,</span> <span class="s1">&#39;Polypodiaceae&#39;</span><span class="p">,</span> <span class="s1">&#39;Malvaceae  Heliocarpus&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Fabaceae macrolobium&#39;</span><span class="p">,</span> <span class="s1">&#39;Poaceae&#39;</span><span class="p">,</span> <span class="s1">&#39;Malvaceae Bombacoideae&#39;</span><span class="p">,</span> <span class="s1">&#39;Loranthaceae oryctanthus&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Conteo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">845</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertimos el diccionario en un DataFrame (tabla de datos) usando pandas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Calculamos el porcentaje que representa cada tipo de polen respecto al total</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porcentaje&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Conteo&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Conteo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Ordenamos el DataFrame de mayor a menor según el porcentaje</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Porcentaje&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Mostramos la tabla ordenada</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="celda-3-grafico">
+<h3>Celda 3: gráfico<a class="headerlink" href="#celda-3-grafico" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Familia&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porcentaje&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">% d</span><span class="s1">e polen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución porcentual del polen por familia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="r">
+<h2>R<a class="headerlink" href="#r" title="Permalink to this heading">#</a></h2>
+<p>Click en Runtime (parte superior del menú).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. Selecciona &quot;Change runtime type&quot;.
+
+2. En el cuadro que aparece, busca el campo &quot;Runtime type&quot; y cámbialo de Python 3 a R.
+
+3. Haz clic en &quot;Save&quot;.
+</pre></div>
+</div>
+<section id="id1">
+<h3>Celda 1: instalar librerías<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="celda-2-datos-y-porcentajes">
+<h3>Celda 2: datos y porcentajes<a class="headerlink" href="#celda-2-datos-y-porcentajes" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id2">
+<h3>Celda 3: gráfico<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="compartir-notebook-de-forma-virtual">
+<h2>Compartir Notebook de forma virtual<a class="headerlink" href="#compartir-notebook-de-forma-virtual" title="Permalink to this heading">#</a></h2>
+<section id="pasos">
+<h3>Pasos:<a class="headerlink" href="#pasos" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Abre tu navegador y entra a <a class="github reference external" href="https://github.com">github</a></p></li>
+<li><p>Entra al reporistorio que creaste (Ej. BioComp)</p></li>
+<li><p>Dentro del repositorio, haz clic en <strong>“Add file” &gt; “Upload files”</strong></p></li>
+<li><p>Arrastra tu archivo <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> o <code class="docutils literal notranslate"><span class="pre">.R</span></code> o selecciónalo desde tu explorador de archivos</p></li>
+<li><p>Escribe un mensaje de commit, por ejemplo: <code class="docutils literal notranslate"><span class="pre">&quot;Subo</span> <span class="pre">notebook</span> <span class="pre">de</span> <span class="pre">ejemplo</span> <span class="pre">de</span> <span class="pre">polen&quot;</span></code></p></li>
+<li><p>Haz clic en <strong>“Commit changes”</strong></p></li>
+</ol>
+<p>🎉 ¡Listo! Tu notebook estará disponible en línea y puedes compartir el enlace con quien quieras.</p>
+</section>
+</section>
 <section id="github-local">
-<h2>GitHub local<a class="headerlink" href="#github-local" title="Link to this heading">#</a></h2>
+<h2>GitHub local<a class="headerlink" href="#github-local" title="Permalink to this heading">#</a></h2>
 <p>Una de las herramientas más interesantes con gitHub es poder <strong>clonar</strong> repositorios de otros usuarios y mantener actualizados los repositorios personales. Para esto se puede instalar gitHub de manera [local](<a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a> y sincronizar con la cuenta personal). Para hacer esto es necesario:</p>
 <ul class="simple">
 <li><p>Configurar el usuario y correo para correrlo desde la terminal</p></li>
@@ -457,29 +550,29 @@ Un repositorio permite compartir los archivos del proyecto, actualizarlos y guar
 <p>Al conectar el Git local con GitHub donde se pedirá el password <a class="reference external" href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git">https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git</a></p>
 </section>
 <section id="clone">
-<h2>Clone<a class="headerlink" href="#clone" title="Link to this heading">#</a></h2>
+<h2>Clone<a class="headerlink" href="#clone" title="Permalink to this heading">#</a></h2>
 <p>Esta función le permitirá bajar al computador local la totalidad del repositorio de interés. Es importante descargarlo en una carpeta conocida ya que luego debemos volver a acceder a ella, lo cual se puede hacer normalmente como a cualquier directorio</p>
 <p>Cree o entre a un directorio para clonar el repositorio y escriba el comando para clonar desde una terminal de su computador</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">dir_donde_clonar_repo</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">lauraalazar</span><span class="o">/</span><span class="n">Markdown_Ejemplo</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">lauraalazar</span><span class="o">/</span><span class="n">Markdown_Ejemplo</span><span class="o">.</span><span class="n">git</span> <span class="c1"># o tu propio markdown</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>dentro del directorio donde se ejecutó el comando debe haber un directorio llamado Markdown_Ejemplo. Ahora vamos a generar un script local y luego agregarlo a esta carpeta</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="r-markdown">
-<h1>R Markdown<a class="headerlink" href="#r-markdown" title="Link to this heading">#</a></h1>
+<section id="r-markdown-local">
+<h3>R Markdown Local<a class="headerlink" href="#r-markdown-local" title="Permalink to this heading">#</a></h3>
 <p>Abra RStudio y cree un archivo R Markdown file</p>
-<img src="markdown1.png" /><p>Dele un título y autor y escoja la opción “html” (esto se puede cambiar luego para generar un pdf, pro ejemplo)</p>
+<img src="markdown1.png" />
+<p>Dele un título y autor y escoja la opción “html” (esto se puede cambiar luego para generar un pdf, por ejemplo)</p>
 <img src="markdown2.png" /><p>Inmediatamente se genera un archivo plantilla con comandos de ejemplo que después se pueden editar y con una página muy completa para encontrar información <a class="reference external" href="https://rmarkdown.rstudio.com/">https://rmarkdown.rstudio.com/</a>. Guarde este archivo en el directorio donde clonó el repositorio. El objetivo es que este ejemplo posteriormente se subirá en este repositorio.</p>
 <p>Ahora de clic en <code class="docutils literal notranslate"><span class="pre">knitr</span></code> para generar el output en html</p>
 <img src="markdown3.png" /><p>Ahora entre al directorio del repositorio, donde debe aparecer el archivo html que se acaba de crear. Este archivo aún no aparece en github. Para incluirlo vamos a hacer un “Push”</p>
+</section>
 <section id="push">
-<h2>Push<a class="headerlink" href="#push" title="Link to this heading">#</a></h2>
+<h3>Push<a class="headerlink" href="#push" title="Permalink to this heading">#</a></h3>
 <p>Esta función le permitirá subir archivos a un repositorio clonado en el computador local. Aquí se deben seguir ciertos pasos, todos precedidos por el comando <code class="docutils literal notranslate"><span class="pre">git</span></code>:</p>
 <ul class="simple">
 <li><ol class="arabic simple">
@@ -534,40 +627,14 @@ Step 5: Copy the URL in the production field and paste it into the browser</p></
 </ul>
 <p><a class="reference external" href="https://www.geeksforgeeks.org/how-to-render-github-html-code-in-browser-without-downloading/">https://www.geeksforgeeks.org/how-to-render-github-html-code-in-browser-without-downloading/</a></p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="python-notebook-markdown">
-<h1>Python Notebook Markdown<a class="headerlink" href="#python-notebook-markdown" title="Link to this heading">#</a></h1>
+<section id="python-local">
+<h3>Python Local<a class="headerlink" href="#python-local" title="Permalink to this heading">#</a></h3>
 <p>Entre a <a class="reference external" href="https://jupyter.org/try-jupyter/lab/index.html">https://jupyter.org/try-jupyter/lab/index.html</a>. El archivo “Intro.ipynb” contiene un ejemplo completo de los comandos y el formato para escribir texto, formulas, comandos y gráficos.</p>
 <p>Para crear un nuevo notebook de click en la pestaña adyacente con un “+”. Para modificar el nombre del proyecto, de click derecho y “rename”. Para entrar en modo de texto, despliegue la flecha hacia abajo y escoja “Markdown”. Aquí puede escribir el título principal (predecedido por “#”). Para correr y visualizar</p>
 <p>Un fragmento de código se puede correr entrando en modo “Code” (desplegando la pestaña con flecha hacia abajo). Esto indica que este fragmento (“chunk”)
 es ejecutable. Para ejecutarlo, de click en el triángulo.</p>
-<img src="jupyter.png" /><p>Finalmente, puede descargar este notebook y compartirlo vía GitHub para colaborar con sus compañeros</p>
-<div class="alert alert-block alert-info">
-<b>Proyecto</b> 
-<p>El proyecto se podrá realizar en parejas o máximo 3 personas. La forma de entrega será en formato artículo:</p>
-<ol class="arabic simple">
-<li><p>Introducción: planteamiento de un problema o motivación sobre secuencias, una predicción o anotación de una proteína o análisis filogenético</p></li>
-<li><p>Metodología: descripción de bases de datos consultadas, comandos, programas (y versiones) utilizados</p></li>
-<li><p>Resultados: gráficas, tablas y descripciones</p></li>
-<li><p>Discusión: respecto a la motivación o planteamiento del problema, donde se ubican sus resultados? Cuales fueron los nuevos a prendizajes y limitaciones encontradas? Puede proponer formas de avanzar en este tema?</p></li>
-<li><p>Bibliografía</p></li>
-</ol>
-  </div></section>
-<section class="tex2jax_ignore mathjax_ignore" id="bases-de-datos-mas-usadas">
-<h1>Bases de Datos mas usadas<a class="headerlink" href="#bases-de-datos-mas-usadas" title="Link to this heading">#</a></h1>
-<ol class="arabic simple">
-<li><p>Refseq (<a class="reference external" href="http://www.ncbi.nlm.nih.gov/refseq">http://www.ncbi.nlm.nih.gov/refseq</a>) is a database of genome sequences that contains the high-quality genome sequences of important reference species like Homo sapiens and Escherichia coli. Istrucciones correrlo local: <a class="reference external" href="https://ncbi.github.io/magicblast/cook/blastdb.html">https://ncbi.github.io/magicblast/cook/blastdb.html</a></p></li>
-<li><p>The largest databases of nucleotide sequences (genes, genomes, and sequence fragments) are those of the three partners of the International Nucleotide Sequence Database Collaboration (INSDC) that serve three corners of the world: the European Bioinformatics Institute of the European Molecular Biology Laboratory (EBI-EMBL, <a class="reference external" href="http://www.ebi.ac.uk/services">http://www.ebi.ac.uk/services</a>), Genbank at the National Center for Biotechnology Information (NCBI, <a class="reference external" href="http://www.ncbi.nlm.nih.gov/genbank">http://www.ncbi.nlm.nih.gov/genbank</a>), and the DNA Data Bank of Japan (DDBJ, <a class="reference external" href="http://www.ddbj.nig.ac.jp">http://www.ddbj.nig.ac.jp</a>). The data in these databases is mirrored, and in 2014 consisted of over 654 billion nucleotides in sequences from from over 280 thousand formally described species (Benson et al. 2014).</p></li>
-<li><p>The raw output of DNA sequencing machines consists of vast datasets of unannotated reads that are stored in repositories like the European Nucleotide Archive (ENA, <a class="reference external" href="http://www.ebi.ac.uk/ENA">http://www.ebi.ac.uk/ENA</a>). Researchers have often only analyzed one aspect of these datasets, so a lot remains to be discovered by so-called “data recycling”.</p></li>
-<li><p>The UniProt KnowledgeBase (<a class="reference external" href="http://www.uniprot.org">http://www.uniprot.org</a>) contains protein sequences together with their functional annotation. EggNOG (<a class="reference external" href="http://eggnog.embl.de">http://eggnog.embl.de</a>) and Pfam (<a class="reference external" href="http://pfam.xfam.org">http://pfam.xfam.org</a>) are also databases of proteins that are grouped in protein families, and contain multiple sequence alignments of each protein family. EggNOG groups the proteins according to their family tree into orthologous groups in a wide range of organisms (see Section 4.5).</p></li>
-<li><p>Transcription factor binding sites can be found in JASPAR (<a class="reference external" href="http://jaspar.genereg.net">http://jaspar.genereg.net</a>).</p></li>
-<li><p>The Protein Data Bank (PDB, <a class="reference external" href="http://www.rcsb.org/pdb">http://www.rcsb.org/pdb</a>) contains information about the
-three-dimensional structure of proteins.</p></li>
-<li><p>The Kyoto Encyclopedia of Genes and Genomes (KEGG, <a class="reference external" href="http://www.genome.jp/kegg">http://www.genome.jp/kegg</a>)
-contains information about groups of proteins that work together in a biological system,
-for example in metabolic pathways.</p></li>
-<li><p>The NCBI Taxonomy database (<a class="reference external" href="http://www.ncbi.nlm.nih.gov/Taxonomy">http://www.ncbi.nlm.nih.gov/Taxonomy</a>) contains information about the taxonomy of all organisms from viruses to humans.</p></li>
-</ol>
+<img src="jupyter.png" /></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -595,21 +662,34 @@ for example in metabolic pathways.</p></li>
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Ejercicio_bioinformatico.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Ejercicio Bioinformático:</p>
+        <p class="prev-next-title">Cómo leer este documento</p>
       </div>
     </a>
+    <a class="right-next"
+       href="intro_linux.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introducción a la Terminal</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -618,27 +698,38 @@ for example in metabolic pathways.</p></li>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introducción a Github</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-un-repositorio">Crear un repositorio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-1-instalar-librerias">Celda 1: instalar librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-2-cargar-datos-y-calcular-porcentajes">Celda 2: cargar datos y calcular porcentajes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-3-grafico">Celda 3: gráfico</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r">R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Celda 1: instalar librerías</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#celda-2-datos-y-porcentajes">Celda 2: datos y porcentajes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Celda 3: gráfico</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compartir-notebook-de-forma-virtual">Compartir Notebook de forma virtual</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos">Pasos:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-local">GitHub local</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clone">Clone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clone">Clone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#r-markdown-local">R Markdown Local</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#push">Push</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-local">Python Local</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#r-markdown">R Markdown</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#push">Push</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-notebook-markdown">Python Notebook Markdown</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bases-de-datos-mas-usadas">Bases de Datos mas usadas</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
@@ -659,10 +750,9 @@ By Laura Salazar Jaramillo
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -686,8 +776,8 @@ By Laura Salazar Jaramillo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
