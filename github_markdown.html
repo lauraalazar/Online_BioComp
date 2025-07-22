@@ -510,12 +510,51 @@ Un repositorio permite compartir los archivos del proyecto, actualizarlos y guar
 </div>
 <section id="id1">
 <h3>Celda 1: instalar librerías<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;dplyr&quot;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s1">&#39;http://cran.us.r-project.org&#39;</span><span class="p">)</span>
+<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;ggplot2&quot;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s1">&#39;http://cran.us.r-project.org&#39;</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="celda-2-datos-y-porcentajes">
 <h3>Celda 2: datos y porcentajes<a class="headerlink" href="#celda-2-datos-y-porcentajes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">&lt;-</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span>
+  <span class="n">Familia</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;Urticaceae cecropia&quot;</span><span class="p">,</span> <span class="s2">&quot;Rhamnaceae&quot;</span><span class="p">,</span> <span class="s2">&quot;Dilleniaceae&quot;</span><span class="p">,</span> <span class="s2">&quot;Metastomataceae&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;Cannabaceae Trema&quot;</span><span class="p">,</span> <span class="s2">&quot;Myrtaceae&quot;</span><span class="p">,</span> <span class="s2">&quot;Polypodiaceae&quot;</span><span class="p">,</span> <span class="s2">&quot;Malvaceae  Heliocarpus&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;Fabaceae macrolobium&quot;</span><span class="p">,</span> <span class="s2">&quot;Poaceae&quot;</span><span class="p">,</span> <span class="s2">&quot;Malvaceae Bombacoideae&quot;</span><span class="p">,</span> <span class="s2">&quot;Loranthaceae oryctanthus&quot;</span><span class="p">),</span>
+  <span class="n">Conteo</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">845</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">datos</span> <span class="o">&lt;-</span> <span class="n">datos</span> <span class="o">%&gt;%</span>
+  <span class="n">mutate</span><span class="p">(</span><span class="n">Porcentaje</span> <span class="o">=</span> <span class="n">Conteo</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Conteo</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id2">
 <h3>Celda 3: gráfico<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">datos</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">reorder</span><span class="p">(</span><span class="n">Familia</span><span class="p">,</span> <span class="n">Porcentaje</span><span class="p">),</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Porcentaje</span><span class="p">))</span> <span class="o">+</span>
+  <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s2">&quot;identity&quot;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;skyblue&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+  <span class="n">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Distribución porcentual del polen por familia&quot;</span><span class="p">,</span>
+       <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">% d</span><span class="s2">e polen&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="n">theme_minimal</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="alternativa-a-collab-jupyter-notebook">
