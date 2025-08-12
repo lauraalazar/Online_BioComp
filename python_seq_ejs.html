@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_seq_ejs';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Biopython en Apolo" href="biopython_apolo.html" />
-    <link rel="prev" title="Introducción a Python y Biopython" href="python.html" />
+    <link rel="next" title="Tecnologías de secuenciación" href="tec_seq.html" />
+    <link rel="prev" title="Introducción a Biopython" href="biopython.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,10 +156,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables, declaraciones y loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ejemplo_bash.html">Ejemplo de script ejecutable en bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Introducción a Python y Biopython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biopython.html">Introducción a Biopython</a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio con secuencias en python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="biopython_apolo.html">Biopython en Apolo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tec_seq.html">Tecnologías de secuenciación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alineamientos</a></li>
 
@@ -364,7 +363,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-secuencias-en-un-archivo">Escribir secuencias en un archivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importaciones-y-carga-de-datos-estructurada">1. Importaciones y carga de datos estructurada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transcripcion-a-arn">2. Transcripción a ARN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-del-codon-de-inicio">3. Búsqueda del codón de inicio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-secuencias-en-un-archivo">Escribir secuencias en un archivo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrar-y-guardar-glicoproteinas">1. Filtrar y guardar glicoproteínas</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -379,155 +384,90 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-con-secuencias-en-python">
 <h1>Ejercicio con secuencias en python<a class="headerlink" href="#ejercicio-con-secuencias-en-python" title="Permalink to this heading">#</a></h1>
 <p>Vamos a utilizar los bucles y condicionales para buscar el codón de inicio de transcripción para el genoma de covid19</p>
+<section id="importaciones-y-carga-de-datos-estructurada">
+<h2>1. Importaciones y carga de datos estructurada<a class="headerlink" href="#importaciones-y-carga-de-datos-estructurada" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
-<span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
-<span class="c1"># define una variable para abrir el archivo fasta como input</span>
-<span class="c1"># recuerde que si abre python en otro directorio, debe dar la ruta completa donde está el archivo</span>
-<span class="n">dna_file</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;Sars_cov.dna.fa&#39;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 
-<span class="c1"># define una variable para la secuencia completa del covid</span>
-<span class="n">covid19_seq</span> <span class="o">=</span> <span class="n">dna_file</span><span class="o">.</span><span class="n">seq</span>
-
-<span class="c1"># Define el codón de inicio</span>
-<span class="n">start_codon</span> <span class="o">=</span> <span class="s1">&#39;AUG&#39;</span>
-
-<span class="c1"># Escanea la secuencia hasta encontrar el patrón</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">covid19_seq</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">covid19_seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">start_codon</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The start codon starts at index&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-        <span class="k">break</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Codon not found in sequence.&#39;</span><span class="p">)</span>
+<span class="c1"># Paso 1: Leer archivo FASTA con el genoma de SARS-CoV-2.</span>
+<span class="c1"># Asegúrate de que el archivo esté en el mismo directorio o usa una ruta absoluta.</span>
+<span class="n">record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;Sars_cov.dna.fa&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">)</span>
+<span class="n">covid_seq</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">seq</span>  <span class="c1"># objeto Seq de Biopython</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Secuencia cargada: </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, longitud: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">covid_seq</span><span class="p">)</span><span class="si">}</span><span class="s2"> nucleótidos&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Si no lo encotró probablmente es porque faltó un paso intermedio: transcribir el codón de DNA a RNA. Esto lo podemos hacer utilizando la función de biopython <code class="docutils literal notranslate"><span class="pre">transcribe()</span></code></p>
+<p>Nota: La f-string con f”texto {variable}” permite insertar el resultado de variables directamente en el mensaje. Los {} contienen expresiones que Python evalúa al imprimir, como len(covid_seq) o i.</p>
+</section>
+<section id="transcripcion-a-arn">
+<h2>2. Transcripción a ARN<a class="headerlink" href="#transcripcion-a-arn" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">covid_mRNA</span> <span class="o">=</span> <span class="n">covid19_seq</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paso 2: Transcribir ADN a mRNA (reemplaza T por U automáticamente)</span>
+<span class="n">covid_mRNA</span> <span class="o">=</span> <span class="n">covid_seq</span><span class="o">.</span><span class="n">transcribe</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Primeros 50 nucleótidos del mRNA:&quot;</span><span class="p">,</span> <span class="n">covid_mRNA</span><span class="p">[:</span><span class="mi">50</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="busqueda-del-codon-de-inicio">
+<h2>3. Búsqueda del codón de inicio<a class="headerlink" href="#busqueda-del-codon-de-inicio" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paso 3: Buscar el codón de inicio &#39;AUG&#39;</span>
+<span class="n">start_codon</span> <span class="o">=</span> <span class="s1">&#39;AUG&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">covid_mRNA</span><span class="p">),</span> <span class="mi">3</span><span class="p">):</span>  <span class="c1"># iterar por codones</span>
+    <span class="n">codon</span> <span class="o">=</span> <span class="n">covid_mRNA</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">codon</span> <span class="o">==</span> <span class="n">start_codon</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Codón de inicio encontrado en el marco de lectura, índice (0-based): </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontró un codón de inicio en marco de lectura.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-info">
-<b>Ejercicio</b> Vuelva a correr el script anterior para el RNA mensajero y verifique si la posición indicada si contiene el códon de inicio </div><section id="escribir-secuencias-en-un-archivo">
+<b>Ejercicio</b> Verifique si la posición indicada si contiene el códon de inicio </div></section>
+<section id="escribir-secuencias-en-un-archivo">
 <h2>Escribir secuencias en un archivo<a class="headerlink" href="#escribir-secuencias-en-un-archivo" title="Permalink to this heading">#</a></h2>
 <p>Con frecuencia estamos interesados en un subconjunto de los genes o proteínas para realizar un análisis a profundidad de ellos. En este caso vamos a seleccionar las glicoproteínas que son aquellas que codifican la espícula. Esta espícula (“spike”) es la encargada de mediar la entrada del virus hacia el hospedero y tiene una tasa de mutación mas alta que los otros genes, lo que presumiblemente dió origen a cepas mas virulentas (<a class="reference external" href="https://en.wikipedia.org/wiki/Coronavirus_spike_protein">https://en.wikipedia.org/wiki/Coronavirus_spike_protein</a>). Para esto vamos a llamar al archivo de proteínas dentro de una variable. Recordemos que el archivo se puede llamar sin añadir la ruta completa si abrimos python dentro de la carpeta donde se encuentra el archivo. De lo contrario debemos darle la ruta</p>
+<section id="filtrar-y-guardar-glicoproteinas">
+<h3>1. Filtrar y guardar glicoproteínas<a class="headerlink" href="#filtrar-y-guardar-glicoproteinas" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
-<span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
 
-<span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;/Users/laura/clase_python/Sars_cov.prot.fa&quot;</span>
+<span class="c1"># Archivo de entrada con varias proteínas</span>
+<span class="n">prot_file</span> <span class="o">=</span> <span class="s1">&#39;Sars_cov.prot.fa&#39;</span>
 
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">9</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;glycoprotein&quot;</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+<span class="c1"># Archivo de salida para las coincidencias</span>
+<span class="n">output_fasta</span> <span class="o">=</span> <span class="s2">&quot;Sars_glycoproteins.fasta&quot;</span>
+
+<span class="c1"># Filtrar y guardar</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_fasta</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_handle</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;glycoprotein&quot;</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>  <span class="c1"># búsqueda sin distinción de mayúsculas</span>
+            <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">out_handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Proteínas filtradas guardadas en </span><span class="si">{</span><span class="n">output_fasta</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>La descripción tiene mucha información importante pero esta no es muy clara, entonces vamos a extraer el fragmento que contiene la función. Para esto dividimos la descripción en items, utilizando la función <code class="docutils literal notranslate"><span class="pre">split.()</span></code>. Esta función separa una lista en items. Por ejemplo, yo puedo descomponer mi nombre en las letras que lo componen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="s2">&quot;laura&quot;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Asímismo, se puede separar la descripción en las palabras que la componen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>y luego le damos el número  del item de interés <code class="docutils literal notranslate"><span class="pre">[]</span></code> (es el item 9 pero python comienza a contar desde 0, entonces es el 8)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
-<span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
-
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">9</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;glycoprotein&quot;</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Hasta aquí hemos seleccionado las secuencias que contienen el término “glycoprotein”. Para escribirlas en un archivo en un formato adecuado de secuencias vamos a utilizar la función de biopython  <code class="docutils literal notranslate"><span class="pre">Bio.SeqIO.write()</span></code> y a cambiar un poco el estilo.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glycoproteins</span> <span class="o">=</span> <span class="p">(</span><span class="n">record</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">9</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;glycoprotein&quot;</span><span class="p">))</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">glycoproteins</span><span class="p">,</span> <span class="s2">&quot;sars_covid19_glycoproteins.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Donde eperas que esté el archivo? Chequéalo mirando el directorio actual (“get current working directory”). Verifica que si se haya generado con el nombre y formatos correctos, y la información que deseamos que contenga.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Por último, vamos a escribir los comando que utilizamos en un script de python (con extensión “.py”) para dejar registro de lo que hicimos y pueda ser repetible</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/</span>
-
-<span class="c1"># Script por Laura Salazar Jaramillo</span>
-<span class="c1"># Genera un subconjunto de glicoproteinas de SARS-covid 19</span>
-
-<span class="c1"># Importamos las librerías necesarias</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="kn">import</span> <span class="nn">Bio</span>
-<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
-<span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
-
-<span class="c1"># Archivos de entrada (inputs)</span>
-<span class="n">dna_file</span> <span class="o">=</span> <span class="s2">&quot;/home/lsalazarj/bicomp2024/Sars_cov.dna.fa&quot;</span>
-<span class="n">prot_file</span> <span class="o">=</span> <span class="s2">&quot;Sars_cov.prot.fa&quot;</span>
-
-
-<span class="c1"># Listamos el tamano del genoma</span>
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">dna_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La longitud en nc del genoma es:&quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">))</span>
-
-<span class="c1"># Listamos los id y longitudes de las proteínas</span>
-<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">seq</span><span class="p">),</span><span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">9</span><span class="p">])</span>
-
-<span class="c1"># Seleccionamos las glicoproteínas y las guardamos en un archivo aparte</span>
-<span class="n">glycoproteins</span> <span class="o">=</span> <span class="p">(</span><span class="n">record</span> <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">prot_file</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">9</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;glycoprotein&quot;</span><span class="p">))</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">glycoproteins</span><span class="p">,</span> <span class="s2">&quot;sars_covid19_glycoproteins.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Este script se puede ejecutar en la terminal escribiendo los comandos</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">biopython_env</span> <span class="c1">#o como se llame el ambiente donde está instalado biopython</span>
-<span class="n">python</span> <span class="n">glycoproteins</span><span class="o">.</span><span class="n">py</span> <span class="o">&gt;</span> <span class="n">glycoproteins</span><span class="o">.</span><span class="n">out</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Ahora vamos a trabajar con secuencias de Citocromo B desde: <a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt">https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt</a></p>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> 
+1. Abrir y examinar el archivo proteinas.fasta para ver las descripciones.
+<ol class="arabic simple" start="2">
+<li><p>Modificar el término de búsqueda para filtrar por otra palabra clave.</p></li>
+<li><p>Contar cuántas secuencias fueron filtradas:</p></li>
+<li><p>Guardar también un .txt solo con los IDs y longitudes:</p></li>
+</ol>
+ </div><p>Ahora vamos a trabajar con secuencias de Citocromo B desde: <a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt">https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt</a></p>
 <ol class="arabic simple">
 <li><p>Cree una carpeta que se llame citB_seqs</p></li>
 <li><p>Entre a la carpeta</p></li>
@@ -541,6 +481,7 @@ document.write(`
 <li><p>Compare las secuencias obtenidas con las de proteínas: <a class="github reference external" href="https://github.com/lauraalazar/BiologiaComputacional/blob/main/CytBProt.txt">lauraalazar/BiologiaComputacional</a></p></li>
 <li><p>Utilice la sección 3.8 del tutorial de <a class="reference external" href="https://biopython.org/DIST/docs/tutorial/Tutorial.html">Biopython</a> y repita el punto 9</p></li>
 </ol>
+</section>
 </section>
 </section>
 
@@ -576,20 +517,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="python.html"
+       href="biopython.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introducción a Python y Biopython</p>
+        <p class="prev-next-title">Introducción a Biopython</p>
       </div>
     </a>
     <a class="right-next"
-       href="biopython_apolo.html"
+       href="tec_seq.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Biopython en Apolo</p>
+        <p class="prev-next-title">Tecnologías de secuenciación</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -611,7 +552,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-secuencias-en-un-archivo">Escribir secuencias en un archivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importaciones-y-carga-de-datos-estructurada">1. Importaciones y carga de datos estructurada</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transcripcion-a-arn">2. Transcripción a ARN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-del-codon-de-inicio">3. Búsqueda del codón de inicio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escribir-secuencias-en-un-archivo">Escribir secuencias en un archivo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrar-y-guardar-glicoproteinas">1. Filtrar y guardar glicoproteínas</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
