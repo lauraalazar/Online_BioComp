@@ -373,7 +373,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-local-smith-waterman">Alineamiento Local: Smith-Waterman</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-de-sustitucion">Matrices de sustitución</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-de-sustitucion">Matrices de sustitución</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamientos-multiples">Alineamientos múltiples</a></li>
 </ul>
 </li>
@@ -419,15 +421,6 @@ Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas se
 </div><p>Ahora lo haremos con python. Entramos a Apolo y activamos los ambientes</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">lsalazarj</span><span class="nd">@apolo</span><span class="o">.</span><span class="n">eafit</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">co</span>
-<span class="n">conda</span> <span class="n">activate</span> <span class="n">biopython</span> <span class="c1"># recuerde que su ambiente de conda puede tener un nombre diferente</span>
-<span class="n">python</span>                   <span class="c1"># recuerde utilizar la versión de python donde instaló biopython</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Llamamos las librerías de bipython</span>
 <span class="kn">import</span> <span class="nn">Bio</span>
 <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
@@ -447,10 +440,9 @@ Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas se
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Align</span> <span class="c1">#importa la librería para alineamientos</span>
 
-<span class="n">aligner</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span> <span class="c1">#esta función alinea por pares</span>
+<span class="n">aligner</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span> <span class="c1">#esta función alinea por pares con parámetros por defecto</span>
 <span class="n">alignments1_2</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span> <span class="c1"># LISTA de alineamientos posibles entre las dos secuencias</span>
-<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments1_2</span><span class="p">):</span> <span class="c1"># </span>
-<span class="c1">#    print(&quot;Score = %.1f:&quot; % alignment.score)</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="n">alignments1_2</span><span class="p">:</span> <span class="c1"># </span>
     <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -546,7 +538,10 @@ Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas se
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aligner</span><span class="o">.</span><span class="n">match_score</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">aligner</span><span class="o">.</span><span class="n">mismatch_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">aligner</span><span class="o">.</span><span class="n">open_gap_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">open_gap_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">extend_gap_score</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">0.5</span>
+
+<span class="n">alignments1_2</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span> <span class="c1">#se debe volver a alinear para usar los neuvos scores</span>
 
 <span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments1_2</span><span class="p">):</span> 
     <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
@@ -555,7 +550,43 @@ Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas se
 </div>
 </div>
 </div>
-<section id="alineamiento-global">
+<p>Para implementar estos códigos en Apolo, vamos a escribirlo dentro de un script python y correr un slurm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Llamamos las librerías de bipython</span>
+<span class="kn">import</span> <span class="nn">Bio</span>
+<span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+
+<span class="c1"># Definimos las secuencias con la función Seq de biopython</span>
+<span class="n">seq1</span><span class="o">=</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGTG&quot;</span><span class="p">)</span> 
+<span class="n">seq2</span><span class="o">=</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGTC&quot;</span><span class="p">)</span>
+<span class="n">seq3</span><span class="o">=</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGCC&quot;</span><span class="p">)</span>
+
+<span class="c1"># Función de alineamiento con scores por defecto</span>
+<span class="n">aligner</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span> <span class="c1">#esta función alinea por pares con parámetros por defecto</span>
+<span class="n">alignments1_2</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span> <span class="c1"># LISTA de alineamientos posibles entre las dos secuencias</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="n">alignments1_2</span><span class="p">:</span> <span class="c1"># </span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+
+
+<span class="c1"># Editamos los scores</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">match_score</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">mismatch_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">open_gap_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">extend_gap_score</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">0.5</span>
+
+
+<span class="c1">#Volvemos a alinear con otro nombre para no sobreescribirlo</span>
+<span class="n">alignments1_2_scores</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span> <span class="c1"># LISTA de alineamientos posibles entre las dos secuencias</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="n">alignments1_2_scores</span><span class="p">:</span> <span class="c1"># </span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> 
+Realice el alineamiento entre seq3 y las otras secuencias  </div><section id="alineamiento-global">
 <h3>Alineamiento Global<a class="headerlink" href="#alineamiento-global" title="Permalink to this heading">#</a></h3>
 <p>Supongamos que tenemos dos secuencias con diferente longitud (que es lo mas frecuente):</p>
 <ul class="simple">
@@ -666,6 +697,7 @@ Chequee este mismo alineamiento en bipython. Defina las dos secuencias, los gaps
 </div>
 </div>
 </div>
+<p>el ‘’mejor” alineamiento es aquel que maximiza los <em>matches</em> mientras minimiza mismatches y gaps.</p>
 </section>
 </section>
 <section id="alineamiento-local-smith-waterman">
@@ -684,15 +716,15 @@ Chequee este mismo alineamiento en bipython. Defina las dos secuencias, los gaps
 </ul>
 <img src="matrix1_SW.png"/><img src="matrix2_SW.png" /><p>El procedimiento inverso para alineamientos locales comienza con el score mas alto y sigue la ruta en reversa hasta el campo que contenga un  0 y para. La celda con el H mas alto no tiene que estar en la esquina inferior derech[porque aquí se busca el sub-alineamiento más óptimo, el cual puede estar en el medio</p>
 <img src="matrix3_SW.png" /></section>
+</section>
 <section id="matrices-de-sustitucion">
-<h3>Matrices de sustitución<a class="headerlink" href="#matrices-de-sustitucion" title="Permalink to this heading">#</a></h3>
+<h2>Matrices de sustitución<a class="headerlink" href="#matrices-de-sustitucion" title="Permalink to this heading">#</a></h2>
 <p>Desde un punto de vista fisico-químico, no todas las sustituciones son igualmente probables. En el caso de los nucleótidos, las transiciones (A-G, T-C) son mas frecuentes que las transversiones (A↔C, A↔T, C↔G, and G↔T).</p>
 <p>Ejemplo de Modelo de sustitución K80 de Kimura
 <img src="All_transitions_and_transversions.png" width=500 height=500 /></p>
 <p>En el caso de los amino ácidos, existen sesgos al nivel de mutacions o de selección natural que hacen algunas sustitutciones mas probable que otras. Primero, algunos amino ácidos tienen mas probabilidad de mutar a otros porque sus codone son mas similares en código genético. Segundo. algunas sutituciones se fijan mejor durante la evolución porque los amino ácidos comparten propiedades fisico-químicas similares. Estas diferencias tratan de reflejarse en las matrices de sustitutción</p>
 <p>Ejemplo de Matriz <a class="reference external" href="https://es.wikipedia.org/wiki/BLOSUM">Blosum62</a></p>
-<img src="Blosum62-dayhoff-ordering.png" width=400 height=400 /></section>
-<section id="alineamientos-multiples">
+<img src="Blosum62-dayhoff-ordering.png" width=400 height=400 /><section id="alineamientos-multiples">
 <h3>Alineamientos múltiples<a class="headerlink" href="#alineamientos-multiples" title="Permalink to this heading">#</a></h3>
 <p>Con frecuencia estamos interesados en comparar mas de dos secuencias. Los alineamiento múltiples contienen mas información sobre sitios conservados que pueden ser mas fácil de identificar. Al mismo tiempo son computacionalmente mucho mas complejos y el tiempo computación incrementa exponencialmente. La aproximación mas usada es alinear fragmentos por similitud, y progresivamente construir alineamientos locales por pares, tomando primero las mas similares, formando “clusters jerárquicos”.</p>
 <p>Vamos a descargar (o copiar de una descarga previa) las proteínas de citrocomo <a class="reference external" href="https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBProt.txt">https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBProt.txt</a> y a alinearlas utilizando uno de los programas, entre (muchos)[<a class="reference external" href="https://www.ebi.ac.uk/Tools/msa/">https://www.ebi.ac.uk/Tools/msa/</a>] de alineamiento: (ClustalW)[<a class="reference external" href="https://www.ebi.ac.uk/Tools/msa/clustalo/">https://www.ebi.ac.uk/Tools/msa/clustalo/</a>].</p>
@@ -747,7 +779,8 @@ Escriba este comando desde un script "slurm" y ejecútelo
 </div><div class="alert alert-block alert-info">
 <b>Ejercicio</b> 
 Repita el mismo proceso de alineamiento y generación de árbol con el archivo de nucleótidos de Citocromo B (https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt). Ve alguna diferencia con respecto a las proteínas, por ejemplo en la topología del árbol? A qué cree que se deben las diferencias?
-</div></section>
+</div><p><a class="reference external" href="https://biopython.org/docs/dev/Tutorial/chapter_msa.html#">https://biopython.org/docs/dev/Tutorial/chapter_msa.html#</a></p>
+</section>
 </section>
 </section>
 
@@ -826,7 +859,9 @@ Repita el mismo proceso de alineamiento y generación de árbol con el archivo d
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-local-smith-waterman">Alineamiento Local: Smith-Waterman</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-de-sustitucion">Matrices de sustitución</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-de-sustitucion">Matrices de sustitución</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamientos-multiples">Alineamientos múltiples</a></li>
 </ul>
 </li>
