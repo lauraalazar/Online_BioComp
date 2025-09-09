@@ -432,7 +432,7 @@ document.write(`
     <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-1/ncbi/hsneanderthal_cytb_prot.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-2/ncbi/hsneanderthal_cytb_prot.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -503,7 +503,7 @@ document.write(`
 <p>Ahora vamos a realizar la búsqueda desde Apolo por medio de la línea de comando. Entre a Apolo y cargue el módulo de blast:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">blast</span><span class="o">/</span><span class="mf">2.13.0</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">blast</span><span class="o">/</span><span class="mf">2.16.0</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
 </pre></div>
 </div>
 </div>
@@ -511,7 +511,7 @@ document.write(`
 <p>El comando para correr blast es (recuerde que debe estar dentro de un script slurm)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blastp</span> <span class="o">-</span><span class="n">query</span> <span class="n">homosapiens_cytb</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">db</span> <span class="n">nr</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb_neander_nr</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-20</span> <span class="o">-</span><span class="n">max_target_seqs</span> <span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blastp</span> <span class="o">-</span><span class="n">query</span> <span class="n">hsneanderthal_cytb_prot</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">db</span> <span class="n">nr</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb_hn_blast</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">entrez_query</span> <span class="s2">&quot;Mammalia [Organism]&quot;</span> <span class="o">-</span><span class="n">max_target_seqs</span> <span class="mi">20</span> 
 </pre></div>
 </div>
 </div>
@@ -519,21 +519,35 @@ document.write(`
 <p>donde:</p>
 <ul class="simple">
 <li><p>blastp: tipo de blast (proteínas en este caso)</p></li>
-<li><p>query: la secuencia problema</p></li>
+<li><p>query: la secuencia problema (cytochrome B H. neanderthalensis)</p></li>
 <li><p>remote: remota (de la web)</p></li>
 <li><p>nr: no-redundante (las secuencias idénticas están presentes usa sola vez)</p></li>
 <li><p>out: nombre del archivo de output</p></li>
-<li><p>evalue: el máximo evalue</p></li>
-<li><p>max_target_seqs: un máximo de secuencias para el putput</p></li>
+<li><p>max_target_seqs: un máximo de secuencias para el output (20)</p></li>
+<li><p>entrez_query: grupo filogenético</p></li>
 </ul>
-</section>
+<p>Este comando genera un archivo con alineamientos por pares entre la secuencia problema y las de los <em>mejores hits</em>. Para pocas secuencias es útil, pero para muchas secuencias resulta ineficiente. Por esta razón existen otros formatos de output que son tabulares</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blastp</span> <span class="o">-</span><span class="n">query</span> <span class="n">hsneanderthal_cytb_prot</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">remote</span> <span class="o">-</span><span class="n">db</span> <span class="n">nr</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb_hn_table</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">entrez_query</span> <span class="s2">&quot;Mammalia [Organism]&quot;</span> <span class="o">-</span><span class="n">max_target_seqs</span> <span class="mi">100</span> <span class="o">-</span><span class="n">outfmt</span> <span class="s2">&quot;6 qseqid sseqid pident length evalue bitscore sscinames&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>aquí la opción “-outfmt 6” indica el formato de output que queremos. Consulte la tabulación de este formato:
+<a class="reference external" href="https://www.metagenomics.wiki/tools/blast/blastn-output-format-6">https://www.metagenomics.wiki/tools/blast/blastn-output-format-6</a> y revise el output que obtuvo del blast.</p>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> 
+Corra nuevamente el comando de blast para generar un output tabulado. 
+Cual es el procentaje de similitud de esta secuencia con humanos? Si no es 100%, cómo averiguaría donde están las diferencias? 
+</div></section>
 <section id="blast-local">
 <h3>BLAST local<a class="headerlink" href="#blast-local" title="Permalink to this heading">#</a></h3>
 <p>Con frecuencia estamos interesados en comparar nuestra(s) secuencia(s) problema(s) contra una base de datos específica y mas pequeña. NCBI tiene una gran colección de bases de datos descargables, las cuales se pueden descargar desde <a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/blast/db/">ftp://ftp.ncbi.nlm.nih.gov/blast/db/</a>.
 Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neanderthalensis contra la base de datos de secuencias de vertebrados que habíamos trabajado antes. Para eso vamos a copiar el archivo con dichas secuencias al directorio donde estamos trabajando (o le damos la ruta absoluta en el script). Para generar la base de datos, utilizamos el siguiente comando (recuerde que debe estar dentro de un script slurm)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">makeblastdb</span> <span class="o">-</span><span class="ow">in</span> <span class="n">CytBProt</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">title</span> <span class="n">cytb_vert</span> <span class="o">-</span><span class="n">dbtype</span> <span class="n">prot</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb</span> <span class="o">-</span><span class="n">parse_seqids</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">makeblastdb</span> <span class="o">-</span><span class="ow">in</span> <span class="n">CytBProt</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">title</span> <span class="n">cytb_ver</span> <span class="o">-</span><span class="n">dbtype</span> <span class="n">prot</span> <span class="o">-</span><span class="n">out</span> <span class="n">cytb</span> <span class="o">-</span><span class="n">parse_seqids</span>
 </pre></div>
 </div>
 </div>
@@ -553,8 +567,6 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
 </div>
 </div>
 </div>
-<p>aquí la opción “-outfmt 6” indica el formato de output que queremos. Consulte la tabulación de este formato:
-<a class="reference external" href="https://www.metagenomics.wiki/tools/blast/blastn-output-format-6">https://www.metagenomics.wiki/tools/blast/blastn-output-format-6</a> y revise el output que obtuvo del blast. Cual es el procentaje de similitud de esta secuencia con humanos? Si no es 100%, cómo averiguaría donde están las diferencias?</p>
 </section>
 </section>
 </section>
