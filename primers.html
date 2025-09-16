@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'primers';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introducción a R" href="intro_R.html" />
+    <link rel="next" title="PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)" href="primers_cacao.html" />
     <link rel="prev" title="Herraminetas de NCBI" href="ncbi%26blast.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -166,6 +166,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Primers (cebadores)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="primers_cacao.html">PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introducción a R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genomica.html">De Genes a Genomas</a></li>
@@ -363,6 +365,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Primers (cebadores)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-se-requiere-para-realizar-una-pcr">Qué se requiere para realizar una PCR?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ciclos-de-la-pcr">Ciclos de la PCR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-para-disenar-primers">Parámetros para diseñar primers</a><ul class="nav section-nav flex-column">
@@ -373,11 +376,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-secundarias">5. Estructuras secundarias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primerblast-estudio-de-caso-gen-trasnportador-de-cadmio-en-cacao-por-felipe-arango">PrimerBlast: estudio de caso gen trasnportador de Cadmio en Cacao (por Felipe Arango)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-de-un-gen">Variante de un gen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primerblast-estudio-de-caso-primers-para-sars-covid19">PrimerBlast: estudio de caso primers para Sars-Covid19</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-primers-con-blast-local">Análisis de primers con BLAST Local</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -465,41 +469,12 @@ document.write(`
 <p><img alt="width:500px" src="_images/secondstrcture.png" /></p>
 <p><a class="reference external" href="https://microbeonline.com/designing-pcr-primers-design-consideration-and-uses/">https://microbeonline.com/designing-pcr-primers-design-consideration-and-uses/</a></p>
 </section>
-<section id="primerblast-estudio-de-caso-gen-trasnportador-de-cadmio-en-cacao-por-felipe-arango">
-<h2>PrimerBlast: estudio de caso gen trasnportador de Cadmio en Cacao (por Felipe Arango)<a class="headerlink" href="#primerblast-estudio-de-caso-gen-trasnportador-de-cadmio-en-cacao-por-felipe-arango" title="Permalink to this heading">#</a></h2>
-<p>Vamos a utilizar una herramienta para diseñar primers teniendo en cuenta los parámetros especificados anteriormente. Para ilustrar el proceso, vamos a enfocarnos en la identificación de genes asociados al transporte de Cadmio en <em>Theobroma cacao L.</em> (leer documento anexo preparado por Felipe Arango).</p>
+<section id="primerblast-estudio-de-caso-primers-para-sars-covid19">
+<h2>PrimerBlast: estudio de caso primers para Sars-Covid19<a class="headerlink" href="#primerblast-estudio-de-caso-primers-para-sars-covid19" title="Permalink to this heading">#</a></h2>
+<p>Vamos a utilizar una herramienta para diseñar primers teniendo en cuenta los parámetros especificados anteriormente. Para ilustrar el proceso, vamos a enfocarnos en el genoma de Sars-Covid que ya habíamos descargado.</p>
 <ol class="arabic simple">
-<li><p>Vamos a descargar uno de los genes pertenecientes a la familia de las NRAMPs (Natural Resistance-Associated Macrophage Proteins), NRAMP5, el cual se considera asociado a la entrada de Cadmio desde la rizosfera. Entrar a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/">https://www.ncbi.nlm.nih.gov/</a> y escoger la base de datos “Gene”. Escribir términos <em>NRAMP5 Theobroma Cacao L.</em>
-Revise la información sobre el gen, y piense donde cree que encontraría la secuencia para diseñar los primers? Descargue la secuencia fasta. Este paso también se puede realizar desde el siguiente script (note que en este caso el gen lo buscaremos por sus coordenadas en el cromosoma, en vez de su anotación).</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/</span>
-
-<span class="c1"># Script por Laura Salazar Jaramillo</span>
-<span class="c1"># Busca la secuencia de un gen</span>
-
-
-<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span>
-<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
-
-<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;lsalazarj@eafit.edu.co&quot;</span>
-
-<span class="k">with</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">efetch</span><span class="p">(</span>
-    <span class="n">db</span><span class="o">=</span><span class="s2">&quot;nucleotide&quot;</span><span class="p">,</span> <span class="n">rettype</span><span class="o">=</span><span class="s2">&quot;fasta&quot;</span><span class="p">,</span> <span class="n">retmode</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;NC_030857.1&quot;</span><span class="p">,</span>  <span class="n">strand</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
-                       <span class="n">seq_start</span><span class="o">=</span><span class="mi">6830167</span><span class="p">,</span> <span class="c1">#coordenada de inicio</span>
-                       <span class="n">seq_stop</span><span class="o">=</span><span class="mi">6825279</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span> <span class="c1">#coordenada final</span>
-    <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-1/primers/NRAMP5_ref.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Entre a la aplicación PrimerBlast <a class="reference external" href="https://www.ncbi.nlm.nih.gov/tools/primer-blast/">https://www.ncbi.nlm.nih.gov/tools/primer-blast/</a> y copia-pega la secuencia descargada.</p></li>
-<li><p>Los siguientes parámetros se pueden modificar según el criterio:</p>
+<li><p>Vamos a descargar o copiar el genoma del Sars-Cov:</p></li>
+<li><p>Entrar a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/tools/primer-blast/">https://www.ncbi.nlm.nih.gov/tools/primer-blast/</a> y escoja los parámetros idóneos (ver recomendaciones arriba), por ejemplo:</p>
 <ul class="simple">
 <li><p>a. PCR product length: productos cortos pueden producir múltiples targets, productos largos una PCR ineficiente (para qPCR se recomienda entre 100-500)</p></li>
 <li><p>b. Temperatura melting (Tm) (minimum, optimal, maximum, difference between the set). Cerca de
@@ -510,92 +485,102 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
 </ul>
 </li>
 </ol>
-<p><img alt="width:500px" src="_images/primer-blast.png" /></p>
-<ol class="arabic simple" start="4">
-<li><p>Escoja un par de primers y anote los parámetros que proporciona el programa</p></li>
-</ol>
-<section id="variante-de-un-gen">
-<h3>Variante de un gen<a class="headerlink" href="#variante-de-un-gen" title="Permalink to this heading">#</a></h3>
-<p>Vamos a estudiar una secuencias de genes codificantes para transportadores NRAMP5 de una variedad colombiana (CCN51) con el genoma de referencia disponible en NCBI (NCBI RefSeq assembly: GCF_000208745.1), para identificar similitudes o diferencias, localizar los genes en los cromosomas, y diseñar primers para PCR convencional.</p>
-<ol class="arabic simple">
-<li><p>Vamos a descargar la secuencia <a class="reference external" href="https://raw.githubusercontent.com/Pipe-95/TallerBiologiaComputacional/refs/heads/main/NRAMP5.fa">https://raw.githubusercontent.com/Pipe-95/TallerBiologiaComputacional/refs/heads/main/NRAMP5.fa</a></p></li>
-<li><p>Ahora descargamos los cromosomas dada la lista de ID de los cromosomas</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Bio</span>
-<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span><span class="p">,</span> <span class="n">SeqIO</span>
-
-<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;farangoh@eafit.edu.co&quot;</span> <span class="c1">#modifique el email con el suyo</span>
-
-<span class="c1"># Lista de IDs de los cromosomas a descargar</span>
-<span class="n">cromosomas_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NC_030850.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030851.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030852.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030853.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030854.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030855.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030856.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030857.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030858.1&quot;</span><span class="p">,</span> <span class="s2">&quot;NC_030859.1&quot;</span><span class="p">]</span>
-
-<span class="c1"># Ruta del archivo final fusionado</span>
-<span class="n">ruta_salida</span> <span class="o">=</span> <span class="s2">&quot;genoma_cacao.txt&quot;</span>
-
-<span class="c1"># Lista para guardar las secuencias</span>
-<span class="n">secuencias</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># Descargar y almacenar cada secuencia</span>
-<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">crom_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cromosomas_ids</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span> 
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">efetch</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s2">&quot;nucleotide&quot;</span><span class="p">,</span> <span class="n">rettype</span><span class="o">=</span><span class="s2">&quot;fasta&quot;</span><span class="p">,</span> <span class="n">retmode</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">crom_id</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
-            <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
-            <span class="n">secuencias</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span> <span class="c1"># append: añade un item a la lista en vez de sobreescribir</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cromosoma </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"> guardado exitosamente: ID </span><span class="si">{</span><span class="n">seq_record</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, longitud </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">seq_record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span><span class="si">}</span><span class="s2"> pb&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al descargar cromosoma </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"> (ID </span><span class="si">{</span><span class="n">crom_id</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># Escribir todas las secuencias en un solo archivo FASTA</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">secuencias</span><span class="p">,</span> <span class="n">ruta_salida</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Todas las secuencias fueron fusionadas en: </span><span class="si">{</span><span class="n">ruta_salida</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al escribir las secuencias&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic simple" start="3">
-<li><p>Generar la base de datos para BLAST utilizand mkblastdb (dentro de un script slurm)</p></li>
-</ol>
+<p><img alt="width:400px" src="_images/primerblast_covid.png" />
+3. Luego de dar click en “Get Primers”, evaluar las opciones</p>
+<p><img alt="width:400px" src="_images/primerblastP1_covid.png" /></p>
+<div class="alert alert-block alert-info">
+<p><b>Análisis de PrimerBLAST</b></p>
+<ul class="simple">
+<li><p>¿Cómo interpretas las tablas?</p></li>
+<li><p>¿En qué posición amplifica el fragmento?</p></li>
+<li><p>¿Qué tan largo es el amplicón?</p></li>
+</ul>
+</div></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="analisis-de-primers-con-blast-local">
+<h1>Análisis de primers con BLAST Local<a class="headerlink" href="#analisis-de-primers-con-blast-local" title="Permalink to this heading">#</a></h1>
+<p>Para realizar el análisis con BLAST a nivel local, primero debemos formatear el genoma de Sars-Cov usando <em>mkblastdb</em>. Recuerde que estos comandos deben estar dentro de un script slurm</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### ENVIRONMENT CREATION #####</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">blast</span><span class="o">/</span><span class="mf">2.13.0</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">blast</span><span class="o">/</span><span class="mf">2.16.0</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span> 
 
 <span class="c1">##### JOB COMMANDS ####</span>
-<span class="n">makeblastdb</span> <span class="o">-</span><span class="ow">in</span> <span class="n">genoma_cacao</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">title</span> <span class="n">Base_datos_T</span><span class="o">.</span><span class="n">cacao</span> <span class="o">-</span><span class="n">dbtype</span> <span class="n">nucl</span> <span class="o">-</span><span class="n">out</span> <span class="n">cacao_database</span> <span class="o">-</span><span class="n">parse_seqids</span>
+<span class="n">makeblastdb</span> <span class="o">-</span><span class="ow">in</span> <span class="n">Sars_cov</span><span class="o">.</span><span class="n">dna</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">dbtype</span> <span class="n">nucl</span> <span class="o">-</span><span class="n">out</span> <span class="n">sarscov2_db</span> <span class="o">-</span><span class="n">title</span> <span class="s2">&quot;SARS-CoV_genome&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Ahora realizamos Blast de la secuencia query (NRAMP5) contra la base de datos cacao_database</p></li>
-</ol>
+<p>Ahora realizamos Blast de la secuencia query (los primers) contra la base de datos del genoma</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### ENVIRONMENT CREATION #####</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">blast</span><span class="o">/</span><span class="mf">2.13.0</span><span class="n">_gcc</span><span class="o">-</span><span class="mf">11.2.0</span>
 
-<span class="n">blastn</span> <span class="o">-</span><span class="n">query</span> <span class="n">NRAMP5</span><span class="o">.</span><span class="n">fa</span> <span class="o">-</span><span class="n">db</span> <span class="n">cacao_database</span> <span class="o">-</span><span class="n">out</span> <span class="n">NRAMP5_blastn_table</span><span class="o">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">evalue</span> <span class="mf">1e-30</span> <span class="o">-</span><span class="n">outfmt</span> <span class="mi">6</span>
+<span class="n">blastn</span> <span class="o">-</span><span class="n">task</span> <span class="n">blastn</span><span class="o">-</span><span class="n">short</span> \
+       <span class="o">-</span><span class="n">query</span> <span class="n">primers</span><span class="o">.</span><span class="n">fa</span> \
+       <span class="o">-</span><span class="n">db</span> <span class="n">sarscov2_db</span> \
+       <span class="o">-</span><span class="n">out</span> <span class="n">primers_vs_sarscov2</span><span class="o">.</span><span class="n">txt</span> \
+       <span class="o">-</span><span class="n">outfmt</span> <span class="s2">&quot;6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-info">
-<p><b>Análisis de resultados de BLAST</b></p>
+<p><b>Análisis de resultados de BLAST local</b></p>
 <ul class="simple">
-<li><p>¿Cuántos alineamientos (matches) encontró para cada una de las secuencias?</p></li>
-<li><p>En caso de haber más de uno: ¿Se encuentran todos en el mismo cromosoma?</p></li>
-<li><p>Si están en el mismo cromosoma, ¿pertenecen al mismo locus o están en regiones distintas?</p></li>
+<li><p>¿Cómo interpretas esta tabla?</p></li>
 <li><p>¿Qué tan específico es el primer?</p></li>
+<li><p>¿En qué posición amplifica el fragmento?</p></li>
+<li><p>¿Qué tan largo es el amplicón?</p></li>
+</ul>
+</div><p>Ahora vamos a utilizar python para extraer el fragmento que teóricamente debería amplificar este par de primers</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+
+<span class="c1"># Cargamos el genoma</span>
+<span class="n">genoma</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Sars_cov.dna.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mejores hits de BLAST output (extraídos manualmente)</span>
+<span class="n">forward_primer</span> <span class="o">=</span> <span class="s2">&quot;GACCCCAAAATCAGCGAAAT&quot;</span>       <span class="c1"># forward primer de primerBlast</span>
+<span class="n">reverse_primer</span> <span class="o">=</span> <span class="s2">&quot;TCTGGTTACTGCCAGTTGAATCTG&quot;</span>   <span class="c1"># reverse primer de primerBlast</span>
+
+<span class="c1"># BLAST best-hit coordenadas</span>
+<span class="n">f_sstart</span><span class="p">,</span> <span class="n">f_send</span> <span class="o">=</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">128</span>   <span class="c1"># sstart, send: copiados manualmente de la tabla de output de blast</span>
+<span class="n">r_sstart</span><span class="p">,</span> <span class="n">r_send</span> <span class="o">=</span> <span class="mi">511</span><span class="p">,</span> <span class="mi">492</span>   
+
+<span class="c1"># --- calcular las coordenas del producto (1-based) ---</span>
+<span class="n">f_5</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f_sstart</span><span class="p">,</span> <span class="n">f_send</span><span class="p">)</span>   
+<span class="n">r_5</span> <span class="o">=</span> <span class="n">r_sstart</span> <span class="k">if</span> <span class="n">r_sstart</span> <span class="o">&gt;=</span> <span class="n">r_send</span> <span class="k">else</span> <span class="n">r_send</span>
+
+<span class="n">amplicon_start</span> <span class="o">=</span> <span class="n">f_5</span>
+<span class="n">amplicon_end</span>   <span class="o">=</span> <span class="n">r_5</span>
+<span class="n">product_length</span> <span class="o">=</span> <span class="n">amplicon_end</span> <span class="o">-</span> <span class="n">amplicon_start</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Las coordenadas del amplicon son: </span><span class="si">{</span><span class="n">amplicon_start</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">amplicon_end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La longitud del produco es: </span><span class="si">{</span><span class="n">product_length</span><span class="si">}</span><span class="s2"> bp&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># --- extraer la secuencia del amplicon en FASTA ---</span>
+
+<span class="c1"># Extraer el amplicon</span>
+<span class="n">amplicon_seq</span> <span class="o">=</span> <span class="n">genoma</span><span class="o">.</span><span class="n">seq</span><span class="p">[</span><span class="n">amplicon_start</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="n">amplicon_end</span><span class="p">]</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="n">amplicon_seq</span><span class="p">)</span>
+
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">amplicon_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-2/primers/ampliconp1_covid.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<p><b>Comparación entre el resultado de PrimerBlast y Blast local</b></p>
+<ul class="simple">
+<li><p>¿Las posiciones que amplifica el fragmento son similares?</p></li>
+<li><p>¿La longitud del fragmento es similar?</p></li>
 </ul>
 </div></section>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -638,11 +623,11 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
       </div>
     </a>
     <a class="right-next"
-       href="intro_R.html"
+       href="primers_cacao.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introducción a R</p>
+        <p class="prev-next-title">PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -664,6 +649,7 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Primers (cebadores)</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-se-requiere-para-realizar-una-pcr">Qué se requiere para realizar una PCR?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ciclos-de-la-pcr">Ciclos de la PCR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametros-para-disenar-primers">Parámetros para diseñar primers</a><ul class="nav section-nav flex-column">
@@ -674,11 +660,12 @@ Revise la información sobre el gen, y piense donde cree que encontraría la sec
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-secundarias">5. Estructuras secundarias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primerblast-estudio-de-caso-gen-trasnportador-de-cadmio-en-cacao-por-felipe-arango">PrimerBlast: estudio de caso gen trasnportador de Cadmio en Cacao (por Felipe Arango)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variante-de-un-gen">Variante de un gen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primerblast-estudio-de-caso-primers-para-sars-covid19">PrimerBlast: estudio de caso primers para Sars-Covid19</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-primers-con-blast-local">Análisis de primers con BLAST Local</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
