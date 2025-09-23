@@ -407,7 +407,10 @@ document.write(`
 <h2>Análisis de datos<a class="headerlink" href="#analisis-de-datos" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### CREAR AMBIENTE CONDA #####</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### CARGAR MÓDULO CONDA#####</span>
+
+
+<span class="c1">##### CREAR AMBIENTE CONDA #####</span>
 <span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">microbiota</span> <span class="o">-</span><span class="n">c</span> <span class="n">bioconda</span> <span class="n">vsearch</span> <span class="n">fastqc</span> <span class="n">seqtk</span>
 <span class="n">source</span> <span class="n">activate</span> <span class="n">microbiota</span>
 </pre></div>
@@ -430,7 +433,9 @@ document.write(`
 </section>
 <section id="reporte-de-calidad">
 <h2>2. Reporte de calidad<a class="headerlink" href="#reporte-de-calidad" title="Permalink to this heading">#</a></h2>
-<p>El reporte de calidad es un archivo .html que se lee mejor desde un browser. Para poder visualizarlo, cópialo a tu computador y lo abres desde allí</p>
+<p>El reporte de calidad es un archivo .html que se lee mejor desde un browser. Para poder visualizarlo, cópialo a tu computador y lo abres desde allí.
+Consulte el manual de FASTQC para entender los parámetros de calidad:
+<a class="reference external" href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correr dentro de un slurm</span>
@@ -511,18 +516,6 @@ Este módulo evalúa la calidad promedio de cada lectura. Si la mayoría está p
 <p>Cuando secuenciamos ADN, cada base (A, T, C, G) viene acompañada de un score de calidad (Phred score). Este número indica la probabilidad de que la base esté mal llamada por la máquina. Por ejemplo:</p>
 <p>Q30 = probabilidad de error 1 en 1000 (99.9% de certeza).</p>
 <p>Q20 = probabilidad de error 1 en 100 (99% de certeza).</p>
-<p>🔹 ¿Por qué es importante?</p>
-<p>En microbiota (y en general en secuenciación masiva), los errores de secuencia pueden:</p>
-<p>Inflar artificialmente la diversidad observada (aparecen OTUs falsas).</p>
-<p>Confundir la identificación de especies.</p>
-<p>Generar bias en el análisis (algunos grupos parecen más abundantes de lo que son).</p>
-<p>Por eso filtramos para quedarnos solo con las lecturas confiables.</p>
-<p>🔹 ¿Cómo se hace?</p>
-<p>Se utilizan herramientas como vsearch, Trimmomatic, fastp, entre otras.
-El proceso típico incluye:</p>
-<p>Cortar bases de mala calidad en los extremos.</p>
-<p>Eliminar lecturas con promedio de calidad bajo (ej. Q &lt; 20 o Q &lt; 30).</p>
-<p>Eliminar lecturas muy cortas (que probablemente no representen un gen completo).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vsearch</span> <span class="o">--</span><span class="n">fastq_filter</span> <span class="n">merged</span><span class="o">.</span><span class="n">fastq</span> \
