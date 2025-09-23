@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Microbiota &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
+    <title>Marcadores Moleculares: Estudio de caso de Microbiota &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
   
   
   
@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'microbiota';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introducción a R" href="intro_R.html" />
+    <link rel="prev" title="PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)" href="primers_cacao.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -148,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="github_markdown.html">Introducción a Github y Markdown: cómo hacer análisis reproducible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
@@ -166,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="primers.html">Primers (cebadores)</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="primers_cacao.html">PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Marcadores Moleculares: Estudio de caso de Microbiota</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introducción a R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genomica.html">De Genes a Genomas</a></li>
@@ -353,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Microbiota</h1>
+    <h1>Marcadores Moleculares: Estudio de caso de Microbiota</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -363,7 +366,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-crudos">Archivos crudos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias-ribosomales">Secuencias Ribosomales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuenciacion-del-16s-de-ambientes-comunidades-microbiologicas">Secuenciación del 16S de ambientes: comunidades microbiológicas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-datos">Análisis de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-crudos">1. Archivos crudos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporte-de-calidad">2. Reporte de calidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensamblaje-de-pares-merge-reads">3. Ensamblaje de pares (merge reads)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrado-de-calidad">4. Filtrado de calidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-asvs-otus-simplificado">5. Clustering / ASVs (OTUs simplificado)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asignacion-taxonomica-ej-con-base-silva-pequena">6. Asignación taxonómica (ej. con base SILVA pequeña)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-tabla-otu">7. Conteo tabla OTU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-basico-de-diversidad">8. Análisis básico de diversidad</a></li>
 </ul>
             </nav>
         </div>
@@ -375,9 +388,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="microbiota">
-<h1>Microbiota<a class="headerlink" href="#microbiota" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9341376/?utm_source=chatgpt.com">https://pmc.ncbi.nlm.nih.gov/articles/PMC9341376/?utm_source=chatgpt.com</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="marcadores-moleculares-estudio-de-caso-de-microbiota">
+<h1>Marcadores Moleculares: Estudio de caso de Microbiota<a class="headerlink" href="#marcadores-moleculares-estudio-de-caso-de-microbiota" title="Permalink to this heading">#</a></h1>
+<p>Carl Woese propuso en 1977 un sistema de clasificación en dominios, basado en la secuencia del ARN ribosomal</p>
+<p><img alt="width:400px" src="_images/PhylogeneticTree,_Woese_1990.PNG" />
+<a class="reference external" href="https://commons.wikimedia.org/w/index.php?curid=24740337">https://commons.wikimedia.org/w/index.php?curid=24740337</a></p>
+<section id="secuencias-ribosomales">
+<h2>Secuencias Ribosomales<a class="headerlink" href="#secuencias-ribosomales" title="Permalink to this heading">#</a></h2>
+<p>El ribosoma es un buen marcador filogenético porque el ARN ribosomal (rRNA) está presente en todos los organismos vivos, cumple una función esencial y, por lo tanto, es altamente conservado a lo largo de la evolución. Esta conservación asegura que las secuencias puedan alinearse y compararse entre organismos muy distintos. Al mismo tiempo, el rRNA contiene regiones variables que acumulan cambios evolutivos y permiten diferenciar entre taxones a distintos niveles (desde reinos hasta especies).</p>
+<p><img alt="width:400px" src="_images/16S-rRNA-Gene-Variable-Regions-1907x2048.webp" /></p>
+</section>
+<section id="secuenciacion-del-16s-de-ambientes-comunidades-microbiologicas">
+<h2>Secuenciación del 16S de ambientes: comunidades microbiológicas<a class="headerlink" href="#secuenciacion-del-16s-de-ambientes-comunidades-microbiologicas" title="Permalink to this heading">#</a></h2>
+<p>Los métodos tradicionales basados en cultivo requieren procesos de aislamiento laboriosos y solo permiten detectar una pequeña fracción de las especies microbianas. El desarrollo del 16S rRNA como marcador para la identificación de organismos ha permitido el estudio eficiente y rápido de numerosas muestras. Gracias a la secuenciación del 16S rRNA se han identificado muchas secuencias de especies previamente no cultivadas.</p>
+<p><img alt="width:400px" src="_images/16S-rRNA-Gene-Sequencing.webp" /></p>
+</section>
+<section id="analisis-de-datos">
+<h2>Análisis de datos<a class="headerlink" href="#analisis-de-datos" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### CREAR AMBIENTE CONDA #####</span>
@@ -387,11 +414,11 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 <section id="archivos-crudos">
-<h2>Archivos crudos<a class="headerlink" href="#archivos-crudos" title="Permalink to this heading">#</a></h2>
-<p>Fastq
-descarga directamente los fastq desde ENA/EBI, que es espejo de SRA y no falla con certificados:</p>
-<div class="cell docutils container">
+<h2>1. Archivos crudos<a class="headerlink" href="#archivos-crudos" title="Permalink to this heading">#</a></h2>
+<figure>
+<img src="fasta.png" /><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">sra</span><span class="o">.</span><span class="n">ebi</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">fastq</span><span class="o">/</span><span class="n">SRR123</span><span class="o">/</span><span class="mi">006</span><span class="o">/</span><span class="n">SRR12324206</span><span class="o">/</span><span class="n">SRR12324206_1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">sra</span><span class="o">.</span><span class="n">ebi</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">fastq</span><span class="o">/</span><span class="n">SRR123</span><span class="o">/</span><span class="mi">006</span><span class="o">/</span><span class="n">SRR12324206</span><span class="o">/</span><span class="n">SRR12324206_2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
@@ -399,53 +426,244 @@ descarga directamente los fastq desde ENA/EBI, que es espejo de SRA y no falla c
 </div>
 </div>
 </div>
-<p>Ahora vamos a utilizar python para extraer el fragmento que teóricamente debería amplificar este par de primers</p>
+<p>De aquí en adelante los comandos deben estar en un slurm</p>
+</section>
+<section id="reporte-de-calidad">
+<h2>2. Reporte de calidad<a class="headerlink" href="#reporte-de-calidad" title="Permalink to this heading">#</a></h2>
+<p>El reporte de calidad es un archivo .html que se lee mejor desde un browser. Para poder visualizarlo, cópialo a tu computador y lo abres desde allí</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correr dentro de un slurm</span>
 
-<span class="c1"># Cargamos el genoma</span>
-<span class="n">genoma</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Sars_cov.dna.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="c1"># Evaluación individual</span>
+<span class="n">fastqc</span> <span class="n">SRR12324206_1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span> <span class="n">SRR12324206_2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
 
-<span class="c1"># Mejores hits de BLAST output (extraídos manualmente)</span>
-<span class="n">forward_primer</span> <span class="o">=</span> <span class="s2">&quot;GACCCCAAAATCAGCGAAAT&quot;</span>       <span class="c1"># forward primer de primerBlast</span>
-<span class="n">reverse_primer</span> <span class="o">=</span> <span class="s2">&quot;TCTGGTTACTGCCAGTTGAATCTG&quot;</span>   <span class="c1"># reverse primer de primerBlast</span>
-
-<span class="c1"># BLAST best-hit coordenadas</span>
-<span class="n">f_sstart</span><span class="p">,</span> <span class="n">f_send</span> <span class="o">=</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">128</span>   <span class="c1"># sstart, send: copiados manualmente de la tabla de output de blast</span>
-<span class="n">r_sstart</span><span class="p">,</span> <span class="n">r_send</span> <span class="o">=</span> <span class="mi">511</span><span class="p">,</span> <span class="mi">492</span>   
-
-<span class="c1"># --- calcular las coordenas del producto (1-based) ---</span>
-<span class="n">f_5</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f_sstart</span><span class="p">,</span> <span class="n">f_send</span><span class="p">)</span>   
-<span class="n">r_5</span> <span class="o">=</span> <span class="n">r_sstart</span> <span class="k">if</span> <span class="n">r_sstart</span> <span class="o">&gt;=</span> <span class="n">r_send</span> <span class="k">else</span> <span class="n">r_send</span>
-
-<span class="n">amplicon_start</span> <span class="o">=</span> <span class="n">f_5</span>
-<span class="n">amplicon_end</span>   <span class="o">=</span> <span class="n">r_5</span>
-<span class="n">product_length</span> <span class="o">=</span> <span class="n">amplicon_end</span> <span class="o">-</span> <span class="n">amplicon_start</span> <span class="o">+</span> <span class="mi">1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Las coordenadas del amplicon son: </span><span class="si">{</span><span class="n">amplicon_start</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">amplicon_end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La longitud del produco es: </span><span class="si">{</span><span class="n">product_length</span><span class="si">}</span><span class="s2"> bp&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># --- extraer la secuencia del amplicon en FASTA ---</span>
-
-<span class="c1"># Extraer el amplicon</span>
-<span class="n">amplicon_seq</span> <span class="o">=</span> <span class="n">genoma</span><span class="o">.</span><span class="n">seq</span><span class="p">[</span><span class="n">amplicon_start</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="n">amplicon_end</span><span class="p">]</span> 
-
-<span class="nb">print</span><span class="p">(</span><span class="n">amplicon_seq</span><span class="p">)</span>
-
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">amplicon_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-2/primers/ampliconp1_covid.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="c1"># Reporte consolidado</span>
+<span class="n">multiqc</span> <span class="o">.</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-info">
-<p><b>Comparación entre el resultado de PrimerBlast y Blast local</b></p>
+<p><b>📝 Preguntas de interpretación del reporte de FastQC</b></p>
+<ol class="arabic simple">
+<li><p>¿Qué significa el módulo “Per base sequence quality” y qué debemos observar?- ¿La longitud del fragmento es similar?</p></li>
+</ol>
+<!-- Muestra la distribución de las calidades de Phred por posición en las lecturas. Un patrón esperado en lecturas Illumina es buena calidad al inicio y una caída hacia el final. Si la caída es leve, puede bastar con recortar los extremos; si es severa, puede comprometer el análisis downstream.
+ -->
+<ol class="arabic simple" start="2">
+<li><p>En el módulo “Per sequence GC content”, ¿qué indica una desviación importante respecto a la curva normal?</p></li>
+</ol>
+<!-- Se espera que la distribución de GC se ajuste a una campana gaussiana. Si aparecen picos secundarios, puede indicar contaminación, mezclas de organismos con composiciones distintas de GC o problemas técnicos en la secuenciación.
+ -->
+<ol class="arabic simple" start="3">
+<li><p>¿Por qué es importante revisar el módulo “Adapter content”?</p></li>
+</ol>
+<!-- La presencia de adaptadores sin recortar genera falsos alineamientos y errores en el ensamblaje. Si FastQC detecta adaptadores en un porcentaje significativo de las lecturas, se deben eliminar antes de continuar con el análisis. -->
+<ol class="arabic simple" start="4">
+<li><p>¿Qué información entrega el módulo “Per sequence quality scores” y cómo se interpreta?</p></li>
+</ol>
+<!-- Respuesta (docente):
+Este módulo evalúa la calidad promedio de cada lectura. Si la mayoría está por encima de Q30 (99.9% de precisión), los datos son buenos. Si hay muchas lecturas de baja calidad, conviene descartarlas o recortarlas para no introducir ruido.
+ -->
+<ol class="arabic simple" start="5">
+<li><p>¿Qué significa encontrar un resultado “FAIL” en “Sequence Duplication Levels”?</p></li>
+</ol>
+<!-- Un nivel alto de duplicación puede indicar sesgos en la PCR durante la preparación de librerías o baja complejidad en la muestra. En microbiota, algunas duplicaciones son normales (lecturas abundantes de ciertas bacterias), pero un exceso puede sesgar los resultados.
+ -->
+<ol class="arabic simple" start="6">
+<li><p>¿Cómo interpretamos el módulo “Overrepresented sequences” en un dataset de microbiota?</p></li>
+</ol>
+<!-- Si aparecen secuencias sobre-representadas, pueden ser adaptadores, primers, rRNA muy abundantes o contaminantes. En microbiota, también pueden reflejar bacterias dominantes, pero es importante corroborarlo con pasos posteriores del pipeline.
+ -->
+</div>
+</section>
+<section id="ensamblaje-de-pares-merge-reads">
+<h2>3. Ensamblaje de pares (merge reads)<a class="headerlink" href="#ensamblaje-de-pares-merge-reads" title="Permalink to this heading">#</a></h2>
+<p><img alt="width:400px" src="_images/microbiota_workflow.png" /></p>
+<p>Cuando hacemos secuenciación paired-end, cada fragmento de ADN se lee desde los dos extremos → obtenemos dos lecturas (read 1 y read 2) que se solapan en el medio. El ensamblaje de pares consiste en:</p>
 <ul class="simple">
-<li><p>¿Las posiciones que amplifica el fragmento son similares?</p></li>
-<li><p>¿La longitud del fragmento es similar?</p></li>
+<li><p>Identificar el solapamiento entre read1 y read2.</p></li>
+<li><p>Unir las lecturas en una sola secuencia continua (contig).</p></li>
+<li><p>Corregir errores: si las bases en el solapamiento difieren, el algoritmo decide cuál es más confiable (basado en calidad).</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vsearch</span> <span class="o">--</span><span class="n">fastq_mergepairs</span> <span class="n">SRR12324206_1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span> \
+        <span class="o">--</span><span class="n">reverse</span> <span class="n">SRR12324206_2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span> \
+        <span class="o">--</span><span class="n">fastqout</span> <span class="n">merged</span><span class="o">.</span><span class="n">fastq</span>
+
+<span class="c1">#--fastq_mergepairs: indica que debe ensamblar lecturas forward y reverse</span>
+<span class="c1">#--fastqout: genera el archivo con las secuencias ensambladas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>En el proceso de merging, la herramienta (ej. vsearch) toma como base el read forward (/1).</p></li>
+<li><p>Luego busca su pareja (/2 = reverse).</p></li>
+<li><p>Si logran solaparse bien, produce una secuencia ensamblada única.</p></li>
+<li><p>El resultado se guarda con el encabezado del read forward, para mantener consistencia y evitar duplicados.</p></li>
+</ul>
+</section>
+<section id="filtrado-de-calidad">
+<h2>4. Filtrado de calidad<a class="headerlink" href="#filtrado-de-calidad" title="Permalink to this heading">#</a></h2>
+<p>Cuando secuenciamos ADN, cada base (A, T, C, G) viene acompañada de un score de calidad (Phred score). Este número indica la probabilidad de que la base esté mal llamada por la máquina. Por ejemplo:</p>
+<p>Q30 = probabilidad de error 1 en 1000 (99.9% de certeza).</p>
+<p>Q20 = probabilidad de error 1 en 100 (99% de certeza).</p>
+<p>🔹 ¿Por qué es importante?</p>
+<p>En microbiota (y en general en secuenciación masiva), los errores de secuencia pueden:</p>
+<p>Inflar artificialmente la diversidad observada (aparecen OTUs falsas).</p>
+<p>Confundir la identificación de especies.</p>
+<p>Generar bias en el análisis (algunos grupos parecen más abundantes de lo que son).</p>
+<p>Por eso filtramos para quedarnos solo con las lecturas confiables.</p>
+<p>🔹 ¿Cómo se hace?</p>
+<p>Se utilizan herramientas como vsearch, Trimmomatic, fastp, entre otras.
+El proceso típico incluye:</p>
+<p>Cortar bases de mala calidad en los extremos.</p>
+<p>Eliminar lecturas con promedio de calidad bajo (ej. Q &lt; 20 o Q &lt; 30).</p>
+<p>Eliminar lecturas muy cortas (que probablemente no representen un gen completo).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vsearch</span> <span class="o">--</span><span class="n">fastq_filter</span> <span class="n">merged</span><span class="o">.</span><span class="n">fastq</span> \
+        <span class="o">--</span><span class="n">fastq_maxee</span> <span class="mf">1.0</span> \
+        <span class="o">--</span><span class="n">fastq_minlen</span> <span class="mi">200</span> \
+        <span class="o">--</span><span class="n">fastaout</span> <span class="n">filtered</span><span class="o">.</span><span class="n">fasta</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<p><b> Preguntas de interpretación del Filtro de calidad </b></p>
+<ol class="arabic simple">
+<li><p>¿Cuántas lecturas se retuvieron después del filtrado de calidad?
+Compara el número de lecturas en merged.fastq (antes del filtrado) con el de filtered.fasta (después del filtrado)</p></li>
+</ol>
+<!-- grep -c "^@" merged.fastq
+grep -c "^>" filtered.fasta
+ -->
 </div></section>
+<section id="clustering-asvs-otus-simplificado">
+<h2>5. Clustering / ASVs (OTUs simplificado)<a class="headerlink" href="#clustering-asvs-otus-simplificado" title="Permalink to this heading">#</a></h2>
+<p>Una vez que tenemos lecturas limpias y de buena calidad, necesitamos agruparlas en unidades biológicas comparables.
+El clustering consiste en agrupar secuencias muy similares entre sí en una sola categoría. Estas categorías se conocen como:</p>
+<ul class="simple">
+<li><p><strong>OTUs</strong> (Operational Taxonomic Units): grupos de secuencias con un porcentaje mínimo de identidad (ej. 97%).</p></li>
+<li><p><strong>ASVs</strong> (Amplicon Sequence Variants): métodos más modernos (ej. DADA2, Deblur) que buscan resolver variantes individuales sin necesidad de un umbral fijo.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quitar duplicados exactos </span>
+<span class="n">vsearch</span> <span class="o">--</span><span class="n">derep_fulllength</span> <span class="n">filtered</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="n">output</span> <span class="n">derep</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="n">sizeout</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clustering a 97% identidad</span>
+<span class="n">vsearch</span> <span class="o">--</span><span class="n">cluster_size</span> <span class="n">derep</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="nb">id</span> <span class="mf">0.97</span> \
+        <span class="o">--</span><span class="n">centroids</span> <span class="n">otus</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="n">relabel</span> <span class="n">OTU_</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="asignacion-taxonomica-ej-con-base-silva-pequena">
+<h2>6. Asignación taxonómica (ej. con base SILVA pequeña)<a class="headerlink" href="#asignacion-taxonomica-ej-con-base-silva-pequena" title="Permalink to this heading">#</a></h2>
+<p>La base de datos SILVA es uno de los recursos más usados en estudios de microbiota y filogenia de procariotas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Primero descargar la base de datos</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">arb</span><span class="o">-</span><span class="n">silva</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">fileadmin</span><span class="o">/</span><span class="n">silva_databases</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">Exports</span><span class="o">/</span><span class="n">SILVA_138</span><span class="mf">.2</span><span class="n">_SSURef_NR99_tax_silva</span><span class="o">.</span><span class="n">fasta</span><span class="o">.</span><span class="n">gz</span>
+<span class="c1"># Descomprimir</span>
+<span class="n">gunzip</span> <span class="n">SILVA_138</span><span class="mf">.2</span><span class="n">_SSURef_NR99_tax_silva</span><span class="o">.</span><span class="n">fasta</span><span class="o">.</span><span class="n">gz</span>
+<span class="c1"># Renombrar para simplificar</span>
+<span class="n">mv</span> <span class="n">SILVA_138</span><span class="mf">.2</span><span class="n">_SSURef_NR99_tax_silva</span><span class="o">.</span><span class="n">fasta</span> <span class="n">silva_16S</span><span class="o">.</span><span class="n">fasta</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Utilizar el modulo de blast+ para formatear la base de datos</span>
+<span class="n">makeblastdb</span> <span class="o">-</span><span class="ow">in</span> <span class="n">silva_16S</span><span class="o">.</span><span class="n">fasta</span> <span class="o">-</span><span class="n">dbtype</span> <span class="n">nucl</span> <span class="o">-</span><span class="n">out</span> <span class="n">silva_16S</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Luego de tener la base de datos en el formato correcto, vamos a buscar la mejor coincidencia de cada OTU en la base de datos Silva, usando ≥90% de identidad como criterio mínimo, y guarda la asignación en un archivo tabular estilo BLAST.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Asignar OTUs</span>
+<span class="n">vsearch</span> <span class="o">--</span><span class="n">usearch_global</span> <span class="n">otus</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="n">db</span> <span class="n">silva_16S</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="nb">id</span> <span class="mf">0.9</span> \
+        <span class="o">--</span><span class="n">blast6out</span> <span class="n">otu_taxonomy</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conteo-tabla-otu">
+<h2>7. Conteo tabla OTU<a class="headerlink" href="#conteo-tabla-otu" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vsearch</span> <span class="o">--</span><span class="n">usearch_global</span> <span class="n">filtered</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="n">db</span> <span class="n">otus</span><span class="o">.</span><span class="n">fasta</span> \
+        <span class="o">--</span><span class="nb">id</span> <span class="mf">0.97</span> \
+        <span class="o">--</span><span class="n">otutabout</span> <span class="n">otu_table</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analisis-basico-de-diversidad">
+<h2>8. Análisis básico de diversidad<a class="headerlink" href="#analisis-basico-de-diversidad" title="Permalink to this heading">#</a></h2>
+<p>Primero vamos a mapear los OTU con la taxonomía, cual extraemos de los header de archivos .fasta</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># --- extraer subject -&gt; taxonomía desde el FASTA ---</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;silva_16S.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># divide en Accession y Taxonomía</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">taxonomy</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;NA&quot;</span>
+    <span class="n">mapping</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span> <span class="o">=</span> <span class="n">taxonomy</span>
+
+<span class="c1"># --- cargar resultados de blast ---</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="s2">&quot;pident&quot;</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">,</span> <span class="s2">&quot;mismatch&quot;</span><span class="p">,</span> <span class="s2">&quot;gapopen&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;qstart&quot;</span><span class="p">,</span> <span class="s2">&quot;qend&quot;</span><span class="p">,</span> <span class="s2">&quot;sstart&quot;</span><span class="p">,</span> <span class="s2">&quot;send&quot;</span><span class="p">,</span> <span class="s2">&quot;evalue&quot;</span><span class="p">,</span> <span class="s2">&quot;bitscore&quot;</span>
+<span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;otu_taxonomy.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
+
+<span class="c1"># --- quedarnos con el mejor hit por OTU ---</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;bitscore&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- añadir taxonomía usando el diccionario ---</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;taxonomy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;subject&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;NA&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- seleccionar columnas principales ---</span>
+<span class="n">otu_taxonomy</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;query&quot;</span><span class="p">,</span> <span class="s2">&quot;pident&quot;</span><span class="p">,</span> <span class="s2">&quot;evalue&quot;</span><span class="p">,</span> <span class="s2">&quot;taxonomy&quot;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">otu_taxonomy</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">otu_taxonomy</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;otu_taxonomy_with_names.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -479,6 +697,24 @@ descarga directamente los fastq desde ENA/EBI, que es espejo de SRA y no falla c
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="primers_cacao.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="intro_R.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introducción a R</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -497,7 +733,17 @@ descarga directamente los fastq desde ENA/EBI, que es espejo de SRA y no falla c
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-crudos">Archivos crudos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias-ribosomales">Secuencias Ribosomales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuenciacion-del-16s-de-ambientes-comunidades-microbiologicas">Secuenciación del 16S de ambientes: comunidades microbiológicas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-datos">Análisis de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-crudos">1. Archivos crudos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporte-de-calidad">2. Reporte de calidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensamblaje-de-pares-merge-reads">3. Ensamblaje de pares (merge reads)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrado-de-calidad">4. Filtrado de calidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-asvs-otus-simplificado">5. Clustering / ASVs (OTUs simplificado)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asignacion-taxonomica-ej-con-base-silva-pequena">6. Asignación taxonómica (ej. con base SILVA pequeña)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-tabla-otu">7. Conteo tabla OTU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-basico-de-diversidad">8. Análisis básico de diversidad</a></li>
 </ul>
   </nav></div>
 
