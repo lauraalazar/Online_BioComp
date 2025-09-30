@@ -371,7 +371,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#herramientas-hmm-para-secuencias">Herramientas HMM para secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfam-interpro">Pfam-Interpro</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmmer">HMMER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genes-receptores-olfativos">Genes Receptores Olfativos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recursos-para-profundizar">Recursos para profundizar</a></li>
 </ul>
 </li>
 </ul>
@@ -416,7 +417,7 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
 <p>Por ejemplo, cómo reconocer sitios de splicing? De acuerdo a un modelo de probabilidades podemos inferir donde es el cambio de exón a intrón. <a class="reference external" href="https://www.nature.com/articles/nbt1004-1315">https://www.nature.com/articles/nbt1004-1315</a></p>
 <p>El diagrama muestra el modelo oculto de Markov (HMM) usado para representar una secuencia de ADN compuesta por exones (partes codificantes) e intrones (partes no codificantes).</p>
 <p>Cada círculo es un estado oculto (por ejemplo: “estás en un exón” o “estás en un intrón”), y las flechas indican las probabilidades de pasar de un estado a otro.</p>
-<p>La transición de exón a intrón no se basa directamente en la letra observada (como una G), sino en las probabilidades internas del modelo, aprendidas a partir de muchos genes reales. En el ejemplo, la transición ocurre justo después de la quinta G, pero esto no implica que la letra G cause el cambio; simplemente, el modelo considera que en ese punto es más probable estar comenzando un intrón. Las probabilidades de transición (como exón → intrón) y de emisión (por ejemplo, emitir una G desde el estado exón) se derivan de conteos estadísticos durante el entrenamiento del modelo.</p>
+<p>La transición de exón a intrón no se basa directamente en la letra observada (p.ej G), sino en las probabilidades internas del modelo, aprendidas a partir de muchos genes reales. En el ejemplo, la transición ocurre justo después de la quinta G, pero esto no implica que la letra G cause el cambio; simplemente, el modelo considera que en ese punto es más probable estar comenzando un intrón. Las probabilidades de transición (como exón → intrón) y de emisión (por ejemplo, emitir una G desde el estado exón) se derivan de conteos estadísticos durante el entrenamiento del modelo.</p>
 </section>
 </section>
 <section id="herramientas-hmm-para-secuencias">
@@ -425,14 +426,21 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
 <h3>Pfam-Interpro<a class="headerlink" href="#pfam-interpro" title="Permalink to this heading">#</a></h3>
 <p>Largas bases de datos de alineamientos múltiples se han utilizado para generar hidden Markov models. Estos agrupan los patrones y dan información funcional, clasificando las proteínas en familias así como haciendo predicciones de dominios. Esta conjunto de bases de datos está alojado en InterPro: <a class="reference external" href="https://www.ebi.ac.uk/interpro/">https://www.ebi.ac.uk/interpro/</a> (Para un tutorial más completo visite:
 <a class="reference external" href="https://www.ebi.ac.uk/training/online/courses/interpro-quick-tour/#vf-tabs__section--contents">https://www.ebi.ac.uk/training/online/courses/interpro-quick-tour/#vf-tabs__section–contents</a>)</p>
+</section>
+<section id="genes-receptores-olfativos">
+<h3>Genes Receptores Olfativos<a class="headerlink" href="#genes-receptores-olfativos" title="Permalink to this heading">#</a></h3>
+<p>Los genes de receptores olfativos (ORs) constituyen una de las familias génicas más extensas en los genomas de mamíferos, con cientos de copias distribuidas a lo largo de diferentes cromosomas. Estas familias evolucionan con gran rapidez debido a procesos de duplicación génica, pseudogenización y diversificación funcional, lo que genera un repertorio dinámico que se ajusta a las presiones ecológicas y conductuales de cada especie. El estudio de sus dominios proteicos conservados, en particular el motivo de siete hélices transmembrana (7TM) característico de los receptores acoplados a proteína G, es fundamental para distinguir genes funcionales de pseudogenes, ya que la pérdida de residuos críticos o de segmentos estructurales completos puede abolir la capacidad de unir ligandos y transmitir señales. Comprender estas variaciones no solo permite trazar la historia evolutiva de la familia, sino también vincular diferencias genómicas con perfiles olfativos específicos y, en última instancia, con la ecología y el comportamiento de cada organismo.</p>
 <div class="alert alert-block alert-info">
-<b>Ejercicio</b> Entre a https://www.ebi.ac.uk/interpro/search/sequence/ y pegue en la casilla en blanco una de las secuencias de amino ácidos citocromo B. De click en "search" y observe los resultados. Cuales son los dominios y familias? </div></section>
-<section id="hmmer">
-<h3>HMMER<a class="headerlink" href="#hmmer" title="Permalink to this heading">#</a></h3>
-<p>Contrariamente, podríamos estar interesados en buscar las proteínas pertencientes a cierta familia en un genoma o en otra especies. Esto decir, dado un perfil de HMM, que proteínas entran en este perfil (con cierta probabilidad)? Esto se puede realizar utilizando la herramienta HMMER: <a class="reference external" href="https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch">https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch</a></p>
-<div class="alert alert-block alert-info">
-<b>Ejercicio</b> Entre a https://www.ebi.ac.uk/Tools/hmmer/search/hmmsearch y cargue el alineamiento de Citocromos realizado previamente (CytBProt.phy) y escoja una base de datos para buscar el perfil
- </div></section>
+<b>Ejercicio</b> Busca la secuencia del gen receptor de olor olfactory receptor 11H7 (NP_001335202.1). Entre a https://www.ebi.ac.uk/interpro/search/sequence/ y pegue en la casilla en blanco la secuencia de amino ácidos. De click en "search" y observe los resultados. Cuales son los dominios y familias? </div></section>
+<section id="recursos-para-profundizar">
+<h3>Recursos para profundizar<a class="headerlink" href="#recursos-para-profundizar" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Smithsonian (divulgación): Sniffing Out the Science of Smelling
+<a class="reference external" href="https://www.smithsonianmag.com/science-nature/scientific-mysteries-smelling-180980756/">https://www.smithsonianmag.com/science-nature/scientific-mysteries-smelling-180980756/</a></p></li>
+<li><p>A probabilistic classifier for olfactory receptor pseudogenes
+<a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1599758/#sec5">https://pmc.ncbi.nlm.nih.gov/articles/PMC1599758/#sec5</a></p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -500,7 +508,8 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#herramientas-hmm-para-secuencias">Herramientas HMM para secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfam-interpro">Pfam-Interpro</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmmer">HMMER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genes-receptores-olfativos">Genes Receptores Olfativos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recursos-para-profundizar">Recursos para profundizar</a></li>
 </ul>
 </li>
 </ul>
