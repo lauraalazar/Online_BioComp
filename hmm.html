@@ -170,6 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="primers_cacao.html">PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="microbiota.html">Marcadores Moleculares: Estudio de caso de Microbiota</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hidden Markov Models</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introducción a R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genomica.html">De Genes a Genomas</a></li>
@@ -366,6 +367,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hidden Markov Models</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion-climatica-usando-markov-chain">Predicción climática usando Markov Chain</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmm-para-anotaciones-de-genoma">HMM para Anotaciones de Genoma</a></li>
 </ul>
@@ -373,10 +375,33 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#herramientas-hmm-para-secuencias">Herramientas HMM para secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfam-interpro">Pfam-Interpro</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genes-receptores-olfativos">Genes Receptores Olfativos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-analisis-comparativo-de-dominios-en-receptores-olfatorios-funcionales-y-no-funcionales">Ejercicio: Análisis comparativo de dominios en receptores olfatorios funcionales y no funcionales</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo">Objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-1-analisis-del-pseudogen-or11h7">Parte 1: Análisis del pseudogén OR11H7</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-interpretar-los-resultados-de-interpro">Cómo interpretar los resultados de InterPro:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-para-analisis">Preguntas para análisis:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-2-analisis-de-un-receptor-olfatorio-funcional-control-positivo">Parte 2: Análisis de un receptor olfatorio funcional (control positivo)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Preguntas para análisis:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-3-comparacion">Parte 3: Comparación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-reflexion">Preguntas de reflexión:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-para-evaluar-si-un-dominio-esta-completo-en-interpro">Criterios para evaluar si un dominio está completo en InterPro:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recursos-para-profundizar">Recursos para profundizar</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -431,8 +456,127 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
 <section id="genes-receptores-olfativos">
 <h3>Genes Receptores Olfativos<a class="headerlink" href="#genes-receptores-olfativos" title="Permalink to this heading">#</a></h3>
 <p>Los genes de receptores olfativos (ORs) constituyen una de las familias génicas más extensas en los genomas de mamíferos, con cientos de copias distribuidas a lo largo de diferentes cromosomas. Estas familias evolucionan con gran rapidez debido a procesos de duplicación génica, pseudogenización y diversificación funcional, lo que genera un repertorio dinámico que se ajusta a las presiones ecológicas y conductuales de cada especie. El estudio de sus dominios proteicos conservados, en particular el motivo de siete hélices transmembrana (7TM) característico de los receptores acoplados a proteína G, es fundamental para distinguir genes funcionales de pseudogenes, ya que la pérdida de residuos críticos o de segmentos estructurales completos puede abolir la capacidad de unir ligandos y transmitir señales. Comprender estas variaciones no solo permite trazar la historia evolutiva de la familia, sino también vincular diferencias genómicas con perfiles olfativos específicos y, en última instancia, con la ecología y el comportamiento de cada organismo.</p>
-<div class="alert alert-block alert-info">
-<b>Ejercicio</b> Busca la secuencia del gen receptor de olor olfactory receptor 11H7 (NP_001335202.1). Entre a https://www.ebi.ac.uk/interpro/search/sequence/ y pegue en la casilla en blanco la secuencia de amino ácidos. De click en "search" y observe los resultados. Cuales son los dominios y familias? </div></section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ejercicio-analisis-comparativo-de-dominios-en-receptores-olfatorios-funcionales-y-no-funcionales">
+<h1>Ejercicio: Análisis comparativo de dominios en receptores olfatorios funcionales y no funcionales<a class="headerlink" href="#ejercicio-analisis-comparativo-de-dominios-en-receptores-olfatorios-funcionales-y-no-funcionales" title="Permalink to this heading">#</a></h1>
+<section id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this heading">#</a></h2>
+<p>Comparar la arquitectura de dominios proteicos entre un receptor olfatorio funcional y un pseudogén (gen no funcional) utilizando la base de datos InterPro.</p>
+</section>
+<hr class="docutils" />
+<section id="parte-1-analisis-del-pseudogen-or11h7">
+<h2>Parte 1: Análisis del pseudogén OR11H7<a class="headerlink" href="#parte-1-analisis-del-pseudogen-or11h7" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Busque en NCBI la secuencia proteica del <strong>receptor olfatorio 11H7 humano</strong> con el identificador <strong>NP_001335202.1</strong></p></li>
+<li><p>Copie la secuencia de aminoácidos (formato FASTA)</p></li>
+<li><p>Ingrese a <a class="reference external" href="https://www.ebi.ac.uk/interpro/search/sequence/">https://www.ebi.ac.uk/interpro/search/sequence/</a></p></li>
+<li><p>Pegue la secuencia en la casilla de búsqueda</p></li>
+<li><p>Haga clic en <strong>“Search”</strong> y espere los resultados</p></li>
+</ol>
+<section id="como-interpretar-los-resultados-de-interpro">
+<h3>Cómo interpretar los resultados de InterPro:<a class="headerlink" href="#como-interpretar-los-resultados-de-interpro" title="Permalink to this heading">#</a></h3>
+<p>InterPro mostrará una <strong>representación gráfica</strong> de su secuencia con barras de colores que indican los dominios identificados. Observe:</p>
+<ul class="simple">
+<li><p><strong>Barras de colores</strong>: Cada color representa un dominio o familia diferente</p></li>
+<li><p><strong>Extensión de las barras</strong>: Indica qué porción de su proteína cubre cada dominio</p></li>
+<li><p><strong>Coordenadas</strong>: Los números muestran las posiciones de inicio y fin de cada dominio (ej. 45-280)</p></li>
+<li><p><strong>Nombres y códigos</strong>: Cada dominio tiene un código InterPro (ej. IPR000276) y un nombre descriptivo</p></li>
+</ul>
+</section>
+<section id="preguntas-para-analisis">
+<h3>Preguntas para análisis:<a class="headerlink" href="#preguntas-para-analisis" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>¿Qué dominios y familias de proteínas identifica InterPro? (anote los códigos IPR)</p></li>
+<li><p>¿Qué tipo de receptor es según la clasificación de InterPro?</p></li>
+<li><p>Observe la <strong>representación gráfica</strong>: ¿Las barras de dominios cubren la mayor parte de la secuencia o hay grandes regiones sin cobertura?</p></li>
+<li><p>¿Cuál es la longitud total de la proteína? ¿Qué porcentaje está cubierto por dominios?</p></li>
+<li><p>Anote las <strong>coordenadas</strong> (inicio-fin) de los dominios principales</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="parte-2-analisis-de-un-receptor-olfatorio-funcional-control-positivo">
+<h2>Parte 2: Análisis de un receptor olfatorio funcional (control positivo)<a class="headerlink" href="#parte-2-analisis-de-un-receptor-olfatorio-funcional-control-positivo" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Busque en NCBI la secuencia proteica del <strong>receptor olfatorio 1A1 humano</strong> (<strong>NP_002537.3</strong>), que es un receptor funcional</p></li>
+<li><p>Repita el proceso de búsqueda en InterPro con esta secuencia</p></li>
+</ol>
+<section id="id1">
+<h3>Preguntas para análisis:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li></li>
+<li><p>¿Qué dominios y familias identifica InterPro en este caso?</p></li>
+<li><p>En la representación gráfica, ¿observa una cobertura más completa de la secuencia comparada con OR11H7?</p></li>
+<li><p>¿Identifica el dominio de <strong>7 dominios transmembrana (7TM)</strong> característico de los receptores acoplados a proteína G (GPCRs)?</p></li>
+<li><p>Compare las <strong>coordenadas</strong> de los dominios con las de OR11H7. ¿Son similares en extensión?</p></li>
+<li><p>¿Qué porcentaje de la secuencia está cubierto por dominios funcionales?</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="parte-3-comparacion">
+<h2>Parte 3: Comparación<a class="headerlink" href="#parte-3-comparacion" title="Permalink to this heading">#</a></h2>
+<p>Complete la siguiente tabla comparativa (los resultados también se pueden visualizar en forma tabular en la pestaña “Entries”):</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Característica</p></th>
+<th class="head"><p>OR11H7 (Pseudogén)</p></th>
+<th class="head"><p>OR1A1 (Funcional)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Longitud de la proteína (aa)</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dominios InterPro identificados (códigos IPR)</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Familia de proteínas</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Coordenadas del dominio principal</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Porcentaje de cobertura de dominios</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Presencia de dominio 7TM completo</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Estado funcional predicho</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<section id="preguntas-de-reflexion">
+<h3>Preguntas de reflexión:<a class="headerlink" href="#preguntas-de-reflexion" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>¿Cuáles son las principales diferencias en la arquitectura de dominios entre ambas proteínas?</p></li>
+<li><p>Basándose en la <strong>cobertura de dominios</strong> y las <strong>coordenadas</strong>, ¿por qué OR11H7 se clasifica como pseudogén?</p></li>
+<li><p>¿Qué implicaciones funcionales tienen las diferencias observadas en la representación gráfica de InterPro?</p></li>
+<li><p>¿Qué nos dice esto sobre la evolución de los receptores olfatorios en humanos?</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="criterios-para-evaluar-si-un-dominio-esta-completo-en-interpro">
+<h2>Criterios para evaluar si un dominio está completo en InterPro:<a class="headerlink" href="#criterios-para-evaluar-si-un-dominio-esta-completo-en-interpro" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Cobertura visual</strong>: Las barras de dominios deben extenderse a lo largo de las regiones esperadas sin grandes interrupciones</p></li>
+<li><p><strong>Coordenadas completas</strong>: Compare las coordenadas inicio-fin entre ambas proteínas</p></li>
+<li><p><strong>Continuidad</strong>: Los dominios no deben estar fragmentados o interrumpidos</p></li>
+<li><p><strong>Comparación con control</strong>: Use OR1A1 (funcional) como referencia de cómo debe verse un dominio completo</p></li>
+</ol>
+<hr class="docutils" />
 <section id="recursos-para-profundizar">
 <h3>Recursos para profundizar<a class="headerlink" href="#recursos-para-profundizar" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
@@ -512,6 +656,7 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Hidden Markov Models</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediccion-climatica-usando-markov-chain">Predicción climática usando Markov Chain</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmm-para-anotaciones-de-genoma">HMM para Anotaciones de Genoma</a></li>
 </ul>
@@ -519,10 +664,33 @@ a) días soleados después de días lluviosos: 3/4=75%</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#herramientas-hmm-para-secuencias">Herramientas HMM para secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfam-interpro">Pfam-Interpro</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genes-receptores-olfativos">Genes Receptores Olfativos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-analisis-comparativo-de-dominios-en-receptores-olfatorios-funcionales-y-no-funcionales">Ejercicio: Análisis comparativo de dominios en receptores olfatorios funcionales y no funcionales</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo">Objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-1-analisis-del-pseudogen-or11h7">Parte 1: Análisis del pseudogén OR11H7</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-interpretar-los-resultados-de-interpro">Cómo interpretar los resultados de InterPro:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-para-analisis">Preguntas para análisis:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-2-analisis-de-un-receptor-olfatorio-funcional-control-positivo">Parte 2: Análisis de un receptor olfatorio funcional (control positivo)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Preguntas para análisis:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-3-comparacion">Parte 3: Comparación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-reflexion">Preguntas de reflexión:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-para-evaluar-si-un-dominio-esta-completo-en-interpro">Criterios para evaluar si un dominio está completo en InterPro:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recursos-para-profundizar">Recursos para profundizar</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
