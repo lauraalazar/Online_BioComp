@@ -368,14 +368,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia-filogenetica">Inferencia Filogenética</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-un-alineamiento-entre-secuencias">Generación de un alineamiento entre secuencias</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-distancia">Medidas de distancia</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-sustitucion">Modelos de sustitución</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgma-unweighted-pair-group-method-with-arithmetic-mean">UPGMA: Unweighted Pair Group Method with Arithmetic mean</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nj-neighbour-joining">NJ: Neighbour Joining</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgma-unweighted-pair-group-method-with-arithmetic-mean">UPGMA: Unweighted Pair Group Method with Arithmetic mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nj-neighbour-joining">NJ: Neighbour Joining</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-con-las-secuencias-de-citocromo-b">Ejercicio con las secuencias de Citocromo B</a></li>
 </ul>
             </nav>
@@ -391,166 +385,127 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="distancia-entre-secuencias-y-arboles-filogeneticos">
 <h1>Distancia entre secuencias y árboles filogenéticos<a class="headerlink" href="#distancia-entre-secuencias-y-arboles-filogeneticos" title="Permalink to this heading">#</a></h1>
 <p>Un árbol filogenético es la representación de una hipótesis de <strong>relaciones ancestrales</strong>, basada en <strong>similitud</strong>. En esta representación, las especies o secuencias de interés estan en las puntas (<em>tips</em>) de las ramas. El nodo donde se unen las ramas representa el ancestro común. El tiempo por lo tanto va desde el ancestro común hacia las puntas, en la siguiente figura el tiempo sería el eje horizontal x</p>
-<img src="Anatomy_tree.png"/><section id="inferencia-filogenetica">
-<h2>Inferencia Filogenética<a class="headerlink" href="#inferencia-filogenetica" title="Permalink to this heading">#</a></h2>
-<p>Para cuantificar la <strong>similitud</strong> calculamos las distancias (diferencias) entre grupos y, basado en esta <strong>matriz de distancia</strong>, se decide el orden de agrupamiento (<em>cluster</em>). Esta matriz es calculada a partir de una medida de similitud (por ejemplo entre morfologías o un alineamiento). Este primer agrupamiento no garantiza una solución óptima, así que en segundo lugar se busca el mejor árbol (pero esta parte la omitiremos).
-Vamos a comenzar con el cálculo de la matriz de distancia apartir de un alineamiento, y a partir de estas distancias, generar el árbol.</p>
-<section id="generacion-de-un-alineamiento-entre-secuencias">
-<h3>Generación de un alineamiento entre secuencias<a class="headerlink" href="#generacion-de-un-alineamiento-entre-secuencias" title="Permalink to this heading">#</a></h3>
-<p>Dentro de R también se puede realizar alineamiento entre secuencias, si bien no es recomendable secuencias de larga longitud. Para esto se deben instalar y cargar las librerías necesarias para trabajar con secuencias, así como lo hicimos con python</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the &#39;Biostrings&#39; package. </span>
-<span class="c1"># &#39;Biostrings&#39; provides efficient containers to handle and analyze biological sequences.</span>
-<span class="n">library</span><span class="p">(</span><span class="n">Biostrings</span><span class="p">)</span>
-<span class="c1"># Load the phangorn library: Provides tools for phylogenetic reconstruction and analysis</span>
-<span class="n">library</span><span class="p">(</span><span class="n">phangorn</span><span class="p">)</span>
-<span class="c1"># Load the ape library: Essential for reading, writing, and manipulating phylogenetic trees</span>
-<span class="n">library</span><span class="p">(</span><span class="n">ape</span><span class="p">)</span>
-<span class="n">library</span><span class="p">(</span><span class="n">seqinr</span><span class="p">)</span>
-<span class="c1"># Define un vector que contiene 4 secuencias de nucleótidos</span>
-<span class="n">sequences</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;ACTGGCTG&quot;</span><span class="p">,</span> <span class="s2">&quot;ACTGCTG&quot;</span><span class="p">,</span> <span class="s2">&quot;AGTGACT&quot;</span><span class="p">,</span> <span class="s2">&quot;TGTGACTGA&quot;</span><span class="p">)</span>
-
-<span class="c1"># Convy]ierte el vector de secuencias en un objeto DNAStringSet usando Biostrings</span>
-<span class="n">biostrings_sequences</span> <span class="o">=</span> <span class="n">DNAStringSet</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span>
-
-<span class="c1"># Realiza un alineamiento múltiple sobre el objeto DNAStringSet usando &#39;msa&#39; </span>
-<span class="n">msa_result_sample</span> <span class="o">=</span> <span class="n">msa</span><span class="p">(</span><span class="n">biostrings_sequences</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;ClustalW&quot;</span><span class="p">)</span>
-
-<span class="c1"># Observe el resultado del alineamiento</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">msa_result_sample</span><span class="p">)</span>
-
-<span class="c1"># Y otro ejemplo con amino ácidos con diferentes longitudes </span>
-<span class="c1"># y usando la matríz de sustitución Blosum</span>
-
-<span class="n">aa_sequences</span> <span class="o">&lt;-</span> <span class="n">AAStringSet</span><span class="p">(</span><span class="n">c</span><span class="p">(</span>
- <span class="s2">&quot;MKVLYRLSIK&quot;</span><span class="p">,</span>
- <span class="s2">&quot;MKILYKLSIK&quot;</span><span class="p">,</span>
- <span class="s2">&quot;MKIYYKLSIR&quot;</span><span class="p">,</span>
- <span class="s2">&quot;GKVFYKLNIK&quot;</span><span class="p">,</span>
- <span class="s2">&quot;AKVFYKLNIK&quot;</span>
-<span class="p">))</span>
-
-<span class="c1"># Realiza la alineación múltiple de las secuencias de aminoácidos.</span>
-<span class="c1"># El argumento &#39;type&#39; se establece en &quot;protein&quot; para indicar que estamos trabajando con secuencias de proteínas.</span>
-<span class="n">amino_sequences_aln</span> <span class="o">=</span> <span class="n">msa</span><span class="p">(</span><span class="n">aa_sequences</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;protein&quot;</span><span class="p">,</span><span class="n">substitutionMatrix</span> <span class="o">=</span> <span class="s2">&quot;blosum&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">amino_sequences_aln</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="medidas-de-distancia">
-<h3>Medidas de distancia<a class="headerlink" href="#medidas-de-distancia" title="Permalink to this heading">#</a></h3>
-<p>Existen diferentes formas de calcula una distancia entre dos puntos, entre las más comunes están (tomado de <a class="reference external" href="https://medium.com/&#64;varshamanideepa/exploring-the-different-types-of-distance-measures-for-data-analysis-f5be9133ac3e">https://medium.com/&#64;varshamanideepa/exploring-the-different-types-of-distance-measures-for-data-analysis-f5be9133ac3e</a>):</p>
-<ul class="simple">
-<li><p><strong>Hamming</strong>: cuantifica la diferencia entre dos vectores binarios</p></li>
-</ul>
-<img src="hamming_dist.webp"  width=150 height=150/> 
-<ul class="simple">
-<li><p><strong>Euclídea</strong>: d(x,y) = √(∑(xi-yi)²)</p></li>
-</ul>
-<img src="euclidean_dist.webp" width=150 height=150/>
-<ul class="simple">
-<li><p><strong>Manhattan</strong>: d(x,y) = ∑|xi-yi|</p></li>
-</ul>
-<img src="manhattan_dist.webp" width=150 height=150/>
-<p>Con el alineamiento realizado, vamos a obtener la matriz de ditancia</p>
-</section>
-<section id="modelos-de-sustitucion">
-<h3>Modelos de sustitución<a class="headerlink" href="#modelos-de-sustitucion" title="Permalink to this heading">#</a></h3>
-<p>Para un grupo de secuencias, la distancia se puede calular apartir del alineamiento. Esta distancia es una medida cuantitativa de la divergencia entre secuencias, y para algunas secuencias (aquellas en las que las tasas de evolución son aproximadamente similares), sirve como estimación del tiempo que ha pasado entre esta divergencia (llamado el <em>reloj molecular</em>).</p>
-<p>Para distancias entre secuencias utilizamos modelos de evolución que cuantifican la probabilidad de cambio:</p>
-<ul class="simple">
-<li><p>K80: El modelo Kimura asume diferencias entre las transiciones y transversiones con un parámetro</p></li>
-<li><p>JC: El model Jukes-Cantor asume igual frecuencia entre bases y en tasas de mutación</p></li>
-<li><p>WAG: Modelo para amino ácidos</p></li>
-</ul>
-<p>para una mejor comprensión de modelos: <a class="reference external" href="http://www.iqtree.org/doc/Substitution-Models">http://www.iqtree.org/doc/Substitution-Models</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convertir el alineamiento multiple en un objeto phyDat para análisis downstream en phangorn</span>
-<span class="n">phyDat_aa</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">phyDat</span><span class="p">(</span><span class="n">amino_sequences_aln</span><span class="p">)</span>
-
-<span class="c1"># Se asignan nombres a las secuencias</span>
-<span class="n">names</span><span class="p">(</span><span class="n">phyDat_aa</span><span class="p">)</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">&quot;Seq 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Seq 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Seq 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Seq 4&quot;</span><span class="p">,</span> <span class="s2">&quot;Seq 5&quot;</span><span class="p">)</span>
-
-<span class="c1">#Diferentes formas de calcular distancia</span>
-<span class="n">aa_sample_hamming</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="n">phyDat_aa</span><span class="p">,</span> <span class="n">ratio</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span> <span class="c1">#distancia Hamming</span>
-
-<span class="n">aa_sample_wag</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="o">.</span><span class="n">ml</span><span class="p">(</span><span class="n">phyDat_aa</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;WAG&quot;</span><span class="p">)</span> <span class="c1">#modelo evolutivo wag</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<b>Compare las dos distancias y piense cómo agruparía las secuencias?</b> 
-</div>
-</section>
+<img src="Anatomy_tree.png"/><p>Para reconstruir ese árbol, el procedimiento suele dividirse en dos grandes etapas:</p>
+<ol class="arabic simple">
+<li><p><strong>Cálculo de la matriz de distancias</strong>
+Partiendo de un alineamiento múltiple de secuencias (ver <a class="reference external" href="https://lauraalazar.github.io/Online_BioComp/alineamientos.html">https://lauraalazar.github.io/Online_BioComp/alineamientos.html</a>), podemos cuantificar cuán divergentes están entre sí usando diferentes modelos evolutivos. Estas distancias estiman la probabilidad acumulada de sustituciones entre pares de secuencias.</p></li>
+<li><p>Reconstrucción del árbol a partir de la matriz de distancias
+Dos métodos clásicos son UPGMA y Neighbour Joining</p></li>
+</ol>
 <section id="upgma-unweighted-pair-group-method-with-arithmetic-mean">
-<h3>UPGMA: Unweighted Pair Group Method with Arithmetic mean<a class="headerlink" href="#upgma-unweighted-pair-group-method-with-arithmetic-mean" title="Permalink to this heading">#</a></h3>
+<h2>UPGMA: Unweighted Pair Group Method with Arithmetic mean<a class="headerlink" href="#upgma-unweighted-pair-group-method-with-arithmetic-mean" title="Permalink to this heading">#</a></h2>
 <p>El método UPGMA es un ejemplo de cluster jerárquico. La distancia entre dos clusters se calcula con la media de las distancias entre cada punto del primer cluster al segundo cluster</p>
 <p>En el siguiente link puede encontrar un ejemplo paso a paso para construir el siguiente agrupamiento: <a class="reference external" href="http://www.slimsuite.unsw.edu.au/teaching/upgma/">http://www.slimsuite.unsw.edu.au/teaching/upgma/</a></p>
 <img src="upgma15.png"/></section>
 <section id="nj-neighbour-joining">
-<h3>NJ: Neighbour Joining<a class="headerlink" href="#nj-neighbour-joining" title="Permalink to this heading">#</a></h3>
+<h2>NJ: Neighbour Joining<a class="headerlink" href="#nj-neighbour-joining" title="Permalink to this heading">#</a></h2>
 <p>Mientras que en un árbol realizado con UPGMA todos los puntos están alineados y las ramas tienen la misma distancia (porque las distancias se calculan por la media), en NJ se calcula la “distancia acumulada” para cada secuencia i (A-E),  <span class="math notranslate nohighlight">\(U_i = Σ d_{ij}\)</span>. Usando esta distancia acumulada Ui, se calcula una matriz de distancia <span class="math notranslate nohighlight">\(e_{ij}\)</span> (para cada par de de secuencias i ay j), de acuerdo a la fórmula</p>
 <p><span class="math notranslate nohighlight">\(e_{ij}\)</span> = <span class="math notranslate nohighlight">\(d_{ij}\)</span>– <span class="math notranslate nohighlight">\(\frac{U_i + U_j}{N – 2}\)</span></p>
 <img src="NJfig.png"/>
 <p>Para una explicación manual: <a class="reference external" href="https://www.tenderisthebyte.com/blog/2022/08/31/neighbor-joining-trees/">https://www.tenderisthebyte.com/blog/2022/08/31/neighbor-joining-trees/</a></p>
-<p>Ahora agrupamos las secuencias con los dos métodos que hemos descrito aquí, UPGMA y NJ, y graficamos el árbol</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Agrupamiento con UPGMA</span>
-<span class="n">aa_upgma</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
-
-<span class="c1"># Agrupamiento de secuencias con NJ</span>
-<span class="n">aa_nj</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">aa_sample_wag</span><span class="p">)</span>
-
-<span class="c1"># graficamos los dos árboles</span>
-<span class="n">par</span><span class="p">(</span><span class="n">mfrow</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">aa_upgma</span><span class="p">,</span> <span class="n">no</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">aa_nj</span><span class="p">,</span> <span class="n">no</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="ejercicio-con-las-secuencias-de-citocromo-b">
 <h2>Ejercicio con las secuencias de Citocromo B<a class="headerlink" href="#ejercicio-con-las-secuencias-de-citocromo-b" title="Permalink to this heading">#</a></h2>
-<p>También es posible importar un árbol realizado para graficarlo desde R. Esto se hace con frecuencia, ya que si bien R tiene la fortaleza de graficar, es mas lento y menos eficiente para realizar los alineamientos y cálculos de distancias.</p>
-<p>A continuación vamos a importar el alineamiento de las secuencias de proteína de Citocromo B que habíamos generado con clustal (archivo .phy). A partir de este archivo vamos a:</p>
+<p>A continuación vamos a importar las secuencias de DNA y proteína de Citocromo B que habíamos estudiado antes. A partir de este archivo vamos a:</p>
 <ul class="simple">
 <li><ol class="arabic simple">
-<li><p>Calcular las distancias por pares</p></li>
+<li><p>Alinear</p></li>
 </ol>
 </li>
 <li><ol class="arabic simple" start="2">
-<li><p>Aplicar los algoritmos de agrupamiento</p></li>
+<li><p>Calcular las distancias por pares</p></li>
 </ol>
 </li>
 <li><ol class="arabic simple" start="3">
+<li><p>Aplicar los algoritmos de agrupamiento</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
 <li><p>Graficar el árbol</p></li>
 </ol>
 </li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cytB</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">alignment</span><span class="p">(</span><span class="s2">&quot;CytBProt.phy&quot;</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;phylip&quot;</span><span class="p">)</span>
-<span class="n">cytB_phy_dat</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">phyDat</span><span class="p">(</span><span class="n">cytB</span><span class="p">)</span>
-<span class="n">cytB_dist</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="o">.</span><span class="n">ml</span><span class="p">(</span><span class="n">cytB_phy_dat</span><span class="p">)</span>
-<span class="n">cytB_UPGMA</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="n">cytB_dist</span><span class="p">)</span>
-<span class="n">cytB_NJ</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">cytB_dist</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">cytB_UPGMA</span><span class="p">)</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">cytB_NJ</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># 1. Instalar y cargar librerías</span>
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span>requireNamespace<span class="o">(</span><span class="s2">&quot;ape&quot;</span>,<span class="w"> </span><span class="nv">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE<span class="o">))</span><span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;ape&quot;</span><span class="o">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span>requireNamespace<span class="o">(</span><span class="s2">&quot;phangorn&quot;</span>,<span class="w"> </span><span class="nv">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE<span class="o">))</span><span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;phangorn&quot;</span><span class="o">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span>requireNamespace<span class="o">(</span><span class="s2">&quot;msa&quot;</span>,<span class="w"> </span><span class="nv">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE<span class="o">))</span><span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;msa&quot;</span><span class="o">)</span>
+
+<span class="n">library</span><span class="p">(</span><span class="n">ape</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">phangorn</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">msa</span><span class="p">)</span>   <span class="c1"># Para alinear las secuencias (multiple sequence aln)</span>
+
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># 2. Leer las secuencias originales (sin alinear) desde GitHub</span>
+<span class="c1">#-----------------------------------------------------------</span>
+
+<span class="c1"># ADN</span>
+<span class="n">cytb_dna_raw</span> <span class="o">&lt;-</span> <span class="n">readDNAStringSet</span><span class="p">(</span>
+  <span class="s2">&quot;https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt&quot;</span><span class="p">,</span>
+  <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;fasta&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Proteína</span>
+<span class="n">cytb_prot_raw</span> <span class="o">&lt;-</span> <span class="n">readAAStringSet</span><span class="p">(</span>
+  <span class="s2">&quot;https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBProt.txt&quot;</span><span class="p">,</span>
+  <span class="nb">format</span> <span class="o">=</span> <span class="s2">&quot;fasta&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># 3. Alinear las secuencias con MSA (ClustalW)</span>
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="n">alignment_dna</span> <span class="o">&lt;-</span> <span class="n">msa</span><span class="p">(</span><span class="n">cytb_dna_raw</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;ClustalW&quot;</span><span class="p">)</span>
+<span class="n">alignment_prot</span> <span class="o">&lt;-</span> <span class="n">msa</span><span class="p">(</span><span class="n">cytb_prot_raw</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;ClustalW&quot;</span><span class="p">)</span>
+
+<span class="c1"># Convertir los alineamientos a formato DNAbin y AAbin</span>
+<span class="n">alignment_dna_bin</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">DNAbin</span><span class="p">(</span><span class="n">alignment_dna</span><span class="p">)</span>
+<span class="n">alignment_prot_bin</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">AAbin</span><span class="p">(</span><span class="n">alignment_prot</span><span class="p">)</span>
+
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># 4. Convertir a formato phyDat (para phangorn)</span>
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="n">cytb_dna_phy</span> <span class="o">&lt;-</span> <span class="n">phyDat</span><span class="p">(</span><span class="n">alignment_dna_bin</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;DNA&quot;</span><span class="p">)</span>
+<span class="n">cytb_prot_phy</span> <span class="o">&lt;-</span> <span class="n">phyDat</span><span class="p">(</span><span class="n">alignment_prot_bin</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;AA&quot;</span><span class="p">)</span>
+
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># 5. Calcular matrices de distancia evolutiva</span>
+<span class="c1">#-----------------------------------------------------------</span>
+
+<span class="c1"># Modelo Jukes-Cantor (ADN)</span>
+<span class="n">dist_dna</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="o">.</span><span class="n">ml</span><span class="p">(</span><span class="n">cytb_dna_phy</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;JC69&quot;</span><span class="p">)</span>
+
+<span class="c1"># Modelo JTT (Proteína)</span>
+<span class="n">dist_prot</span> <span class="o">&lt;-</span> <span class="n">dist</span><span class="o">.</span><span class="n">ml</span><span class="p">(</span><span class="n">cytb_prot_phy</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;JTT&quot;</span><span class="p">)</span>
+
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># 6. Construir árboles filogenéticos</span>
+<span class="c1">#-----------------------------------------------------------</span>
+
+<span class="c1"># Neighbor-Joining (NJ)</span>
+<span class="n">tree_nj_dna</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">dist_dna</span><span class="p">)</span>
+<span class="n">tree_nj_prot</span> <span class="o">&lt;-</span> <span class="n">NJ</span><span class="p">(</span><span class="n">dist_prot</span><span class="p">)</span>
+
+<span class="c1"># UPGMA</span>
+<span class="n">tree_upgma_dna</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="n">dist_dna</span><span class="p">)</span>
+<span class="n">tree_upgma_prot</span> <span class="o">&lt;-</span> <span class="n">upgma</span><span class="p">(</span><span class="n">dist_prot</span><span class="p">)</span>
+
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="c1"># 8. Visualización</span>
+<span class="c1">#-----------------------------------------------------------</span>
+<span class="n">par</span><span class="p">(</span><span class="n">mfrow</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tree_nj_dna</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;CytB ADN - Neighbor Joining (JC69)&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tree_upgma_dna</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;CytB ADN - Upgma&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tree_nj_prot</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;CytB Proteína - Neighbor Joining (JTT)&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tree_upgma_prot</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;CytB Proteína - Upgma&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-info">
-<b>Ejercicio</b> 
-Repita el mismo proceso de alineamiento y generación de árbol con el archivo de nucleótidos de Citocromo B (https://raw.githubusercontent.com/lauraalazar/BiologiaComputacional/main/CytBDNA.txt). Ve alguna diferencia con respecto a las proteínas, por ejemplo en la topología del árbol?
+<b>Ejercicio</b> Ve alguna diferencia con respecto a las proteínas, por ejemplo en la topología del árbol? A qué se deberá esta diferencia?
 </div></section>
 </section>
 
@@ -621,14 +576,8 @@ Repita el mismo proceso de alineamiento y generación de árbol con el archivo d
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia-filogenetica">Inferencia Filogenética</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generacion-de-un-alineamiento-entre-secuencias">Generación de un alineamiento entre secuencias</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-distancia">Medidas de distancia</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-sustitucion">Modelos de sustitución</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgma-unweighted-pair-group-method-with-arithmetic-mean">UPGMA: Unweighted Pair Group Method with Arithmetic mean</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nj-neighbour-joining">NJ: Neighbour Joining</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgma-unweighted-pair-group-method-with-arithmetic-mean">UPGMA: Unweighted Pair Group Method with Arithmetic mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nj-neighbour-joining">NJ: Neighbour Joining</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-con-las-secuencias-de-citocromo-b">Ejercicio con las secuencias de Citocromo B</a></li>
 </ul>
   </nav></div>
