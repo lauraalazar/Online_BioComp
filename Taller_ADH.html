@@ -403,24 +403,23 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#!/usr/local/bin/
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/</span>
 
-# Script por Laura Salazar Jaramillo
-# Busca la secuencia de proteinas del ADH en humanos
+<span class="c1"># Script por Laura Salazar Jaramillo</span>
+<span class="c1"># Busca la secuencia de proteinas del ADH en humanos</span>
 
 
-from Bio import Entrez
-from Bio import SeqIO
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
 
-Entrez.email = &quot;lsalazarj@eafit.edu.co&quot;
+<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;lsalazarj@eafit.edu.co&quot;</span>
 
-with Entrez.efetch(
-    db=&quot;protein&quot;, rettype=&quot;fasta&quot;, retmode=&quot;text&quot;, id=&quot;NP_000663.1&quot;) as handle:
-    seq_record = SeqIO.read(handle, &quot;fasta&quot;)
+<span class="k">with</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">efetch</span><span class="p">(</span>
+    <span class="n">db</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">,</span> <span class="n">rettype</span><span class="o">=</span><span class="s2">&quot;fasta&quot;</span><span class="p">,</span> <span class="n">retmode</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;NP_000663.1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+    <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 
-print(seq_record)
-SeqIO.write(seq_record, &quot;adh_prot_human.fa&quot;, &quot;fasta&quot;)
-```
+<span class="nb">print</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">seq_record</span><span class="p">,</span> <span class="s2">&quot;adh_prot_human.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
