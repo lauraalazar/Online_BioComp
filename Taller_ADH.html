@@ -395,8 +395,13 @@ document.write(`
 <p>Esta enzima ha sido especialmente relevante en la evolución de los primates, ya que su actividad frente al etanol varía significativamente entre especies (y como sabemos puede ser muy tóxica por encima de ciertas cantidads, aunque este límite es también variable). Estudios evolutivos sugieren que ADH pudo haber adquirido mayor eficiencia metabólica en linajes de homínidos terrestres (humanos, gorilas, chimpancés y bonobos) debido a su exposición a alimentos en proceso de fermentación (Carrigan MA <em>et al</em>. Hominids adapted to metabolize ethanol long before human-directed fermentation. PNAS 2015 Jan 13;112(2):458-63. doi: 10.1073/pnas.1404167111)</p>
 <section id="recuperacion-de-secuencias-fasta-de-adh-tipo-iv">
 <h3>1. Recuperación de secuencias (FASTA) de ADH tipo IV<a class="headerlink" href="#recuperacion-de-secuencias-fasta-de-adh-tipo-iv" title="Permalink to this heading">#</a></h3>
-<p>Busque la secuencia de proteína ADH en humanos (NCBI ID NP_000663.1) y descárguela en el directorio del examen.</p>
-<div class="cell docutils container">
+<p>Busque la secuencia de proteína ADH en humanos (NCBI ID NP_000663.1) y descárguela en el directorio del taller.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#!/usr/local/bin/
 
@@ -419,6 +424,7 @@ SeqIO.write(seq_record, &quot;adh_prot_human.fa&quot;, &quot;fasta&quot;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="busqueda-de-homologos-primates">
@@ -466,7 +472,12 @@ SeqIO.write(seq_record, &quot;adh_prot_human.fa&quot;, &quot;fasta&quot;)
 </tbody>
 </table>
 <p>Descargue las secuencias en un archivo fasta junto con la de referencia</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/local/bin/</span>
 
@@ -510,6 +521,7 @@ SeqIO.write(seq_record, &quot;adh_prot_human.fa&quot;, &quot;fasta&quot;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="alineamiento-y-arbol-filogenetico">
