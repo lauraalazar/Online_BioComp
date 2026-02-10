@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'variables';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Ejemplo de script ejecutable en bash" href="Ejemplo_bash.html" />
+    <link rel="next" title="Introducción a Biopython" href="biopython.html" />
     <link rel="prev" title="Scripts Ejecutables" href="exscripts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -157,7 +157,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="intro_linux.html">Introducción a la Terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exscripts.html">Scripts Ejecutables</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variables, declaraciones y loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Ejemplo_bash.html">Ejemplo de script ejecutable en bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="biopython.html">Introducción a Biopython</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="python_seq_ejs.html">Ejercicio con secuencias en python</a></li>
@@ -377,6 +376,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop">For loop</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-script-ejecutable-en-bash">Ejemplo de script ejecutable en bash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatizar-y-documentar-un-script-en-bash">Automatizar y documentar un script en bash</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -532,6 +535,85 @@ Luego iteramos sobre cada item del directorio <strong>sars_covid19</strong> y co
 <div class="alert alert-block alert-info">
 <b>Ejercicio</b> Guarde el for loop en un script ejecutable y córralo </div></section>
 </section>
+<section id="ejemplo-de-script-ejecutable-en-bash">
+<h2>Ejemplo de script ejecutable en bash<a class="headerlink" href="#ejemplo-de-script-ejecutable-en-bash" title="Permalink to this heading">#</a></h2>
+<section id="automatizar-y-documentar-un-script-en-bash">
+<h3>Automatizar y documentar un script en bash<a class="headerlink" href="#automatizar-y-documentar-un-script-en-bash" title="Permalink to this heading">#</a></h3>
+<p>Vamos a escribir un script <em>ejecutable</em> en bash (cómo debe ser su extensión?) para contar las secuencias presentes en el archivo descargado “Sars_cov.prot.fa”</p>
+<ol class="arabic simple">
+<li><p>Acceda al directorio donde está el archivo que queremos usar de input</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sars_covid19</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Utilice un editor de texto para escribir el script</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>nano contador_secuencias.sh
+#!/bin/bash
+
+# Definir la variable con el nombre del archivo
+fasta_file=&quot;Sars_cov.prot.fa&quot;
+
+# Verificar si el archivo existe
+if [ ! -f &quot;$fasta_file&quot; ]; then
+    echo &quot;El archivo $fasta_file no existe.&quot;
+    exit 1
+fi
+
+# Contar líneas que empiezan con &#39;&gt;&#39;
+sequence_count=$(grep -c &quot;^&gt;&quot; &quot;$fasta_file&quot;)
+
+# Mostrar resultados
+echo &quot;Archivo analizado: $fasta_file&quot;
+echo &quot;Número de secuencias encontradas: $sequence_count&quot;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Ejecutar el archivo: esto se puede hacer de dos formas</p>
+<ul class="simple">
+<li><p>Utilizando el comando del programa</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">contador_secuencias</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<ul class="simple">
+<li><p>Haciéndolo ejecutable</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -575,11 +657,11 @@ Luego iteramos sobre cada item del directorio <strong>sars_covid19</strong> y co
       </div>
     </a>
     <a class="right-next"
-       href="Ejemplo_bash.html"
+       href="biopython.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ejemplo de script ejecutable en bash</p>
+        <p class="prev-next-title">Introducción a Biopython</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -606,6 +688,10 @@ Luego iteramos sobre cada item del directorio <strong>sars_covid19</strong> y co
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otros-operadores-en-bash">Otros operadores en Bash</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loop">While loop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loop">For loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-script-ejecutable-en-bash">Ejemplo de script ejecutable en bash</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatizar-y-documentar-un-script-en-bash">Automatizar y documentar un script en bash</a></li>
 </ul>
 </li>
 </ul>
