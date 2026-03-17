@@ -380,13 +380,16 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduciendo-penalizaciones">3. Introduciendo penalizaciones</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-manual-de-scores">Cálculo manual de scores</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-alineamiento-de-secuencias">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-global">Alineamiento Global</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-needlemanwunsch">Algoritmo Needleman–Wunsch</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-alineamiento-de-secuencias">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-local-smith-waterman">Alineamiento Local: Smith-Waterman</a></li>
 </ul>
 </li>
@@ -663,6 +666,55 @@ $<span class="math notranslate nohighlight">\(\text{Score} = (4 \times +1) + (1 
 <div class="alert alert-block alert-info">
 <b>Ejercicio</b> 
 Realice el alineamiento entre seq3 y las otras secuencias  </div></section>
+</section>
+<section id="ejercicio-de-alineamiento-de-secuencias">
+<h2>Ejercicio de alineamiento de secuencias<a class="headerlink" href="#ejercicio-de-alineamiento-de-secuencias" title="Permalink to this heading">#</a></h2>
+<p>Vamos a utilizar las secuencias de <em>E. coli</em> de la fosfatasa de la cepa silvestre y mutantes. Para esto cree un directorio y copie (o descargue) las secuencias</p>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> 
+Cree un script de python que lea las secuencias de nucleótidos, traduzca las secuencias y alinee las secuencias de amino ácidos por pares la *wt* vs *alpha* y *wt* vs *beta*
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar las librerías necesarias</span>
+
+<span class="kn">import</span> <span class="nn">Bio</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Align</span>
+
+<span class="c1"># Cargar las secuencias desde los archivos FASTA</span>
+<span class="n">nt_wt</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Ecoli_phoA.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span> 
+<span class="n">nt_mutAlpha</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Ecoli_phoA_mutalpha.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">nt_mutBeta</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Ecoli_phoA_mutbeta.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+
+<span class="c1"># Traducir las secuencias</span>
+<span class="n">aa_wt</span> <span class="o">=</span> <span class="n">nt_wt</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+<span class="n">aa_mutAlpha</span> <span class="o">=</span> <span class="n">nt_mutAlpha</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+<span class="n">aa_mutBeta</span> <span class="o">=</span> <span class="n">nt_mutBeta</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+
+
+<span class="c1"># Inicializar el alineador de pares</span>
+<span class="n">aligner</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span>
+
+<span class="c1"># Realizar el alineamiento entre la secuencia de WT y mutAlpha</span>
+<span class="n">alignments_WT_mutAlpha</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">aa_wt</span><span class="p">,</span><span class="n">aa_mutAlpha</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments_WT_mutAlpha</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+
+<span class="c1"># Realizar el alineamiento entre la secuencia de WT y mutAlpha</span>
+<span class="n">alignments_WT_mutBeta</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">aa_wt</span><span class="p">,</span><span class="n">aa_mutBeta</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments_WT_mutBeta</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <section id="alineamiento-global">
 <h3>Alineamiento Global<a class="headerlink" href="#alineamiento-global" title="Permalink to this heading">#</a></h3>
 <p>Supongamos que tenemos dos secuencias con diferente longitud (que es lo mas frecuente):</p>
@@ -778,13 +830,13 @@ Chequee este mismo alineamiento en bipython. Defina las dos secuencias, los gaps
 </section>
 </section>
 </section>
-<section id="ejercicio-de-alineamiento-de-secuencias">
-<h2>Ejercicio de alineamiento de secuencias<a class="headerlink" href="#ejercicio-de-alineamiento-de-secuencias" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Ejercicio de alineamiento de secuencias<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Vamos a utilizar las secuencias de <em>E. coli</em> de la fosfatasa de la cepa silvestre y mutantes. Para esto cree un directorio y copie (o descargue) las secuencias</p>
 <div class="alert alert-block alert-info">
 <b>Ejercicio</b> 
 Cree un script de python que lea las secuencias de nucleótidos, traduzca las secuencias y alinee las secuencias de amino ácidos por pares la *wt* vs *alpha* y *wt* vs *beta*
-</div><div class="cell tag_hide-input docutils container">
+</div><div class="cell tag_hide-input tag_parameters docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -986,13 +1038,16 @@ Repita el mismo proceso de alineamiento y generación de árbol con el archivo d
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduciendo-penalizaciones">3. Introduciendo penalizaciones</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-manual-de-scores">Cálculo manual de scores</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-alineamiento-de-secuencias">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-global">Alineamiento Global</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-needlemanwunsch">Algoritmo Needleman–Wunsch</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-alineamiento-de-secuencias">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-local-smith-waterman">Alineamiento Local: Smith-Waterman</a></li>
 </ul>
 </li>
