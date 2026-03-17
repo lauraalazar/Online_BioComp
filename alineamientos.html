@@ -373,11 +373,20 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Alineamientos</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#similitud-entre-secuencias">Similitud entre secuencias</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-por-pares">Alineamiento por pares</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamientos-de-secuencias-con-biopython">Alineamientos de secuencias con BioPython</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-con-parametros-por-defecto">2. Alineamiento con parámetros por defecto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pregunta">Pregunta</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduciendo-penalizaciones">3. Introduciendo penalizaciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-manual-de-scores">Cálculo manual de scores</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-global">Alineamiento Global</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-needlemanwunsch">Algoritmo Needleman–Wunsch</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-alineamiento-de-secuencias">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-local-smith-waterman">Alineamiento Local: Smith-Waterman</a></li>
 </ul>
 </li>
@@ -425,121 +434,171 @@ document.write(`
 <b>Ejercicio</b> 
 Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas secuencias. Cuantos alineamientos obtuvo?
 </div><p>Ahora lo haremos con python. Entramos a Apolo y activamos los ambientes</p>
+<section id="alineamientos-de-secuencias-con-biopython">
+<h2>Alineamientos de secuencias con BioPython<a class="headerlink" href="#alineamientos-de-secuencias-con-biopython" title="Permalink to this heading">#</a></h2>
+<p>En este ejercicio exploraremos el alineamiento por pares (<em>pairwise alignment</em>) usando la librería <strong>BioPython</strong>. Veremos cómo los parámetros de scoring influyen en qué alineamiento se considera óptimo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Llamamos las librerías de bipython</span>
 <span class="kn">import</span> <span class="nn">Bio</span>
 <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Align</span> <span class="c1">#importa la librería para alineamientos</span>
 
 <span class="c1"># Definimos las secuencias con la función Seq de biopython</span>
 <span class="n">seq1</span><span class="o">=</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGTG&quot;</span><span class="p">)</span> 
 <span class="n">seq2</span><span class="o">=</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGTC&quot;</span><span class="p">)</span>
 <span class="n">seq3</span><span class="o">=</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGCC&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="alineamiento-por-pares">
-<h2>Alineamiento por pares<a class="headerlink" href="#alineamiento-por-pares" title="Permalink to this heading">#</a></h2>
-<p>Dos secuencias, seq1 y seq2, en qué se parecen y diferencian? Como cuantificar las diferencias y similitudes?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Align</span> <span class="c1">#importa la librería para alineamientos</span>
 
-<span class="n">aligner</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span> <span class="c1">#esta función alinea por pares con parámetros por defecto</span>
-<span class="n">alignments1_2</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span> <span class="c1"># LISTA de alineamientos posibles entre las dos secuencias</span>
-<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="n">alignments1_2</span><span class="p">:</span> <span class="c1"># </span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;seq1:&quot;</span><span class="p">,</span> <span class="n">seq1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;seq2:&quot;</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;seq3:&quot;</span><span class="p">,</span> <span class="n">seq3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Cuantos tipos de alineamientos encontró? Cual es mejor?</p>
+</section>
+<hr class="docutils" />
+<section id="alineamiento-con-parametros-por-defecto">
+<h2>2. Alineamiento con parámetros por defecto<a class="headerlink" href="#alineamiento-con-parametros-por-defecto" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">print(Align.PairwiseAligner())</span></code> nos muestra que los score  por defecto son:</p>
 <ul class="simple">
-<li><p>Opción1 <strong>Sustitución</strong></p></li>
+<li><p><strong>match score</strong> = 1</p></li>
+<li><p><strong>mismatch score</strong> = 0</p></li>
+<li><p><strong>gap scores</strong> = 0</p></li>
 </ul>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>seq1</p></th>
-<th class="head text-center"><p>A</p></th>
-<th class="head text-center"><p>C</p></th>
-<th class="head text-center"><p>G</p></th>
-<th class="head text-center"><p>T</p></th>
-<th class="head text-center"><p>G</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(*\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>seq2</p></td>
-<td class="text-center"><p>A</p></td>
-<td class="text-center"><p>C</p></td>
-<td class="text-center"><p>G</p></td>
-<td class="text-center"><p>T</p></td>
-<td class="text-center"><p>C</p></td>
-</tr>
-</tbody>
-</table>
-<ul class="simple">
-<li><p>Opción2 <strong>Indel</strong></p></li>
-</ul>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>seq1</p></th>
-<th class="head text-center"><p>A</p></th>
-<th class="head text-center"><p>C</p></th>
-<th class="head text-center"><p>G</p></th>
-<th class="head text-center"><p>T</p></th>
-<th class="head text-center"><p>G</p></th>
-<th class="head text-center"><p><span class="math notranslate nohighlight">\(-\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(|\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(-\)</span></p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(-\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>seq2</p></td>
-<td class="text-center"><p>A</p></td>
-<td class="text-center"><p>C</p></td>
-<td class="text-center"><p>G</p></td>
-<td class="text-center"><p>T</p></td>
-<td class="text-center"><p><span class="math notranslate nohighlight">\(-\)</span></p></td>
-<td class="text-center"><p>C</p></td>
-</tr>
-</tbody>
-</table>
-<ul class="simple">
-<li><p>Match score = 1</p></li>
-<li><p>Posiciones pareadas = 4</p></li>
-<li><p>Score del alineamiento = 4</p></li>
-</ul>
+<p>Esto significa que todos los alineamientos posibles (con o sin gaps) que maximicen los matches tendrán el mismo score.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments1_2</span><span class="p">):</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aligner</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span>  <span class="c1"># parámetros por defecto</span>
+<span class="n">alignments1_2</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>  <span class="c1"># LISTA de alineamientos posibles</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Número de alineamientos encontrados: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">alignments1_2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="n">alignments1_2</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="pregunta">
+<h3>Pregunta<a class="headerlink" href="#pregunta" title="Permalink to this heading">#</a></h3>
+<p>¿Cuántos alineamientos encontró? ¿Cuál es mejor?</p>
+<p>Con los parámetros por defecto, BioPython encuentra <strong>dos</strong> tipos de alineamiento con el mismo score de 4:</p>
+<p><strong>Opción 1 — Sustitución</strong> (un mismatch en la última posición):</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>seq1</p></th>
+<th class="head text-center"><p>A</p></th>
+<th class="head text-center"><p>C</p></th>
+<th class="head text-center"><p>G</p></th>
+<th class="head text-center"><p>T</p></th>
+<th class="head text-center"><p>G</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>✕</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>seq2</p></td>
+<td class="text-center"><p>A</p></td>
+<td class="text-center"><p>C</p></td>
+<td class="text-center"><p>G</p></td>
+<td class="text-center"><p>T</p></td>
+<td class="text-center"><p>C</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Opción 2 — Indel</strong> (un gap / inserción-deleción):</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>seq1</p></th>
+<th class="head text-center"><p>A</p></th>
+<th class="head text-center"><p>C</p></th>
+<th class="head text-center"><p>G</p></th>
+<th class="head text-center"><p>T</p></th>
+<th class="head text-center"><p>G</p></th>
+<th class="head text-center"><p>−</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>|</p></td>
+<td class="text-center"><p>−</p></td>
+<td class="text-center"><p>−</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>seq2</p></td>
+<td class="text-center"><p>A</p></td>
+<td class="text-center"><p>C</p></td>
+<td class="text-center"><p>G</p></td>
+<td class="text-center"><p>T</p></td>
+<td class="text-center"><p>−</p></td>
+<td class="text-center"><p>C</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ambos tienen <strong>match score = 4</strong>, pero con los parámetros por defecto no hay penalización por gaps ni mismatches, así que el score es idéntico.</p>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>¿Será igual de probable una sustitución que un indel evolutivamente?</strong> En general, las sustituciones son más frecuentes que los indels. Por eso usamos parámetros de penalización.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="introduciendo-penalizaciones">
+<h2>3. Introduciendo penalizaciones<a class="headerlink" href="#introduciendo-penalizaciones" title="Permalink to this heading">#</a></h2>
+<p>Ajustamos los parámetros para reflejar mejor la biología:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parámetro</p></th>
+<th class="head"><p>Valor</p></th>
+<th class="head"><p>Interpretación</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">match_score</span></code></p></td>
+<td><p>+1</p></td>
+<td><p>recompensa por posiciones idénticas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mismatch_score</span></code></p></td>
+<td><p>−1</p></td>
+<td><p>penalización por sustitución</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">open_gap_score</span></code></p></td>
+<td><p>−2</p></td>
+<td><p>penalización por <em>abrir</em> un gap</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">extend_gap_score</span></code></p></td>
+<td><p>−0.5</p></td>
+<td><p>penalización por <em>extender</em> un gap</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p><strong>Nota:</strong> Penalizar más abrir un gap que extenderlo refleja que evolutivamente es más costoso que ocurra un indel a que se extienda uno ya existente.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aligner</span><span class="o">.</span><span class="n">match_score</span>     <span class="o">=</span>  <span class="mi">1</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">mismatch_score</span>  <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">open_gap_score</span>  <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">aligner</span><span class="o">.</span><span class="n">extend_gap_score</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+
+<span class="c1"># Se debe volver a alinear para aplicar los nuevos scores</span>
+<span class="n">alignments1_2</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">seq1</span><span class="p">,</span> <span class="n">seq2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments1_2</span><span class="p">):</span> 
     <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>  
 </pre></div>
 </div>
 </div>
 </div>
-<p>Pero será igual de probable tener una mutación de <strong>sustitución</strong> a un <strong>indel</strong> ?</p>
-<ul class="simple">
-<li><p>Mismatch (no pareados): -1</p></li>
-<li><p>Indel: -1</p></li>
-<li><p>Score Opción1: 4-1 = 3</p></li>
-<li><p>Score Opción2: 4-2 = 2</p></li>
-</ul>
-<p>Por lo tanto escogeríamos el alineamiento de la Opción 1</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aligner</span><span class="o">.</span><span class="n">match_score</span> <span class="o">=</span> <span class="mi">1</span>
@@ -556,12 +615,23 @@ Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas se
 </div>
 </div>
 </div>
+<section id="calculo-manual-de-scores">
+<h3>Cálculo manual de scores<a class="headerlink" href="#calculo-manual-de-scores" title="Permalink to this heading">#</a></h3>
+<p><strong>Opción 1 — Sustitución:</strong>
+$<span class="math notranslate nohighlight">\(\text{Score} = (4 \times +1) + (1 \times -1) = 4 - 1 = \mathbf{3.0}\)</span>$</p>
+<p><strong>Opción 2 — Indel:</strong>
+$<span class="math notranslate nohighlight">\(\text{Score} = (4 \times +1) + (1 \times -2) + (1 \times -0.5) = 4 - 2 - 0.5 = \mathbf{1.5}\)</span>$</p>
+<blockquote>
+<div><p>⚠️ El costo del gap no es simplemente <code class="docutils literal notranslate"><span class="pre">−2</span></code>, sino <code class="docutils literal notranslate"><span class="pre">open_gap</span> <span class="pre">+</span> <span class="pre">extend_gap</span> <span class="pre">×</span> <span class="pre">(longitud</span> <span class="pre">−</span> <span class="pre">1)</span></code>. Para un gap de longitud 2: <code class="docutils literal notranslate"><span class="pre">−2</span> <span class="pre">+</span> <span class="pre">(−0.5</span> <span class="pre">×</span> <span class="pre">1)</span> <span class="pre">=</span> <span class="pre">−2.5</span></code>, por lo que el score de la Opción 2 es <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">−</span> <span class="pre">2.5</span> <span class="pre">=</span> <span class="pre">1.5</span></code>.</p>
+</div></blockquote>
+<p>Con estos parámetros, la <strong>Opción 1 (sustitución)</strong> tiene mayor score y es el alineamiento preferido. ✅</p>
 <p>Para implementar estos códigos en Apolo, vamos a escribirlo dentro de un script python y correr un slurm</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Llamamos las librerías de bipython</span>
 <span class="kn">import</span> <span class="nn">Bio</span>
 <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Align</span>
 
 <span class="c1"># Definimos las secuencias con la función Seq de biopython</span>
 <span class="n">seq1</span><span class="o">=</span><span class="n">Seq</span><span class="p">(</span><span class="s2">&quot;ACGTG&quot;</span><span class="p">)</span> 
@@ -592,7 +662,8 @@ Escriba a "papel y lápiz" cómo sería la relación de similitud entre estas se
 </div>
 <div class="alert alert-block alert-info">
 <b>Ejercicio</b> 
-Realice el alineamiento entre seq3 y las otras secuencias  </div><section id="alineamiento-global">
+Realice el alineamiento entre seq3 y las otras secuencias  </div></section>
+<section id="alineamiento-global">
 <h3>Alineamiento Global<a class="headerlink" href="#alineamiento-global" title="Permalink to this heading">#</a></h3>
 <p>Supongamos que tenemos dos secuencias con diferente longitud (que es lo mas frecuente):</p>
 <ul class="simple">
@@ -706,6 +777,55 @@ Chequee este mismo alineamiento en bipython. Defina las dos secuencias, los gaps
 <p>el ‘’mejor” alineamiento es aquel que maximiza los <em>matches</em> mientras minimiza mismatches y gaps.</p>
 </section>
 </section>
+</section>
+<section id="ejercicio-de-alineamiento-de-secuencias">
+<h2>Ejercicio de alineamiento de secuencias<a class="headerlink" href="#ejercicio-de-alineamiento-de-secuencias" title="Permalink to this heading">#</a></h2>
+<p>Vamos a utilizar las secuencias de <em>E. coli</em> de la fosfatasa de la cepa silvestre y mutantes. Para esto cree un directorio y copie (o descargue) las secuencias</p>
+<div class="alert alert-block alert-info">
+<b>Ejercicio</b> 
+Cree un script de python que lea las secuencias de nucleótidos, traduzca las secuencias y alinee las secuencias de amino ácidos por pares la *wt* vs *alpha* y *wt* vs *beta*
+</div><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar las librerías necesarias</span>
+
+<span class="kn">import</span> <span class="nn">Bio</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+<span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Align</span>
+
+<span class="c1"># Cargar las secuencias desde los archivos FASTA</span>
+<span class="n">nt_wt</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Ecoli_phoA.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span> 
+<span class="n">nt_mutAlpha</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Ecoli_phoA_mutalpha.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">nt_mutBeta</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Ecoli_phoA_mutbeta.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+
+<span class="c1"># Traducir las secuencias</span>
+<span class="n">aa_wt</span> <span class="o">=</span> <span class="n">nt_wt</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+<span class="n">aa_mutAlpha</span> <span class="o">=</span> <span class="n">nt_mutAlpha</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+<span class="n">aa_mutBeta</span> <span class="o">=</span> <span class="n">nt_mutBeta</span><span class="o">.</span><span class="n">translate</span><span class="p">()</span>
+
+
+<span class="c1"># Inicializar el alineador de pares</span>
+<span class="n">aligner</span> <span class="o">=</span> <span class="n">Align</span><span class="o">.</span><span class="n">PairwiseAligner</span><span class="p">()</span>
+
+<span class="c1"># Realizar el alineamiento entre la secuencia de WT y mutAlpha</span>
+<span class="n">alignments_WT_mutAlpha</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">aa_wt</span><span class="p">,</span><span class="n">aa_mutAlpha</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments_WT_mutAlpha</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+
+<span class="c1"># Realizar el alineamiento entre la secuencia de WT y mutAlpha</span>
+<span class="n">alignments_WT_mutBeta</span> <span class="o">=</span> <span class="n">aligner</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">aa_wt</span><span class="p">,</span><span class="n">aa_mutBeta</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">alignment</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">alignments_WT_mutBeta</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">alignment</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <section id="alineamiento-local-smith-waterman">
 <h3>Alineamiento Local: Smith-Waterman<a class="headerlink" href="#alineamiento-local-smith-waterman" title="Permalink to this heading">#</a></h3>
 <p>Con frecuencia las secuencias contienen diferentes longitudes, pero dominios que son conservados porque son importantes para ciertas funciones. Los alineamientos locales sirven para identificar sub-regiones similares. Smith &amp; Waterman desarrollaron un algoritmo dinámico local que se parece al de  Needleman-Wunsch, excepto que se dibuja una flecha solo si el valor es positivo. Si el máximo posible es negativo, se le asigna un 0 y no se dibuja ninguna</p>
@@ -859,11 +979,20 @@ Repita el mismo proceso de alineamiento y generación de árbol con el archivo d
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Alineamientos</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#similitud-entre-secuencias">Similitud entre secuencias</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-por-pares">Alineamiento por pares</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamientos-de-secuencias-con-biopython">Alineamientos de secuencias con BioPython</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-con-parametros-por-defecto">2. Alineamiento con parámetros por defecto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pregunta">Pregunta</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduciendo-penalizaciones">3. Introduciendo penalizaciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculo-manual-de-scores">Cálculo manual de scores</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-global">Alineamiento Global</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-needlemanwunsch">Algoritmo Needleman–Wunsch</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-de-alineamiento-de-secuencias">Ejercicio de alineamiento de secuencias</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-local-smith-waterman">Alineamiento Local: Smith-Waterman</a></li>
 </ul>
 </li>
