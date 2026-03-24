@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Herraminetas de NCBI &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
+    <title>Herramientas de NCBI: Búsqueda de secuencias &amp; BLAST &#8212; Material para el curso de Fundamentos en Biologia Computacional</title>
   
   
   
@@ -165,9 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="apolo_python.html">Uso de Apolo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="alineamientos.html">Alineamientos</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Herraminetas de NCBI</a></li>
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Herramientas de NCBI: Búsqueda de secuencias &amp; BLAST</a></li>
 <li class="toctree-l1"><a class="reference internal" href="primers.html">Primers (cebadores)</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="primers_cacao.html">PrimerBlast: estudio de caso gen transportador de Cadmio en Cacao (por Felipe Arango)</a></li>
@@ -361,7 +359,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Herraminetas de NCBI</h1>
+    <h1>Herramientas de NCBI: Búsqueda de secuencias & BLAST</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -371,29 +369,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Herraminetas de NCBI</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">Búsqueda de secuencias por explorador</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desde-script-de-python">Desde script de python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-laura-salazar-jaramillo">Fundamentos de Biología Computacional — Laura Salazar Jaramillo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">1. Búsqueda de secuencias por explorador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-una-sola-secuencia-desde-python">2. Descarga de una sola secuencia desde Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python">3. Descarga de múltiples secuencias: bacterias LABs con script de python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hace-este-script-paso-a-paso">🔍 ¿Qué hace este script paso a paso?</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-por-similitud-molecular">4. Búsqueda por similitud molecular</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-clave">Conceptos clave</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-por-similitud-molecular">Búsqueda por similitud molecular</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-de-conceptos-clave-de-similitud">Repaso de conceptos clave de similitud</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-local-alignment-search-tool-blast">Basic Local Alignment Search Tool (BLAST)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-basic-local-alignment-search-tool">5. BLAST (Basic Local Alignment Search Tool)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-reglas-practicas">E-value — reglas prácticas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-remoto-desde-la-linea-de-comando">BLAST remoto desde la línea de comando</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-local">BLAST local</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -404,15 +400,28 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="herraminetas-de-ncbi">
-<h1>Herraminetas de NCBI<a class="headerlink" href="#herraminetas-de-ncbi" title="Permalink to this heading">#</a></h1>
-<p>The National Center for Biotechnology Information (NCBI), <a class="reference external" href="https://ncbi.nlm.nih.gov/">https://ncbi.nlm.nih.gov/</a>, es una de las colecciones de bases de datos mas importantes. Contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones etc. Esta base de datos se puede acceder tanto de forma gráfica y directamente como vía script. Vamos a explorarla primero en modo “click” y luego con un script</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="herramientas-de-ncbi-busqueda-de-secuencias-blast">
+<h1>Herramientas de NCBI: Búsqueda de secuencias &amp; BLAST<a class="headerlink" href="#herramientas-de-ncbi-busqueda-de-secuencias-blast" title="Permalink to this heading">#</a></h1>
+<section id="fundamentos-de-biologia-computacional-laura-salazar-jaramillo">
+<h2>Fundamentos de Biología Computacional — Laura Salazar Jaramillo<a class="headerlink" href="#fundamentos-de-biologia-computacional-laura-salazar-jaramillo" title="Permalink to this heading">#</a></h2>
+<p>El <a class="reference external" href="https://ncbi.nlm.nih.gov/">NCBI</a> es una de las colecciones de bases de datos biológicas más importantes: contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones, etc. En esta sesión aprenderemos a accederla tanto de forma gráfica como vía script, y a buscar secuencias similares usando <strong>BLAST</strong>.. Vamos a explorarla primero en modo “click” y luego con un script</p>
+</section>
+<hr class="docutils" />
 <section id="busqueda-de-secuencias-por-explorador">
-<h2>Búsqueda de secuencias por explorador<a class="headerlink" href="#busqueda-de-secuencias-por-explorador" title="Permalink to this heading">#</a></h2>
-<p>Entre a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/">https://www.ncbi.nlm.nih.gov/</a> y despliegue la pestaña “All Databases” para ver las opciones. Escoja la base de datos “Protein” y escriba en la barra “Cytochrome B Homo sapiens neanderthalensis”. Escoja la proteína de referencia (RefSeq Proteins) y de click en el ID de esta proteína “YP_002124314.2” para revisar la información que aparece.</p>
-<section id="desde-script-de-python">
-<h3>Desde script de python<a class="headerlink" href="#desde-script-de-python" title="Permalink to this heading">#</a></h3>
-<p>Ahora vamos a realizar la búsqueda por ID desde python. Recuerde correr el script desde slurm</p>
+<h2>1. Búsqueda de secuencias por explorador<a class="headerlink" href="#busqueda-de-secuencias-por-explorador" title="Permalink to this heading">#</a></h2>
+<p>Entre a <a class="reference external" href="https://www.ncbi.nlm.nih.gov/">https://www.ncbi.nlm.nih.gov/</a> y despliegue la pestaña <strong>“All Databases”</strong>. Escoja la base de datos <strong>“Protein”</strong> y escriba en la barra:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Cytochrome</span> <span class="pre">B</span> <span class="pre">Homo</span> <span class="pre">sapiens</span> <span class="pre">neanderthalensis</span></code></p>
+</div></blockquote>
+<p>Escoja la proteína de referencia (RefSeq) y dé click en el ID <code class="docutils literal notranslate"><span class="pre">YP_002124314.2</span></code> para revisar la información disponible.</p>
+</section>
+<hr class="docutils" />
+<section id="descarga-de-una-sola-secuencia-desde-python">
+<h2>2. Descarga de una sola secuencia desde Python<a class="headerlink" href="#descarga-de-una-sola-secuencia-desde-python" title="Permalink to this heading">#</a></h2>
+<p>Podemos automatizar la descarga usando <strong>Biopython</strong> y el módulo <code class="docutils literal notranslate"><span class="pre">Entrez</span></code>, que es la interfaz programática del NCBI.</p>
+<blockquote>
+<div><p>⚠️ Siempre se debe registrar un email válido: el NCBI lo usa para contactar al usuario si el servidor detecta un uso excesivo de la API.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">biopython</span>
@@ -443,58 +452,179 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Para descargar esta secuencia debíamos saber <em>qué estabamos buscando</em>. Otra forma de realizar búsquedas es por similitud: dada una secuencia que tengo, <em>a qué otras secuencias se parece?</em></p>
+<p>Para descargar esta secuencia debíamos saber <em>qué estábamos buscando</em>. Otra forma de realizar búsquedas es <strong>por similitud</strong>: dada una secuencia que tenemos, ¿a qué otras secuencias se parece?</p>
+<p>Pero antes de pasar a BLAST, veamos cómo escalar la descarga por ID a <strong>múltiples secuencias</strong> de un proyecto real.</p>
+</section>
+<hr class="docutils" />
+<section id="descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python">
+<h2>3. Descarga de múltiples secuencias: bacterias LABs con script de python<a class="headerlink" href="#descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python" title="Permalink to this heading">#</a></h2>
+<p>En investigación es común tener una lista de accesiones de referencia que queremos descargar en bloque para construir nuestra propia base de datos local. El siguiente script descarga secuencias de <strong>bacterias ácido-lácticas (LABs)</strong>, y las fusiona en un solo archivo FASTA.</p>
+<p>Este es exactamente el mismo patrón que la celda anterior, pero aplicado a múltiples secuencias en un loop con manejo de errores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span>
+<span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
+
+<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;lsalazarj@eafit.edu.co&quot;</span>
+
+<span class="n">ref_IDs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;JQ389890.1&quot;</span><span class="p">,</span> <span class="s2">&quot;MT457691.1&quot;</span><span class="p">,</span> <span class="s2">&quot;PV611851.1&quot;</span><span class="p">,</span> <span class="s2">&quot;MT925613.1&quot;</span><span class="p">,</span> <span class="s2">&quot;LT631741.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PV951584.1&quot;</span><span class="p">,</span> <span class="s2">&quot;JQ389890.1&quot;</span><span class="p">,</span> <span class="s2">&quot;PV173327.1&quot;</span><span class="p">,</span> <span class="s2">&quot;PV173326.1&quot;</span><span class="p">,</span> <span class="s2">&quot;PV173324.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PV173325.1&quot;</span><span class="p">,</span> <span class="s2">&quot;MT925613.1&quot;</span><span class="p">,</span> <span class="s2">&quot;LC062898.1&quot;</span><span class="p">,</span> <span class="s2">&quot;HG799970.1&quot;</span><span class="p">,</span> <span class="s2">&quot;OP848250.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;MK045775.1&quot;</span><span class="p">,</span> <span class="s2">&quot;PV951584.1&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Lista para guardar las secuencias de referencia</span>
+<span class="n">ref_seqs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Ruta del archivo final fusionado</span>
+<span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;lab_ref.fasta&quot;</span>
+
+<span class="c1"># Descargar y almacenar cada secuencia</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">refid</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ref_IDs</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">efetch</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s2">&quot;nucleotide&quot;</span><span class="p">,</span> <span class="n">rettype</span><span class="o">=</span><span class="s2">&quot;fasta&quot;</span><span class="p">,</span> <span class="n">retmode</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">refid</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+            <span class="n">seq_record</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+            <span class="n">ref_seqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_record</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Referencia </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"> guardada exitosamente: ID </span><span class="si">{</span><span class="n">seq_record</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, longitud </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">seq_record</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span><span class="si">}</span><span class="s2"> pb&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al descargar secuencia </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"> (ID </span><span class="si">{</span><span class="n">refid</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Escribir todas las secuencias en un solo archivo FASTA</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ref_seqs</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Todas las secuencias fueron fusionadas en: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al escribir las secuencias: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="que-hace-este-script-paso-a-paso">
+<h3>🔍 ¿Qué hace este script paso a paso?<a class="headerlink" href="#que-hace-este-script-paso-a-paso" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Paso</p></th>
+<th class="head"><p>Qué hace</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Entrez.efetch(...)</span></code></p></td>
+<td><p>Contacta la API del NCBI y descarga la secuencia con ese accession number</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SeqIO.read(handle,</span> <span class="pre">&quot;fasta&quot;)</span></code></p></td>
+<td><p>Parsea la respuesta y la convierte en un objeto <code class="docutils literal notranslate"><span class="pre">SeqRecord</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ref_seqs.append(...)</span></code></p></td>
+<td><p>Acumula todas las secuencias en una lista</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SeqIO.write(ref_seqs,</span> <span class="pre">output,</span> <span class="pre">&quot;fasta&quot;)</span></code></p></td>
+<td><p>Escribe todas las secuencias en un único archivo FASTA</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">/</span> <span class="pre">except</span></code></p></td>
+<td><p>Captura errores por ID inválido o problemas de red sin detener el script</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="busqueda-por-similitud-molecular">
-<h1>Búsqueda por similitud molecular<a class="headerlink" href="#busqueda-por-similitud-molecular" title="Permalink to this heading">#</a></h1>
-<p>La búsqueda de similitudes es un primer paso para encontrar  información útil sobre funcionalidad y/o ancestría. A la hora de buscar similitud en bases de datos extensas, los algoritmos de programación dinámica (como Needleman-Wunsch y Smith-Waterman) son ineficientes. Las herramientas mas eficientes son heurísticas: “atajos” algoritmicos que no producen una solición óptima global, pero que son mucho más rápidos y eficientes. Ahora vamos a realizar la búsqueda de las secuencias mas similares de todas las disponibles en la base de datos usando Basic Local Alignment Search Tool, BLAST  (Altschul et al. 1997; Altschul et al. 1990)</p>
-<section id="repaso-de-conceptos-clave-de-similitud">
-<h2>Repaso de conceptos clave de similitud<a class="headerlink" href="#repaso-de-conceptos-clave-de-similitud" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="busqueda-por-similitud-molecular">
+<h2>4. Búsqueda por similitud molecular<a class="headerlink" href="#busqueda-por-similitud-molecular" title="Permalink to this heading">#</a></h2>
+<p>Ahora que tenemos nuestras secuencias de referencia descargadas, el siguiente paso natural es preguntar: <strong>¿a qué otras secuencias se parecen?</strong></p>
+<p>La búsqueda de similitudes es un primer paso para encontrar información sobre <strong>funcionalidad y/o ancestría</strong>. Para bases de datos extensas, los algoritmos de programación dinámica (Needleman-Wunsch, Smith-Waterman) son demasiado lentos. Las herramientas más eficientes son <strong>heurísticas</strong>: atajos algorítmicos que no producen una solución óptima global, pero que son mucho más rápidos.</p>
+<section id="conceptos-clave">
+<h3>Conceptos clave<a class="headerlink" href="#conceptos-clave" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Secuencias homólogas</strong>: similitud por ancestría común</p></li>
-<li><p><strong>Alineamiento</strong> global vs local: ordenamiento de secuencias según similitud. <strong>Global</strong>: utiliza toda la secuencia. <strong>Local</strong>: utiliza los fragmentos más similares</p></li>
-<li><p><strong>Secuencias conservadas</strong>: aquellas que comparten nucleótidos o aminoacidos en la misma posición (opuesto en divergentes)</p></li>
+<li><p><strong>Alineamiento global vs local</strong>: global usa toda la secuencia; local usa los fragmentos más similares</p></li>
 <li><p><strong>Score</strong>: parámetro que indica la calidad del alineamiento</p></li>
-<li><p><strong>Dendograma</strong> (Cladograma): hipótesis sobre relación evolutiva de secuencias</p></li>
+<li><p><strong>E-value</strong>: número de hits esperados con un score ≥ S por azar (ver sección BLAST)</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="basic-local-alignment-search-tool-blast">
-<h1>Basic Local Alignment Search Tool (BLAST)<a class="headerlink" href="#basic-local-alignment-search-tool-blast" title="Permalink to this heading">#</a></h1>
-<p>Dada una o mas secuencias problema <em>query</em> (usualmente en formato FASTA), BLAST busca regionse de apareamiento de secuencias (<em>match</em>) en un grupo de secuencias (una <em>base de datos</em>).</p>
-<p>Antes de realizar una búsqueda en BLAST, se genera un índice que consiste de <em>palabras</em> de una longitud <em>k</em>, las cuales se denominan <strong>k-mers</strong>. Éste índice se almacena en la memoria RAM del computador, así que BLAST puede ser muy rápido buscando estas palabras. Para inciar una búsqueda por similitud, el algoritmo de BLAST primero busca en la secuencia consulta (<em>query</em>). usando la base de datos indexada, las secuencias que contengan un score alto de k-mers son escogidas. De allí se realiza un alineamiento local alreadedor de estos k-mers.</p>
+<hr class="docutils" />
+<section id="blast-basic-local-alignment-search-tool">
+<h2>5. BLAST (Basic Local Alignment Search Tool)<a class="headerlink" href="#blast-basic-local-alignment-search-tool" title="Permalink to this heading">#</a></h2>
+<p>Dada una o más secuencias <em>query</em>, BLAST busca regiones de apareamiento en una base de datos. Antes de buscar, genera un índice de <strong>k-mers</strong> (palabras de longitud <em>k</em>) almacenado en RAM, lo que permite búsquedas muy rápidas.</p>
+<section id="tipos-de-blast">
+<h3>Tipos de BLAST<a class="headerlink" href="#tipos-de-blast" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tipo</p></th>
+<th class="head"><p>Query</p></th>
+<th class="head"><p>Base de datos</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">blastn</span></code></p></td>
+<td><p>nucleótido</p></td>
+<td><p>nucleótido</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">blastp</span></code></p></td>
+<td><p>proteína</p></td>
+<td><p>proteína</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">blastx</span></code></p></td>
+<td><p>nucleótido (traduce query)</p></td>
+<td><p>proteína</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tblastn</span></code></p></td>
+<td><p>proteína</p></td>
+<td><p>nucleótido (traduce hits)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tblastx</span></code></p></td>
+<td><p>nucleótido (traduce ambos)</p></td>
+<td><p>nucleótido</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">psiblast</span></code></p></td>
+<td><p>proteína (iterativo)</p></td>
+<td><p>proteína</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://desmid.github.io/mview/manual/blast/blast2.html">https://desmid.github.io/mview/manual/blast/blast2.html</a></p>
 <img src="I.7_1_blast_illustration.png"/><img src="blast_glossary-Image001.jpg"/>
 <p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK62051/">https://www.ncbi.nlm.nih.gov/books/NBK62051/</a></p>
-<img src="alignment_score.jpg"/><section id="tipos-de-blast">
-<h2>Tipos de BLAST<a class="headerlink" href="#tipos-de-blast" title="Permalink to this heading">#</a></h2>
-<p>De acuerdo a la búsqueda que necesitemos hay diferentes tipos de <a class="reference external" href="https://desmid.github.io/mview/manual/blast/blast2.html">blast</a>:</p>
-<ul class="simple">
-<li><p>blastn: búsqueda de nucleótidos en base de datos de nucleótidos</p></li>
-<li><p>blastp: búsqueda de proteína en base de datos de proteínas</p></li>
-<li><p>blastx: búsqueda de nucleótidos en base de datos de proteínas, traduciendo la secuencia query en diferentes marcos de lectura</p></li>
-<li><p>tblastn: búsqueda de proteínas en base de datos de nucleótidos, traduciendo los hit en diferentes marcos de lectura</p></li>
-<li><p>tblastx: búsqueda de nucleótidos en base de datos de nucleótidos, traduciendo query y hit en diferentes marcos de lectura</p></li>
-<li><p>psiblast: Position Specific Iterated-BLAST (PSI-BLAST) es basado en blastp pero utiliza los perfiles de conservación para hallar secuencias distantemente relacionadas</p></li>
-</ul>
-<img src="I.7_2_blast_types.png"/></section>
+<img src="alignment_score.jpg"/><img src="I.7_2_blast_types.png"/></section>
 <section id="e-value-expectation-values">
-<h2>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h2>
+<h3>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h3>
 <p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. En este caso la significancia significa que el score del alineamiento (S) es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n (<span class="math notranslate nohighlight">\(\Lambda\)</span> y K son parámetros para escalar y normalizar la base de datos y valores E):</p>
 <p><span class="math notranslate nohighlight">\(E = K * m *n * e^{\lambda S}\)</span></p>
 <p>Algunas reglas no formales (“rules of thumb”) que pueden servir como guía para considerar la significancia de los hit:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(E-value &lt; 10e^{-100}\)</span> Secuencias idénticas. Esperarías un alineamiento largo y completo entre la secuencia de consulta y hit</p></li>
-<li><p><span class="math notranslate nohighlight">\(10e^{-50} &lt; E-value &lt; 10e^{-100}\)</span> Secuencias casi idénticas. Esperarías un fragmento largo de alineamiento entre la secuencia de consulta y hit</p></li>
-<li><p><span class="math notranslate nohighlight">\(10e^{-10} &lt; E-value &lt; 10e^{-50}\)</span> Secuencias cercanas o un <em>dominio</em></p></li>
-<li><p><span class="math notranslate nohighlight">\(1 &lt; E-value &lt; 10e^{-6}\)</span> Podría ser un homólogo, pero es un área gris</p></li>
-<li><p><span class="math notranslate nohighlight">\(E-value &gt; 1\)</span> Las proteínas probablemente no están relacionados</p></li>
-<li><p><span class="math notranslate nohighlight">\(E-value &gt; 10\)</span> Los hits son irrelevantes o la secuencia consulta muy pequeña</p></li>
-</ul>
+</section>
+<section id="e-value-reglas-practicas">
+<h3>E-value — reglas prácticas<a class="headerlink" href="#e-value-reglas-practicas" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>E-value</p></th>
+<th class="head"><p>Interpretación</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&lt; 10e⁻¹⁰⁰</p></td>
+<td><p>Secuencias idénticas</p></td>
+</tr>
+<tr class="row-odd"><td><p>10e⁻⁵⁰ – 10e⁻¹⁰⁰</p></td>
+<td><p>Casi idénticas</p></td>
+</tr>
+<tr class="row-even"><td><p>10e⁻¹⁰ – 10e⁻⁵⁰</p></td>
+<td><p>Secuencias cercanas o un dominio</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 – 10e⁻⁶</p></td>
+<td><p>Posible homólogo (área gris)</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt; 1</p></td>
+<td><p>Probablemente no relacionadas</p></td>
+</tr>
+<tr class="row-odd"><td><p>&gt; 10</p></td>
+<td><p>Hits irrelevantes</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="busqueda-de-blast-en-la-web">
-<h2>Búsqueda de BLAST en la web<a class="headerlink" href="#busqueda-de-blast-en-la-web" title="Permalink to this heading">#</a></h2>
+<h3>Búsqueda de BLAST en la web<a class="headerlink" href="#busqueda-de-blast-en-la-web" title="Permalink to this heading">#</a></h3>
 <p>Entre a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a>. Allí verá las diferentes opciones de BLAST. Vamos a buscar las proteínas homólogas al citocromo B de <em>H. neanderthalensis</em> que descargamos.</p>
 <ol class="arabic simple">
 <li><p>Entre a <a class="reference external" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a> y escoja la opción “Protein Blast” (porque nuestra secuencia es una proteína)</p></li>
@@ -504,6 +634,7 @@ document.write(`
 <li><p>En la pestaña “Graphic Summary” verá una representación gráfica del alineamiento, donde el color rojo  muestra los <em>matches</em></p></li>
 <li><p>En la pestaña “Alignment” encontrará el alineamiento de la secuencia <em>query</em> (la que nosotros escogimos) con los mejores hits y la información del alineamiento</p></li>
 </ol>
+</section>
 <section id="blast-remoto-desde-la-linea-de-comando">
 <h3>BLAST remoto desde la línea de comando<a class="headerlink" href="#blast-remoto-desde-la-linea-de-comando" title="Permalink to this heading">#</a></h3>
 <p>Ahora vamos a realizar la búsqueda desde Apolo por medio de la línea de comando. Entre a Apolo y cargue el módulo de blast:</p>
@@ -644,29 +775,27 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Herraminetas de NCBI</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">Búsqueda de secuencias por explorador</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desde-script-de-python">Desde script de python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-laura-salazar-jaramillo">Fundamentos de Biología Computacional — Laura Salazar Jaramillo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">1. Búsqueda de secuencias por explorador</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-una-sola-secuencia-desde-python">2. Descarga de una sola secuencia desde Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python">3. Descarga de múltiples secuencias: bacterias LABs con script de python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hace-este-script-paso-a-paso">🔍 ¿Qué hace este script paso a paso?</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-por-similitud-molecular">4. Búsqueda por similitud molecular</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-clave">Conceptos clave</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-por-similitud-molecular">Búsqueda por similitud molecular</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-de-conceptos-clave-de-similitud">Repaso de conceptos clave de similitud</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-local-alignment-search-tool-blast">Basic Local Alignment Search Tool (BLAST)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-basic-local-alignment-search-tool">5. BLAST (Basic Local Alignment Search Tool)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-blast">Tipos de BLAST</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-expectation-values">E-value (Expectation-values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-value-reglas-practicas">E-value — reglas prácticas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-blast-en-la-web">Búsqueda de BLAST en la web</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-remoto-desde-la-linea-de-comando">BLAST remoto desde la línea de comando</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blast-local">BLAST local</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
