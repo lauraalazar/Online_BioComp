@@ -369,10 +369,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-laura-salazar-jaramillo">Fundamentos de Biología Computacional — Laura Salazar Jaramillo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">1. Búsqueda de secuencias por explorador</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-una-sola-secuencia-desde-python">2. Descarga de una sola secuencia desde Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python">3. Descarga de múltiples secuencias: bacterias LABs con script de python</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-multiples-secuencias-con-script-de-python">3. Descarga de múltiples secuencias con script de python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hace-este-script-paso-a-paso">🔍 ¿Qué hace este script paso a paso?</a></li>
 </ul>
 </li>
@@ -402,10 +401,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="herramientas-de-ncbi-busqueda-de-secuencias-blast">
 <h1>Herramientas de NCBI: Búsqueda de secuencias &amp; BLAST<a class="headerlink" href="#herramientas-de-ncbi-busqueda-de-secuencias-blast" title="Permalink to this heading">#</a></h1>
-<section id="fundamentos-de-biologia-computacional-laura-salazar-jaramillo">
-<h2>Fundamentos de Biología Computacional — Laura Salazar Jaramillo<a class="headerlink" href="#fundamentos-de-biologia-computacional-laura-salazar-jaramillo" title="Permalink to this heading">#</a></h2>
 <p>El <a class="reference external" href="https://ncbi.nlm.nih.gov/">NCBI</a> es una de las colecciones de bases de datos biológicas más importantes: contiene secuencias de DNA, proteínas, datos taxonómicos, publicaciones, etc. En esta sesión aprenderemos a accederla tanto de forma gráfica como vía script, y a buscar secuencias similares usando <strong>BLAST</strong>.. Vamos a explorarla primero en modo “click” y luego con un script</p>
-</section>
 <hr class="docutils" />
 <section id="busqueda-de-secuencias-por-explorador">
 <h2>1. Búsqueda de secuencias por explorador<a class="headerlink" href="#busqueda-de-secuencias-por-explorador" title="Permalink to this heading">#</a></h2>
@@ -456,8 +452,8 @@ document.write(`
 <p>Pero antes de pasar a BLAST, veamos cómo escalar la descarga por ID a <strong>múltiples secuencias</strong> de un proyecto real.</p>
 </section>
 <hr class="docutils" />
-<section id="descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python">
-<h2>3. Descarga de múltiples secuencias: bacterias LABs con script de python<a class="headerlink" href="#descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python" title="Permalink to this heading">#</a></h2>
+<section id="descarga-de-multiples-secuencias-con-script-de-python">
+<h2>3. Descarga de múltiples secuencias con script de python<a class="headerlink" href="#descarga-de-multiples-secuencias-con-script-de-python" title="Permalink to this heading">#</a></h2>
 <p>En investigación es común tener una lista de accesiones de referencia que queremos descargar en bloque para construir nuestra propia base de datos local. El siguiente script descarga secuencias de <strong>bacterias ácido-lácticas (LABs)</strong>, y las fusiona en un solo archivo FASTA.</p>
 <p>Este es exactamente el mismo patrón que la celda anterior, pero aplicado a múltiples secuencias en un loop con manejo de errores.</p>
 <div class="cell docutils container">
@@ -539,14 +535,16 @@ document.write(`
 <li><p><strong>Secuencias homólogas</strong>: similitud por ancestría común</p></li>
 <li><p><strong>Alineamiento global vs local</strong>: global usa toda la secuencia; local usa los fragmentos más similares</p></li>
 <li><p><strong>Score</strong>: parámetro que indica la calidad del alineamiento</p></li>
-<li><p><strong>E-value</strong>: número de hits esperados con un score ≥ S por azar (ver sección BLAST)</p></li>
 </ul>
-</section>
+<img src="alignment_score.jpg"/></section>
 </section>
 <hr class="docutils" />
 <section id="blast-basic-local-alignment-search-tool">
 <h2>5. BLAST (Basic Local Alignment Search Tool)<a class="headerlink" href="#blast-basic-local-alignment-search-tool" title="Permalink to this heading">#</a></h2>
 <p>Dada una o más secuencias <em>query</em>, BLAST busca regiones de apareamiento en una base de datos. Antes de buscar, genera un índice de <strong>k-mers</strong> (palabras de longitud <em>k</em>) almacenado en RAM, lo que permite búsquedas muy rápidas.</p>
+<img src="I.7_1_blast_illustration.png"/>
+<img src="blast_glossary-Image001.jpg"/>
+<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK62051/">https://www.ncbi.nlm.nih.gov/books/NBK62051/</a></p>
 <section id="tipos-de-blast">
 <h3>Tipos de BLAST<a class="headerlink" href="#tipos-de-blast" title="Permalink to this heading">#</a></h3>
 <table class="table">
@@ -584,9 +582,7 @@ document.write(`
 </tbody>
 </table>
 <p><a class="reference external" href="https://desmid.github.io/mview/manual/blast/blast2.html">https://desmid.github.io/mview/manual/blast/blast2.html</a></p>
-<img src="I.7_1_blast_illustration.png"/><img src="blast_glossary-Image001.jpg"/>
-<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK62051/">https://www.ncbi.nlm.nih.gov/books/NBK62051/</a></p>
-<img src="alignment_score.jpg"/><img src="I.7_2_blast_types.png"/></section>
+<img src="I.7_2_blast_types.png"/></section>
 <section id="e-value-expectation-values">
 <h3>E-value (Expectation-values)<a class="headerlink" href="#e-value-expectation-values" title="Permalink to this heading">#</a></h3>
 <p>Cuando realizamos una búsqueda por similitud, es importante identificar si la secuencia target es significativamente similar a la query. En este caso la significancia significa que el score del alineamiento (S) es mayor que uno esperado al azar. Un hit siempre va a tener algún tipo de similitud, y la probabilidad de encontrar un score alto aumenta con una secuencia query mas larga (m) y/o una base de datos mas grande (n). Para cuantificar la significancia de un hit, calculamos el E-value (E), que representa el número de hits esperados con un score mínimo de <em>S</em>, usando una secuencia query de longitud <em>m</em>, y una búsqueda aleatoria en una base de datos n (<span class="math notranslate nohighlight">\(\Lambda\)</span> y K son parámetros para escalar y normalizar la base de datos y valores E):</p>
@@ -775,10 +771,9 @@ Por ejemplo, nosotros podemos comparar la secuencia de citocromo B de neandertha
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-laura-salazar-jaramillo">Fundamentos de Biología Computacional — Laura Salazar Jaramillo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-secuencias-por-explorador">1. Búsqueda de secuencias por explorador</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-una-sola-secuencia-desde-python">2. Descarga de una sola secuencia desde Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-multiples-secuencias-bacterias-labs-con-script-de-python">3. Descarga de múltiples secuencias: bacterias LABs con script de python</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-de-multiples-secuencias-con-script-de-python">3. Descarga de múltiples secuencias con script de python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#que-hace-este-script-paso-a-paso">🔍 ¿Qué hace este script paso a paso?</a></li>
 </ul>
 </li>
