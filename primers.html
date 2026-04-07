@@ -572,6 +572,8 @@ document.write(`
 
 <span class="nb">print</span><span class="p">(</span><span class="n">amplicon_seq</span><span class="p">)</span>
 
+<span class="n">amplicon_record</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">amplicon_seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;amplicon_covid&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Sars cov2 amplicon&quot;</span><span class="p">)</span>
+
 <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">amplicon_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-2/primers/ampliconp1_covid.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
