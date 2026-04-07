@@ -568,13 +568,11 @@ document.write(`
 <span class="c1"># --- extraer la secuencia del amplicon en FASTA ---</span>
 
 <span class="c1"># Extraer el amplicon</span>
+<span class="n">amplicon_seq</span> <span class="o">=</span> <span class="n">genoma</span><span class="o">.</span><span class="n">seq</span><span class="p">[</span><span class="n">amplicon_start</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span> <span class="n">amplicon_end</span><span class="p">]</span> 
+
 <span class="nb">print</span><span class="p">(</span><span class="n">amplicon_seq</span><span class="p">)</span>
 
-<span class="c1"># Crear un SeqRecord con un ID y descripción</span>
-<span class="n">amplicon_record</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">amplicon_seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;amplicon_covid&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;SARS-CoV-2 CDC N1 amplicon&quot;</span><span class="p">)</span>
-
-<span class="c1"># Guardar en FASTA</span>
-<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">amplicon_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-2/primers/ampliconP1_covid.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">amplicon_record</span><span class="p">,</span> <span class="s2">&quot;/home/lsalazarj/bicomp2025-2/primers/ampliconp1_covid.fa&quot;</span><span class="p">,</span> <span class="s2">&quot;fasta&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
