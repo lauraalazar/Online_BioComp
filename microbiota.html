@@ -170,6 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="intro_R.html">Introducción a R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="phylo_trees.html">Distancia entre secuencias y árboles filogenéticos</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Marcadores Moleculares: Estudio de caso de Microbiota</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="hmm.html">Hidden Markov Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="genomica.html">De Genes a Genomas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tec_seq.html">Tecnologías de secuenciación</a></li>
@@ -367,8 +368,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Marcadores Moleculares: Estudio de caso de Microbiota</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias-ribosomales">Secuencias Ribosomales</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuenciacion-del-16s-de-ambientes-comunidades-microbiologicas">Secuenciación del 16S de ambientes: comunidades microbiológicas</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tecnologias-de-secuenciacion">Tecnologías de secuenciación</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biologia-como-una-ciencia-data-intensiva">Biología como una ciencia data-intensiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-secuenciacion">Tipos de secuenciación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-datos">Análisis de datos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-crudos">1. Archivos crudos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporte-de-calidad">2. Reporte de calidad</a></li>
@@ -379,6 +386,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-tabla-otu">7. Conteo tabla OTU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-basico-de-diversidad">8. Análisis básico de diversidad</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -404,6 +414,29 @@ document.write(`
 <p>Los métodos tradicionales basados en cultivo requieren procesos de aislamiento laboriosos y solo permiten detectar una pequeña fracción de las especies microbianas. El desarrollo del 16S rRNA como marcador para la identificación de organismos ha permitido el estudio eficiente y rápido de numerosas muestras. Gracias a la secuenciación del 16S rRNA se han identificado muchas secuencias de especies previamente no cultivadas.</p>
 <p><img alt="width:400px" src="_images/16S-rRNA-Gene-Sequencing.webp" /></p>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tecnologias-de-secuenciacion">
+<h1>Tecnologías de secuenciación<a class="headerlink" href="#tecnologias-de-secuenciacion" title="Permalink to this heading">#</a></h1>
+<section id="biologia-como-una-ciencia-data-intensiva">
+<h2>Biología como una ciencia data-intensiva<a class="headerlink" href="#biologia-como-una-ciencia-data-intensiva" title="Permalink to this heading">#</a></h2>
+<p>Gracias a los avances en teconología <em>high-throughput</em> las secuencias y genomas de miles de organismos están disponible. Desde virus de unos miles de pares de bases hasta plantas con billones de pb. Asimismo, los metagenomas de comunidades de bacterias y microorganismos están siendo secuenciados a gran escala. Pero las secuencias no son los únicos datos disponibles, existen otros tipos de datos que están expandiendo la dimensión de información en biología. A medida que avanza la colección de datos, es imprescindible desarrollar la habilidad de interpretarlos y combinarlos para proponer nuevas hipótesis. El reto actual no es tanto adquirir los datos sino analizarlos e interpretarlos para obtener conocimiento sobre los sistemas biológicos.</p>
+<p>En la sesión de hoy tendremos una introducción de la secuenciación <em>high-throughput</em> que inició este “big-bang” de datos.</p>
+</section>
+<section id="tipos-de-secuenciacion">
+<h2>Tipos de secuenciación<a class="headerlink" href="#tipos-de-secuenciacion" title="Permalink to this heading">#</a></h2>
+<img src="sanger_ngs.jpeg"/>
+<ul class="simple">
+<li><p><strong>Sanger</strong>: terminación de reacción de la DNA polimerasa con marcaje (radiactivo o fluorescente)
+<a class="reference external" href="https://www.youtube.com/watch?v=KTstRrDTmWI">https://www.youtube.com/watch?v=KTstRrDTmWI</a></p></li>
+<li><p><strong>High-throughput (Next Generation Sequencing)</strong>:
+<a class="reference external" href="https://www.youtube.com/watch?v=jFCD8Q6qSTM&amp;amp;list=PLK1xpTaA9PuZqvDpaEYrA5d8kbmxqjXoJ&amp;amp;index=8">https://www.youtube.com/watch?v=jFCD8Q6qSTM&amp;list=PLK1xpTaA9PuZqvDpaEYrA5d8kbmxqjXoJ&amp;index=8</a></p>
+<ul>
+<li><p><strong>Illumina</strong>: fragmetación y  marcaje luminiscente</p></li>
+<li><p><strong>Nanopore</strong>: Cambios en corriente eléctrica de nuleótidos a medida que pasan por un <em>nanopore</em> de prtoeína protein nanopore</p></li>
+</ul>
+</li>
+</ul>
+<img src="sanger_ab.png"/></section>
 <section id="analisis-de-datos">
 <h2>Análisis de datos<a class="headerlink" href="#analisis-de-datos" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -430,7 +463,24 @@ document.write(`
 </div>
 </div>
 </div>
-<p>De aquí en adelante los comandos deben estar en un slurm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="mi">4</span> <span class="n">SRR12324206_1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Qué significa cada línea?</p>
+<ol class="arabic simple">
+<li><p>Identificador del read</p></li>
+<li><p>Secuencia de DNA</p></li>
+<li><p>Separador (+)</p></li>
+<li><p>Calidad de cada base</p></li>
+</ol>
+<div class="alert alert-block alert-info">
+¿Los archivos _1 y _2 tienen el mismo número de reads?
+¿Las longitudes son constantes o variables?
+</div><p>De aquí en adelante los comandos deben estar en un slurm</p>
 </section>
 <section id="reporte-de-calidad">
 <h2>2. Reporte de calidad<a class="headerlink" href="#reporte-de-calidad" title="Permalink to this heading">#</a></h2>
@@ -727,8 +777,14 @@ El clustering consiste en agrupar secuencias muy similares entre sí en una sola
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Marcadores Moleculares: Estudio de caso de Microbiota</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuencias-ribosomales">Secuencias Ribosomales</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secuenciacion-del-16s-de-ambientes-comunidades-microbiologicas">Secuenciación del 16S de ambientes: comunidades microbiológicas</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tecnologias-de-secuenciacion">Tecnologías de secuenciación</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biologia-como-una-ciencia-data-intensiva">Biología como una ciencia data-intensiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-secuenciacion">Tipos de secuenciación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-datos">Análisis de datos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-crudos">1. Archivos crudos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporte-de-calidad">2. Reporte de calidad</a></li>
@@ -739,6 +795,9 @@ El clustering consiste en agrupar secuencias muy similares entre sí en una sola
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteo-tabla-otu">7. Conteo tabla OTU</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-basico-de-diversidad">8. Análisis básico de diversidad</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
