@@ -460,7 +460,8 @@ document.write(`
 <h2>1. Archivos crudos<a class="headerlink" href="#archivos-crudos" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">sra</span><span class="o">.</span><span class="n">ebi</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">fastq</span><span class="o">/</span><span class="n">SRR123</span><span class="o">/</span><span class="mi">006</span><span class="o">/</span><span class="n">SRR12324206</span><span class="o">/</span><span class="n">SRR12324206_1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crea una carpeta para descargar los archivos y realizar el pipeline</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">sra</span><span class="o">.</span><span class="n">ebi</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">fastq</span><span class="o">/</span><span class="n">SRR123</span><span class="o">/</span><span class="mi">006</span><span class="o">/</span><span class="n">SRR12324206</span><span class="o">/</span><span class="n">SRR12324206_1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">sra</span><span class="o">.</span><span class="n">ebi</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">fastq</span><span class="o">/</span><span class="n">SRR123</span><span class="o">/</span><span class="mi">006</span><span class="o">/</span><span class="n">SRR12324206</span><span class="o">/</span><span class="n">SRR12324206_2</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
@@ -522,8 +523,7 @@ Consulte el manual de FASTQC para entender los parámetros de calidad:
 <ol class="arabic simple" start="4">
 <li><p>¿Qué información entrega el módulo “Per sequence quality scores” y cómo se interpreta?</p></li>
 </ol>
-<!-- Respuesta (docente):
-Este módulo evalúa la calidad promedio de cada lectura. Si la mayoría está por encima de Q30 (99.9% de precisión), los datos son buenos. Si hay muchas lecturas de baja calidad, conviene descartarlas o recortarlas para no introducir ruido.
+<!-- Este módulo evalúa la calidad promedio de cada lectura. Si la mayoría está por encima de Q30 (99.9% de precisión), los datos son buenos. Si hay muchas lecturas de baja calidad, conviene descartarlas o recortarlas para no introducir ruido.
  -->
 <ol class="arabic simple" start="5">
 <li><p>¿Qué significa encontrar un resultado “FAIL” en “Sequence Duplication Levels”?</p></li>

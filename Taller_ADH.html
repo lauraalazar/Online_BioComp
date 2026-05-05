@@ -367,14 +367,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-2025-2">Fundamentos de Biología Computacional 2025-2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recuperacion-de-secuencias-fasta-de-adh-tipo-iv">1. Recuperación de secuencias (FASTA) de ADH tipo IV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-homologos-primates">2. Búsqueda de homólogos primates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-y-arbol-filogenetico">3. Alineamiento y árbol filogenético</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dominios-funcionales">4. Dominios funcionales</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-proteinas">5. Estructura de proteínas</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-2025-2">Fundamentos de Biología Computacional 2025-2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-de-secuenciacion-fastq">1. Archivos de secuenciación .fastq</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recuperacion-de-secuencias-fasta-de-adh-tipo-iv">2. Recuperación de secuencias (FASTA) de ADH tipo IV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-homologos-primates">3. Búsqueda de homólogos primates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-y-arbol-filogenetico">4. Alineamiento y árbol filogenético</a></li>
 </ul>
             </nav>
         </div>
@@ -393,8 +390,24 @@ document.write(`
 <p><strong>Tema:</strong> Evolución molecular del metabolismo del alcohol (ADH4 en homínidos)</p>
 <p>Las alcohol deshidrogenasas (ADH) son una familia de enzimas presentes en muchos organismos, desde bacterias hasta mamíferos, cuya función principal es el metabolismo del etanol, una de las formas de alcohol.</p>
 <p>Esta enzima ha sido especialmente relevante en la evolución de los primates, ya que su actividad frente al etanol varía significativamente entre especies (y como sabemos puede ser muy tóxica por encima de ciertas cantidads, aunque este límite es también variable). Estudios evolutivos sugieren que ADH pudo haber adquirido mayor eficiencia metabólica en linajes de homínidos terrestres (humanos, gorilas, chimpancés y bonobos) debido a su exposición a alimentos en proceso de fermentación (Carrigan MA <em>et al</em>. Hominids adapted to metabolize ethanol long before human-directed fermentation. PNAS 2015 Jan 13;112(2):458-63. doi: 10.1073/pnas.1404167111)</p>
+<p>Un artículo más reciente <em>Diet and the evolution of ADH7 across seven orders of mammals. R Soc Open Sci. 1 July 2023; 10 (7): 230451.</em> <a class="reference external" href="https://doi.org/10.1098/rsos.230451">https://doi.org/10.1098/rsos.230451</a> realizó una secuenciación mucho más exhaustiva para verificar las hipótesis previas. Una de las rondas de secuenciación de Ilumina se pueden descargar de NCBI</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ftp</span><span class="o">.</span><span class="n">sra</span><span class="o">.</span><span class="n">ebi</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">vol1</span><span class="o">/</span><span class="n">fastq</span><span class="o">/</span><span class="n">SRR231</span><span class="o">/</span><span class="mi">008</span><span class="o">/</span><span class="n">SRR2310558</span><span class="o">/</span><span class="n">SRR2310558_1</span><span class="o">.</span><span class="n">fastq</span><span class="o">.</span><span class="n">gz</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="archivos-de-secuenciacion-fastq">
+<h2>1. Archivos de secuenciación .fastq<a class="headerlink" href="#archivos-de-secuenciacion-fastq" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Si la secuenciación se realizó con Illumina <em>paired-end</em>, cual sería el archivo complementario del fastq descargado?</p></li>
+<li><p>Cuantas secuencias se produjeron?</p></li>
+</ul>
+</section>
 <section id="recuperacion-de-secuencias-fasta-de-adh-tipo-iv">
-<h3>1. Recuperación de secuencias (FASTA) de ADH tipo IV<a class="headerlink" href="#recuperacion-de-secuencias-fasta-de-adh-tipo-iv" title="Permalink to this heading">#</a></h3>
+<h2>2. Recuperación de secuencias (FASTA) de ADH tipo IV<a class="headerlink" href="#recuperacion-de-secuencias-fasta-de-adh-tipo-iv" title="Permalink to this heading">#</a></h2>
 <p>Busque la secuencia de proteína ADH en humanos (NCBI ID NP_000663.1) y descárguela en el directorio del taller.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -427,7 +440,7 @@ document.write(`
 </div>
 </section>
 <section id="busqueda-de-homologos-primates">
-<h3>2. Búsqueda de homólogos primates<a class="headerlink" href="#busqueda-de-homologos-primates" title="Permalink to this heading">#</a></h3>
+<h2>3. Búsqueda de homólogos primates<a class="headerlink" href="#busqueda-de-homologos-primates" title="Permalink to this heading">#</a></h2>
 <p>Utilice la secuencia de <em>Homo sapiens</em> para buscar los <strong>homólogos</strong> en, por lo menos otros 5 géneros de primates usando BLAST. Explique su criterio para definir esas secuencias como homólogas.</p>
 <table class="table">
 <thead>
@@ -524,7 +537,7 @@ document.write(`
 </div>
 </section>
 <section id="alineamiento-y-arbol-filogenetico">
-<h3>3. Alineamiento y árbol filogenético<a class="headerlink" href="#alineamiento-y-arbol-filogenetico" title="Permalink to this heading">#</a></h3>
+<h2>4. Alineamiento y árbol filogenético<a class="headerlink" href="#alineamiento-y-arbol-filogenetico" title="Permalink to this heading">#</a></h2>
 <p>Realice un alineamiento y un árbol filogenético justificando los parámetros que escoge (matriz de distancia y agrupamiento de ramas). Qué tan similar es la proteína entre las especies?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -571,21 +584,18 @@ document.write(`
 </div>
 </details>
 </div>
-</section>
-<section id="dominios-funcionales">
-<h3>4. Dominios funcionales<a class="headerlink" href="#dominios-funcionales" title="Permalink to this heading">#</a></h3>
-<p>Contraste las secuencias de proteína de ADH de humano y de un primate mas basal, <em>Carlito syrichta</em> (primero debes buscar la secuencia homóloga, si esta especie no está incluida en el grupo de homólogos) en términos de
-a) longitud de la proteína (vía script de R o python)
+<!--
+### 4. Dominios funcionales
+Contraste las secuencias de proteína de ADH de humano y de un primate mas basal, *Carlito syrichta* (primero debes buscar la secuencia homóloga, si esta especie no está incluida en el grupo de homólogos) en términos de 
+a) longitud de la proteína (vía script de R o python) 
 b) frecuencia de los diferentes amino ácidos (vía script de R o python)
 c) dominios presentes en las proteínas (utilizando InterPro)
 ¿Qué tan diferentes son las proteínas?
-¿Hay diferencias funcionales esperadas basadas en esta estructura?</p>
-</section>
-<section id="estructura-de-proteinas">
-<h3>5. Estructura de proteínas<a class="headerlink" href="#estructura-de-proteinas" title="Permalink to this heading">#</a></h3>
-<p>Utilice AlphaFold para comparar la predicción de proteínas de ambas especies</p>
-<p>Notas: Recuerde que los archivos NO se deben nombrar con espacios</p>
-</section>
+¿Hay diferencias funcionales esperadas basadas en esta estructura?
+
+### 5. Estructura de proteínas
+Utilice AlphaFold para comparar la predicción de proteínas de ambas especies
+--><p>Notas: Recuerde que los archivos NO se deben nombrar con espacios</p>
 </section>
 </section>
 
@@ -647,14 +657,11 @@ c) dominios presentes en las proteínas (utilizando InterPro)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-2025-2">Fundamentos de Biología Computacional 2025-2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recuperacion-de-secuencias-fasta-de-adh-tipo-iv">1. Recuperación de secuencias (FASTA) de ADH tipo IV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-homologos-primates">2. Búsqueda de homólogos primates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-y-arbol-filogenetico">3. Alineamiento y árbol filogenético</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dominios-funcionales">4. Dominios funcionales</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-de-proteinas">5. Estructura de proteínas</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-biologia-computacional-2025-2">Fundamentos de Biología Computacional 2025-2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-de-secuenciacion-fastq">1. Archivos de secuenciación .fastq</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recuperacion-de-secuencias-fasta-de-adh-tipo-iv">2. Recuperación de secuencias (FASTA) de ADH tipo IV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-homologos-primates">3. Búsqueda de homólogos primates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alineamiento-y-arbol-filogenetico">4. Alineamiento y árbol filogenético</a></li>
 </ul>
   </nav></div>
 
